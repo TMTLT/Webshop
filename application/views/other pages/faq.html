@@ -7,7 +7,7 @@
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>404 - Mo's webshop</title>
+<title>Megashop</title>
 
 <!--js-->
 <script src="js/jquery-1.8.2.min.js"></script>
@@ -19,6 +19,7 @@
 <script src="js/jquery.jcarousel.min.js"></script>
 <script src="js/jquery.accordion.js"></script>
 <script src="js/light_box.js"></script>
+<script src="js/jquery-ui.js"></script>
 <script type="text/javascript">$(document).ready(function(){$(".inline").colorbox({inline:true, width:"50%"});});</script>
 <!--end js-->
 
@@ -47,8 +48,8 @@
 </head>
 <body>
 	<div class="mainContainer sixteen container">
-<!--Header Block-->
-<div class="header-wrapper">
+            <!--Header Block-->
+            <div class="header-wrapper">
               <header class="container">
                 <div class="head-right">
                       <ul class="top-nav">
@@ -60,7 +61,7 @@
                       </ul>
                     <ul class="currencyBox">
                         <li id="header_currancy" class="currency"> <a class="mainCurrency" href="#">Currency: USD</a>
-                          <div id="currancyBox" class="currency_detial"> <a href="#">£</a> <a href="#">€</a> <a href="#">$</a> </div>
+                          <div id="currancyBox" class="currency_detial"> <a href="#">Â£</a> <a href="#">â‚¬</a> <a href="#">$</a> </div>
                         </li>
                     </ul>
                   <section class="header-bottom">
@@ -120,7 +121,7 @@
                   </a></h1>
                 <nav id="smoothmenu1" class="ddsmoothmenu mainMenu">
                   <ul id="nav">
-                    <li class="active"><a href="index-2.html" title="Home">Home</a></li>
+                    <li><a href="index-2.html" title="Home">Home</a></li>
                     <li class=""><a href="category.html" title="Shop by">Shop by</a>
                       <ul>
                         <li><a href="category.html">Woman Collection</a></li>
@@ -141,7 +142,7 @@
                       </ul>
                     </li>
                     <li class=""><a href="blog.html" title="Blog">Blog</a></li>
-                    <li class=""><a href="faq.html" title="Faq">Faq</a></li>
+                    <li class="active"><a href="faq.html" title="Faq">Faq</a></li>
                     <li class=""><a href="about_us.html" title="About us">About us</a></li>
                     <li class=""><a href="404_error.html" title="Pages">Pages</a></li>
                     <li class=""><a href="contact_us.html" title="Footwear">Contact us</a></li>
@@ -188,26 +189,112 @@
             </div>
                 
               </header>
-            </div>	
+            </div>
 <!--Content Block-->
 <section class="content-wrapper">
 	<div class="content-container container">
-		<div class="breadcrum-container">
-			<ul>
-				<li><a href="#" title="Home">404</a></li>
-				<li>Page Not Found</li>
-			</ul>
-		</div>
-		<div class="main">
-			<div class="error-container">
-				<h1><?=$heading?></h1>
-				<p><?=$message?></p>
-				<div class="f-fix">
-					<a href="index-2.html" title="Back To Home" class="colors-btn">Back To Home</a>
-					<a href="#" title="Go to Sitemap" class="colors-btn">Go to Sitemap</a>
-				</div>
+		<div class="col-main-left">
+			<h1 class="page-title">FAQ</h1>
+			<div class="block-01">
+				<h4>Frequently Asked Questions</h4>
+				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                 <script>
+					$(function() {
+						$( "#accordion" ).accordion();
+					});
+					</script>
+				<ul id="accordion" class="q-a-block">
+					<li>
+                    <a href="#" title="">1- Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a>
+                    <div>
+Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia mauris vel est.
+Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                    </div>
+                    </li>
+					<li>
+                    <a href="#" title="">2- Vivamus porttitor, neque at volutpat rutrum, purus nisi eleifend libero.</a>
+                    <div>
+Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia mauris vel est.
+Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                    </div>
+                    </li>
+					<li>
+                    <a href="#" title="">3- Mauris neque metus, malesuada nec, ultricies sit amet, porttitor mattis, enim.</a>
+                    <div>
+Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia mauris vel est.
+Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                    </div>
+                    </li>
+					<li>
+                    <a href="#" title="">4- Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</a>
+                    <div>
+Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia mauris vel est.
+Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                    </div>
+                    </li>
+					<li>
+                    <a href="#" title="">5- Etiam nulla massa, pharetra facilisis, volutpat in, imperdiet sit amet, sem.</a>
+                    <div>
+Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia mauris vel est.
+Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                    </div>
+                    </li>
+					<li>
+                    <a href="#" title="">6- Maecenas placerat, nisl at consequat rhoncus, sem nunc gravida justo, quis eleifend quis lacus.</a>
+                    <div>
+Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia mauris vel est.
+Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                    </div>
+                    </li>
+				</ul>
+			</div>
+			<div class="block-01">
+				<h4>Media Item</h4>
+				<div class="about-banner">
+              <iframe src="http://player.vimeo.com/video/27256955?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p><a href="http://vimeo.com/27256955">Ormie</a> from <a href="http://vimeo.com/user7992423">Ormie Pig</a> on <a href="http://vimeo.com/">Vimeo</a>.</p>
+                <div class="clear"></div></div>
 			</div>
 		</div>
+		<aside class="right-sidebar">
+			<div class="block widget-searchwidget">
+				<input type="text" value="Type to search..." />
+			</div>
+			<div class="block widget-img">
+				<a href="#" title=""><img src="images/125.jpg"></a>
+				<a href="#" title=""><img src="images/125.jpg"></a>
+				<a href="#" title=""><img src="images/125.jpg"></a>
+				<a href="#" title=""><img src="images/125.jpg"></a>
+			</div>
+			<div class="block listing-block">
+				<p>
+					<strong>Theme Features</strong>
+					Donec convallis pede with useful features!
+				</p>
+				<ul>
+					<li>Ut ante enim, fringilla eu, condimentum quis.</li>
+					<li>Gravida justo, quis eleifend arcu velit quis lacus.</li>
+					<li>Consectetuer augue nisi quis lacus.</li>
+					<li>Morbi porta, libero id ullamcorper nonummy.</li>
+					<li>Gravida justo, quis eleifend arcu velit quis lacus.</li>
+					<li>Viverra in, gravida eu, mattis in, ante.</li>
+				</ul>
+			</div>
+			<div class="block social-block">
+				<span class='st_sharethis'></span>
+                <span class='st_facebook'></span>
+                <span class='st_amazon_wishlist'></span>
+                <span class='st_delicious'></span>
+                <span class='st_blogger'></span>
+                <span class='st_googleplus'></span>
+                <span class='st_twitter'></span>
+                <span class='st_linkedin'></span>
+                <span class='st_pinterest'></span>
+                <span class='st_email'></span>
+                <script type="text/javascript">var switchTo5x=false;</script>
+				<script type="text/javascript" src="../../../w.sharethis.com/button/buttons.js"></script>
+				<script type="text/javascript">stLight.options({publisher: "20635c27-623e-4e91-8489-7537a83b882b"});</script>
+			</div>
+		</aside>
 		<div class="clearfix"></div>
 		<div class="news-letter-container">
 			<div class="free-shipping-block">
@@ -217,7 +304,7 @@
 			<div class="news-letter-block">
 				<h2>SIGN UP FOR OUR NEWSLETTER</h2>
 				<input type="text" value="Enter email address" title="" />
-				<input type="submit" value="Submit" title="Submit" />
+				<input class="submit-btn" type="submit" value="Submit" title="Submit" />
 			</div>
 		</div>	
 	</div>
@@ -274,7 +361,7 @@
                     <li><a href="about_us.html" title="About">ABOUT</a></li>
                     <li><a href="contact_us.html" title="Contact">CONTACT</a></li>
                   </ul>
-                  <p class="copyright-block">© 2012 Magento Demo Store, All Rights Reserved.</p>
+                  <p class="copyright-block">Â© 2012 Magento Demo Store, All Rights Reserved.</p>
                 </div>
               </footer>
             </section>

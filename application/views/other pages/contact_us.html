@@ -7,7 +7,7 @@
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>404 - Mo's webshop</title>
+<title>Megashop</title>
 
 <!--js-->
 <script src="js/jquery-1.8.2.min.js"></script>
@@ -47,8 +47,8 @@
 </head>
 <body>
 	<div class="mainContainer sixteen container">
-<!--Header Block-->
-<div class="header-wrapper">
+            <!--Header Block-->
+            <div class="header-wrapper">
               <header class="container">
                 <div class="head-right">
                       <ul class="top-nav">
@@ -60,7 +60,7 @@
                       </ul>
                     <ul class="currencyBox">
                         <li id="header_currancy" class="currency"> <a class="mainCurrency" href="#">Currency: USD</a>
-                          <div id="currancyBox" class="currency_detial"> <a href="#">£</a> <a href="#">€</a> <a href="#">$</a> </div>
+                          <div id="currancyBox" class="currency_detial"> <a href="#">Â£</a> <a href="#">â‚¬</a> <a href="#">$</a> </div>
                         </li>
                     </ul>
                   <section class="header-bottom">
@@ -120,7 +120,7 @@
                   </a></h1>
                 <nav id="smoothmenu1" class="ddsmoothmenu mainMenu">
                   <ul id="nav">
-                    <li class="active"><a href="index-2.html" title="Home">Home</a></li>
+                    <li class=""><a href="index-2.html" title="Home">Home</a></li>
                     <li class=""><a href="category.html" title="Shop by">Shop by</a>
                       <ul>
                         <li><a href="category.html">Woman Collection</a></li>
@@ -144,7 +144,7 @@
                     <li class=""><a href="faq.html" title="Faq">Faq</a></li>
                     <li class=""><a href="about_us.html" title="About us">About us</a></li>
                     <li class=""><a href="404_error.html" title="Pages">Pages</a></li>
-                    <li class=""><a href="contact_us.html" title="Footwear">Contact us</a></li>
+                    <li class="active"><a href="contact_us.html" title="Footwear">Contact us</a></li>
                   </ul>
                 </nav>
                 
@@ -156,7 +156,7 @@
             </h1>
             <div id="menuInnner" style="display:none;">
                    <ul class="accordion">
-                       <li class="active"><a href="index-2.html" title="Home">Home</a></li>
+                       <li class=""><a href="index-2.html" title="Home">Home</a></li>
                     <li class="parent"><a href="category.html" title="Shop by">Shop by</a>
                       <ul>
                         <li><a href="category.html">Woman Collection</a></li>
@@ -188,23 +188,54 @@
             </div>
                 
               </header>
-            </div>	
+            </div>
 <!--Content Block-->
 <section class="content-wrapper">
 	<div class="content-container container">
-		<div class="breadcrum-container">
-			<ul>
-				<li><a href="#" title="Home">404</a></li>
-				<li>Page Not Found</li>
-			</ul>
+		<div class="col-left">
+			<div class="block compare-block">
+				<div class="block-title">COMPARE PRODUCTS</div>
+				<ul>
+					<li>You have no items to compare</li>
+				</ul>
+			</div>
+			<div class="block community-block">
+				<div class="block-title">COMMUNITY POLL</div>
+				<ul>
+					<li class="question-row">WHAT IS YOUR FAVORITE COLOR</li>
+					<li><input type="radio"><a href="#" title="Green">Green</a></li>
+					<li><input type="radio"><a href="#" title="Red">Red</a></li>
+					<li><input type="radio"><a href="#" title="Black">Black</a></li>
+					<li><input type="radio"><a href="#" title="Magenta">Magenta</a></li>
+					<li class="vote-row"><button title="Vote">Vote</button></li>
+				</ul>
+			</div>
 		</div>
-		<div class="main">
-			<div class="error-container">
-				<h1><?=$heading?></h1>
-				<p><?=$message?></p>
-				<div class="f-fix">
-					<a href="index-2.html" title="Back To Home" class="colors-btn">Back To Home</a>
-					<a href="#" title="Go to Sitemap" class="colors-btn">Go to Sitemap</a>
+		<div  class="col-main">
+			<h1 class="page-title">Contact Us</h1>
+			<div class="contact-form-container">
+				<div  class="form-title">Contact Information</div>
+				<ul class="form-fields">
+					<li class="left">
+						<label>Name<em>*</em></label>
+						<input type="text" />
+					</li>
+					<li class="left">
+						<label>Email<em>*</em></label>
+						<input type="text" />
+					</li>
+					<li class="left">
+						<label>Telephone</label>
+						<input type="text" />
+					</li>
+					<li class="full-row">
+						<label>Comment<em>*</em></label>
+						<textarea></textarea>
+					</li>
+				</ul>
+				<div class="button-set">
+					<p class="required">* Required Fields</p>
+					<button type="submit" class="form-button"><span>Submit</span></button>
 				</div>
 			</div>
 		</div>
@@ -217,7 +248,7 @@
 			<div class="news-letter-block">
 				<h2>SIGN UP FOR OUR NEWSLETTER</h2>
 				<input type="text" value="Enter email address" title="" />
-				<input type="submit" value="Submit" title="Submit" />
+				<input class="submit-btn" type="submit" value="Submit" title="Submit" />
 			</div>
 		</div>	
 	</div>
@@ -274,7 +305,7 @@
                     <li><a href="about_us.html" title="About">ABOUT</a></li>
                     <li><a href="contact_us.html" title="Contact">CONTACT</a></li>
                   </ul>
-                  <p class="copyright-block">© 2012 Magento Demo Store, All Rights Reserved.</p>
+                  <p class="copyright-block">Â© 2012 Magento Demo Store, All Rights Reserved.</p>
                 </div>
               </footer>
             </section>
