@@ -111,7 +111,7 @@ class CI_Exceptions {
 		{
 			log_message('error', '404 Page Not Found --> '.$page);
 		}
-
+		
 		echo $this->show_error($heading, $message, 'error_404', 404);
 		exit;
 	}
