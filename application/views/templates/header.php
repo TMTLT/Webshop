@@ -55,9 +55,9 @@
 			<ul class="top-nav">
 			   <li class=""><a href="/404_error.html" title="My Account">My Account</a></li>
 			   <li class="my-wishlist"><a href="/404_error.html" title="My Wishlist">My Wishlist</a></li>
-			   <li class="contact-us"><a href="/contact_us.html" title="Contact Us">Contact Us</a></li>
+			   <li class="contact-us"><a href="/contact/" title="Contact Us">Contact Us</a></li>
 			   <li class="checkout"><a href="/404_error.html" title="Checkout">Checkout</a></li>
-			   <li class="log-in"><a href="/account_login.html" title="Log In">Log In</a></li>
+			   <li class="log-in"><a href="/account/login" title="Log In">Log In</a></li>
 			</ul>
 			<section class="header-bottom">
 			   <div class="cart-block">
