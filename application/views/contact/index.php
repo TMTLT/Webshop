@@ -1,49 +1,26 @@
 <section class="content-wrapper">
-	<div class="content-container container">
-		<div class="col-left">
-			<div class="block compare-block">
-				<div class="block-title">COMPARE PRODUCTS</div>
-				<ul>
-					<li>You have no items to compare</li>
-				</ul>
-			</div>
-			<div class="block community-block">
-				<div class="block-title">COMMUNITY POLL</div>
-				<ul>
-					<li class="question-row">WHAT IS YOUR FAVORITE COLOR</li>
-					<li><input type="radio"><a href="#" title="Green">Green</a></li>
-					<li><input type="radio"><a href="#" title="Red">Red</a></li>
-					<li><input type="radio"><a href="#" title="Black">Black</a></li>
-					<li><input type="radio"><a href="#" title="Magenta">Magenta</a></li>
-					<li class="vote-row"><button title="Vote">Vote</button></li>
-				</ul>
-			</div>
-		</div>
+	<div class="content-container container">	
 		<div  class="col-main">
-			<h1 class="page-title">Contact Us</h1>
+			<h1 class="page-title">Contact Ons</h1>
 			<div class="contact-form-container">
-				<div  class="form-title">Contact Information</div>
+				<div  class="form-title">Contact Formulier</div>
 				<ul class="form-fields">
 					<li class="left">
-						<label>Name<em>*</em></label>
+						<label>Naam<em>*</em></label>
 						<input type="text" />
 					</li>
 					<li class="left">
 						<label>Email<em>*</em></label>
 						<input type="text" />
 					</li>
-					<li class="left">
-						<label>Telephone</label>
-						<input type="text" />
-					</li>
 					<li class="full-row">
-						<label>Comment<em>*</em></label>
+						<label>Bericht<em>*</em></label>
 						<textarea></textarea>
 					</li>
 				</ul>
 				<div class="button-set">
 					<p class="required">* Required Fields</p>
-					<button type="submit" class="form-button"><span>Submit</span></button>
+					<button type="submit" class="form-button"><span>Verzend</span></button>
 				</div>
 			</div>
 		</div>
@@ -61,3 +38,4 @@
 		</div>	
 	</div>
 </section>
+</div>
