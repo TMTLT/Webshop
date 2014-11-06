@@ -53,10 +53,9 @@
 	  <header class="container">
 		 <div class="head-right">
 			<ul class="top-nav">
-			   <li class=""><a href="/404_error.html" title="My Account">My Account</a></li>
-			   <li class="my-wishlist"><a href="/404_error.html" title="My Wishlist">My Wishlist</a></li>
-			   <li class="contact-us"><a href="/contact/" title="Contact Us">Contact Us</a></li>
-			   <li class="checkout"><a href="/404_error.html" title="Checkout">Checkout</a></li>
+			   <li class=""><a href="/account/" title="My Account">My Account</a></li>
+			   <li class="contact-us"><a href="/contact/" title="Contact Us">Neem contact op</a></li>
+			   <li class="checkout"><a href="/store/checkout" title="Checkout">Afrekenen</a></li>
 			   <li class="log-in"><a href="/account/login" title="Log In">Log In</a></li>
 			</ul>
 			<section class="header-bottom">
@@ -119,31 +118,24 @@
 			<ul id="nav">
 			   <li class="active"><a href="/index-2.html" title="Home">Home</a></li>
 			   <li class="">
-				  <a href="/category.html" title="Shop by">Shop by</a>
+				  <a href="/category.html" title="Shop by">Winkel</a>
 				  <ul>
-					 <li><a href="/category.html">Woman Collection</a></li>
-					 <li><a href="/category.html">Men Collection</a></li>
-					 <li><a href="/category.html">Accessories</a></li>
+					 <li><a href="/store/category/tl">TL</a></li>
+					 <li><a href="/store/category/led">LED</a></li>
+					 <li><a href="/store/category/gloei">Gloei</a></li>
 					 <li>
-						<a href="/category.html">Mobile</a>
+						<a href="/store/category/accesoires">Accesoires</a>
 						<ul>
-						   <li><a href="/category.html">Second level</a></li>
-						   <li><a href="/category.html">Second level</a></li>
-						   <li><a href="/category.html">Second level</a></li>
-						   <li><a href="/category.html">Second level</a></li>
-						   <li><a href="/category.html">Second level</a></li>
-						   <li><a href="/category.html">Second level</a></li>
+						   <li><a href="/store/category/accesoroies/tools">Gereedschap</a></li>
+						   <li><a href="/store/category/accesoires/sockets">Fittingen</a></li>
 						</ul>
 					 </li>
-					 <li><a href="/category.html">Shoes</a></li>
-					 <li><a href="/category.html">Others</a></li>
 				  </ul>
 			   </li>
-			   <li class=""><a href="/blog.html" title="Blog">Blog</a></li>
-			   <li class=""><a href="/faq.html" title="Faq">Faq</a></li>
-			   <li class=""><a href="/about_us.html" title="About us">About us</a></li>
-			   <li class=""><a href="/404_error.html" title="Pages">Pages</a></li>
-			   <li class=""><a href="/contact_us.html" title="Footwear">Contact us</a></li>
+				<li class=""><a href="/about/blog" title="Blog">Blog</a></li>
+				<li class=""><a href="/about/faq" title="Faq">FAQ</a></li>
+				<li class=""><a href="/about" title="About us">Over ons</a></li>
+				<li class=""><a href="/contact" title="Contact">Neem contact op</a></li>
 			</ul>
 		 </nav>
 		 <div class="mobMenu">
@@ -176,11 +168,10 @@
 						<li><a href="/category.html">Others</a></li>
 					 </ul>
 				  </li>
-				  <li class=""><a href="/blog.html" title="Blog">Blog</a></li>
-				  <li class=""><a href="/faq.html" title="Faq">Faq</a></li>
-				  <li class=""><a href="/about_us.html" title="About us">About us</a></li>
-				  <li class=""><a href="/404_error.html" title="Pages">Pages</a></li>
-				  <li class=""><a href="/contact_us.html" title="Footwear">Contact us</a></li>
+				  <li class=""><a href="/about/blog" title="Blog">Blog</a></li>
+				  <li class=""><a href="/about/faq" title="Faq">FAQ</a></li>
+				  <li class=""><a href="/about" title="About us">Over ons</a></li>
+				  <li class=""><a href="/contact" title="Contact">Neem contact op</a></li>
 				  <span class="clearfix"></span>
 			   </ul>
 			</div>

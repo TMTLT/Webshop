@@ -11,12 +11,6 @@ class Account extends CI_Controller{
 	public function index()
 	{
 		redirect('/account/login');
-
-		$data['title'] = 'Account';
-		
-		$this->load->view('templates/header', $data);
-		$this->load->view('account/index');
-		$this->load->view('templates/footer', $data);
 	}
 
 	public function login(){
@@ -30,7 +24,7 @@ class Account extends CI_Controller{
 
 	public function create(){
 
-		$data['title'] = 'Create';
+		$data['title'] = 'Maak een account';
 		
 		$this->load->view('templates/header', $data);
 		$this->load->view('account/create');
