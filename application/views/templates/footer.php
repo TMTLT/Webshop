@@ -36,7 +36,7 @@
 				<li><a data-tooltip="Follow us on twitter" href="#"><img alt="twitter" src="/images/twitter.png"></a></li>
 				<li><a data-tooltip="Follow us on Dribbble" href="#"><img alt="dribbble" src="/images/dribbble.png"></a></li>
 				<li><a data-tooltip="Follow us on Youtube" href="#"><img alt="youtube" src="/images/youtube.png"></a></li>
-				<li><a data-tooltip="Follow us on skype" href="#"><img alt="skype" src="images/skype.png"></a></li>
+				<li><a data-tooltip="Follow us on skype" href="#"><img alt="skype" src="/images/skype.png"></a></li>
 			 </ul>
 			 <div class="payment-block"><img src="/images/payment.png" alt="payment"></div>
 		</li>
