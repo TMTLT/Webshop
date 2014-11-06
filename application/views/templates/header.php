@@ -15,7 +15,7 @@
    <!-- Meta -->
    <meta charset="utf-8">
    <!-- Title -->
-   <title><?=(isset($title) ? $title : 'Geen titel')?> Mo's webshop</title>
+   <title><?=(isset($title) ? $title : 'Geen titel')?> | Mo's webshop</title>
    <!-- JS -->
    <script src="/js/jquery-1.8.2.min.js"></script>
    <script src="/js/common.js"></script>
