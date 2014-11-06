@@ -7,7 +7,7 @@ TODO :
 
 require_once(APPPATH . "application/classes/crypt.php");
 
-class News_model extends CI_Model {
+class Account_model extends CI_Model {
 
 	public function __construct()
 	{
