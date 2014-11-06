@@ -3,22 +3,22 @@
 <section class="content-wrapper">
 	<div class="content-container container">
 		<div class="main">
-			<h1 class="page-title">Login or Create an Account</h1>
+			<h1 class="page-title">Login or maak een account</h1>
 			<div class="account-login">
 				<div class="col-1 new-users">
 					<div class="content">
-						<h2>New Customers</h2>
-						<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+						<h2>Nieuwe gebruikers</h2>
+						<p>Met een account kunt u gebruik maken van onze webshop, gemaakte bestellingen inzien en volgen en tal van andere voordelen genieten.</p>
 					</div>
 					<div class="buttons-set">
-						<a class="colors-btn" title="Create an Account" href="account_create.html"><span><span>Create an Account</span></span></a>
+						<a class="colors-btn" title="Create an Account" href="/account/create"><span><span>Maak een account</span></span></a>
 						<div class="clear"></div>
 					</div>
 				</div>
 				<div class="col-2 registered-users">
 					<div class="content">
-						<h2>Registered Customers</h2>
-						<p>If you have an account with us, please log in.</p>
+						<h2>Bestaande gebruikers</h2>
+						<p>Als u al een account heeft kunt u hier inloggen.</p>
 						<ul class="form-list">
 							<li>
 								<label class="required" for="email">Email Address<em>*</em></label>
@@ -28,17 +28,17 @@
 								<div class="clear"></div>
 							</li>
 							<li>
-								<label class="required" for="pass">Password<em>*</em></label>
+								<label class="required" for="pass">Wachtwoord<em>*</em></label>
 								<div class="input-box">
 									<input type="password" title="Password" class="input-text required-entry validate-password" />
 								</div>
 								<div class="clear"></div>
 							</li>
 						</ul>
-						<p class="required">* Required Fields</p>
+						<p class="required">* Vereiste velden</p>
 					</div>
 					<div class="buttons-set">
-						<a class="f-left" href="#">Forgot Your Password?</a>
+						<a class="f-left" href="#">Wachtwoord vergeten?</a>
 						<a class="colors-btn"  title="Login"><span><span>Login</span></span></a>
 						<div class="clear"></div>
 					</div>

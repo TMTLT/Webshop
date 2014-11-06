@@ -3,12 +3,19 @@
 
 class Account extends CI_Controller{
 
+	public function __construct(){
+		parent::__construct();
+		$this->load->helper('url');
+	}
+
 	public function index()
 	{
-		$data['title'] = 'Store';
+		redirect('/account/login');
+
+		$data['title'] = 'Account';
 		
 		$this->load->view('templates/header', $data);
-		$this->load->view('account/indexs');
+		$this->load->view('account/index');
 		$this->load->view('templates/footer', $data);
 	}
 
