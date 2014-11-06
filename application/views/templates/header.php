@@ -62,7 +62,7 @@
 			   <div class="cart-block">
 				  <ul>
 					 <li>(2)</li>
-					 <li><a href="/cart.html" title="Cart"><img title="Item" alt="Item" src="/images/item_icon.png" /></a></li>
+					 <li><a href="/store/cart" title="Cart"><img title="Item" alt="Item" src="/images/item_icon.png" /></a></li>
 					 <li>Item</li>
 				  </ul>
 				  <div id="minicart" class="remain_cart" style="display: none;">
@@ -98,7 +98,7 @@
 						</li>
 						<li>
 						   <div class="total-block">Total:<span>$1,900.00</span></div>
-						   <a href="/cart.html" title="Checkout" class="colors-btn">Checkout</a>
+						   <a href="/store/checkout" title="Checkout" class="colors-btn">Afrekenen</a>
 						   <div class="clear"></div>
 						</li>
 					 </ol>
@@ -110,15 +110,15 @@
 			   </div>
 			</section>
 		 </div>
-		 <h1 class="logo"><a href="/index-2.html" title="Logo">
+		 <h1 class="logo"><a href="/home" title="Logo">
 			<img title="Logo" alt="Logo" src="/images/logo.png" />
 			</a>
 		 </h1>
 		 <nav id="smoothmenu1" class="ddsmoothmenu mainMenu">
 			<ul id="nav">
-			   <li class="active"><a href="/index-2.html" title="Home">Home</a></li>
+			   <li class="active"><a href="/home" title="Home">Home</a></li>
 			   <li class="">
-				  <a href="/category.html" title="Shop by">Winkel</a>
+				  <a href="/store" title="Winkel">Winkel</a>
 				  <ul>
 					 <li><a href="/store/category/tl">TL</a></li>
 					 <li><a href="/store/category/led">LED</a></li>
@@ -146,9 +146,9 @@
 			</h1>
 			<div id="menuInnner" style="display:none;">
 			   <ul class="accordion">
-				  <li class="active"><a href="/index-2.html" title="Home">Home</a></li>
+				  <li class="active"><a href="/home" title="Home">Home</a></li>
 				  <li class="parent">
-					 <a href="/category.html" title="Shop by">Shop by</a>
+					 <a href="/store" title="Winkel">Winkel</a>
 					 <ul>
 						<li><a href="/category.html">Woman Collection</a></li>
 						<li><a href="/category.html">Men Collection</a></li>

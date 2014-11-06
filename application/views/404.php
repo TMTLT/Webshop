@@ -4,7 +4,7 @@
 		<div class="breadcrum-container">
 			<ul>
 				<li><a href="#" title="Home">404</a></li>
-				<li>Page Not Found</li>
+				<li>Pagina niet gevonden</li>
 			</ul>
 		</div>
 		<div class="main">
@@ -12,8 +12,8 @@
 				<h1><?=$heading?></h1>
 				<p><?=$message?></p>
 				<div class="f-fix">
-					<a href="index-2.html" title="Back To Home" class="colors-btn">Back To Home</a>
-					<a href="#" title="Go to Sitemap" class="colors-btn">Go to Sitemap</a>
+					<a href="/home" title="Ga terug naar de startpagina" class="colors-btn">Terug naar de index</a>
+					<a href="/home/sitemap" title="Ga naar de Sitemap" class="colors-btn">Sitemap</a>
 				</div>
 			</div>
 		</div>
