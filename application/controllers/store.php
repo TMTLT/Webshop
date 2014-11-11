@@ -2,23 +2,20 @@
 
 require_once(APPPATH . "classes/payme.php");
 
-class Store extends CI_Controller{
+class Store extends MY_Controller{
 
 	public function index()
 	{
+		$data = $this->data;
 		$data['title'] = 'Store';
 		
-		$this->load->view('templates/header', $data);
-		$this->load->view('store/index');
-		$this->load->view('templates/footer', $data);
+		$this->load->template('store/index', $data);
 	}
 
 	public function checkOut(){
-
+		$data = $this->data;
 		$data['title'] = 'Checkout';
 		
-		$this->load->view('templates/header', $data);
-		$this->load->view('store/checkout');
-		$this->load->view('templates/footer', $data);
+		$this->load->template('store/checkout', $data);
 	}
 }

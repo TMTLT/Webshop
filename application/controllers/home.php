@@ -1,25 +1,12 @@
 <?php
 
-class Home extends CI_Controller{
+class Home extends MY_Controller{
 
 	public function index()
-	{
+	{	
+		$data = $this->data;
 		$data['title'] = 'Home';
 		
-		$this->load->view('templates/header', $data);
-		$this->load->view('home/index');
-		$this->load->view('templates/footer', $data);
+		$this->load->template('home/index', $data);
 	}
-	
-	public function view($page='index'){
-		
-		if(!file_exists(APPPATH.'/views/home/'.$page.'.php'))
-			show_404();
-		$data['title'] = ucfirst($page);
-		
-		//$this->load->view('templates/header', $data);
-		$this->load->view($page);
-		//$this->load->view('templates/footer', $data);
-	}
-	
 }

@@ -53,7 +53,7 @@
 	  <header class="container">
 		 <div class="head-right">
 			<ul class="top-nav">
-			   <li class=""><a href="/account/" title="My Account">My Account</a></li>
+			   <li class=""><a href="/account/" title="My Account"><?=($loggedIn ? 'Mijn account' : 'Log in')?></a></li>
 			   <li class="contact-us"><a href="/contact/" title="Contact Us">Neem contact op</a></li>
 			   <li class="checkout"><a href="/store/checkout" title="Checkout">Afrekenen</a></li>
 			   <li class="log-in"><a href="/account/login" title="Log In">Log In</a></li>
