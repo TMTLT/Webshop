@@ -1,25 +1,27 @@
 <?php
 
-define("PBKDF2_HASH_ALGORITHM", "sha256");
-define("PBKDF2_ITERATIONS", 1000);
-define("PBKDF2_SALT_BYTE_SIZE", 36);
-define("PBKDF2_HASH_BYTE_SIZE", 24);
-
-define("HASH_SECTIONS", 4);
-define("HASH_ALGORITHM_INDEX", 0);
-define("HASH_ITERATION_INDEX", 1);
-define("HASH_SALT_INDEX", 2);
-define("HASH_PBKDF2_INDEX", 3);
 
 class Crypt{
 	
+	protected static $pbkdf2_hash_algorithm = "sha256";
+	protected static $pbkdf2_iterations = 1000;
+	protected static $pbkdf2_salt_byte_size = 36;
+	protected static $pbkdf2_hash_byte_size = 24;
+
+	protected static $hash_sections = 4;
+	protected static $hash_algorithm_index = 0;
+	protected static $hash_iteration_index = 1;
+	protected static $hash_salt_index = 2;
+	protected static $hash_pbkdf2_index = 3;
+
+
 	private function __construct(){}
 	
 	/**
 	 * [GetRandomSalt]
 	 */
 	public static function GetRandomSalt() {
-		return base64_encode(mcrypt_create_iv(PBKDF2_SALT_BYTE_SIZE, MCRYPT_DEV_URANDOM));
+		return base64_encode(mcrypt_create_iv(self::$pbkdf2_salt_byte_size, MCRYPT_DEV_URANDOM));
 	}
 	
 	/**
@@ -28,13 +30,13 @@ class Crypt{
 	 * @param mixed $salt
 	 */
 	public static function HashPassword($password, $salt) {
-    	return PBKDF2_HASH_ALGORITHM . ":" . PBKDF2_ITERATIONS . ":" .  $salt . ":" .
+    	return self::$pbkdf2_hash_algorithm . ":" . self::$pbkdf2_iterations . ":" .  $salt . ":" .
         base64_encode(self::pbkdf2(
-            PBKDF2_HASH_ALGORITHM,
+            self::$pbkdf2_hash_algorithm,
             $password,
             $salt,
-            PBKDF2_ITERATIONS,
-            PBKDF2_HASH_BYTE_SIZE,
+            self::$pbkdf2_iterations,
+            self::$pbkdf2_hash_byte_size,
             true
         ));
 	}
@@ -46,16 +48,16 @@ class Crypt{
 	 */
 	public static function ValidatePassword($password, $hash) {
 	    $params = explode(":", $hash);
-	    if(count($params) < HASH_SECTIONS)
+	    if(count($params) < self::$hash_sections)
 	       return false;
-	    $pbkdf2 = base64_decode($params[HASH_PBKDF2_INDEX]);
+	    $pbkdf2 = base64_decode($params[self::$hash_pbkdf2_index]);
 	    return self::slow_equals(
 	        $pbkdf2,
 	        self::pbkdf2(
-	            $params[HASH_ALGORITHM_INDEX],
+	            $params[self::$hash_algorithm_index],
 	            $password,
-	            $params[HASH_SALT_INDEX],
-	            (int)$params[HASH_ITERATION_INDEX],
+	            $params[self::$hash_salt_index],
+	            (int)$params[self::$hash_iteration_index],
 	            strlen($pbkdf2),
 	            true
 	        )

@@ -1,33 +1,40 @@
 <?php
 
 
-class Account extends CI_Controller{
+class Account extends MY_Controller{
 
-	public function __construct(){
+	public function __construct() {
 		parent::__construct();
 		$this->load->helper('url');
 	}
 
-	public function index()
-	{
+	public function index() {
 		redirect('/account/login');
 	}
 
-	public function login(){
-
+	public function login() {
 		$data['title'] = 'Login';
+
+		$this->load->model('Account_model');
 		
-		$this->load->view('templates/header', $data);
-		$this->load->view('account/login');
-		$this->load->view('templates/footer', $data);
+		print_r($this->Account_model->debug());
+		
+		$this->load->template('account/login', $data);
 	}
 
-	public function create(){
+	public function register() {
+		$data = $this->data;
+		$data['title'] = 'Registreren';
 
+		$this->load->model('Account_model');
+		
+		$this->load->template('account/create', $data);
+	}
+
+	public function create() {
+		$data = $this->data;
 		$data['title'] = 'Maak een account';
 		
-		$this->load->view('templates/header', $data);
-		$this->load->view('account/create');
-		$this->load->view('templates/footer', $data);
+		$this->load->template('account/create', $data);
 	}
 }

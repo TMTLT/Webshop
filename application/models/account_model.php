@@ -5,45 +5,67 @@ TODO :
 
 */
 
-require_once(APPPATH . "application/classes/crypt.php");
+require_once(APPPATH . "classes/crypt.php");
 
 class Account_model extends CI_Model {
 
 	public function __construct()
 	{
-		$this->load->database();
+		//$this->load->database();
 	}
-	/*
-		Login
-	*/
-	public function login($username, $password){
+	
+	/**
+	 * [login description]
+	 * @param  string $username
+	 * @param  string $password
+	 * @return [type]           [description]
+	 */
+	public function login($username, $password) {
 		
 		return false;
 	}
 	
-	/*
-		Register
-	*/
-	public function register(){
+	/**
+	 * [register description]
+	 * @return [type] [description]
+	 */
+	public function register() {
 		
 		return false;
 	}
 	
-	/*
-		Activate
-		Activates user (IE after e-mail confirmation)
-	*/
-	public function activate(){
+	/**
+	 * [activate description]
+	 * @return [type] [description]
+	 */
+	public function activate() {
 		
 		return false;
 	}
 	
-	/*
-		ResetPassword
-		Sends activation mail to user and disables account, unsets password
-	*/
-	public function resetpassword(){
+	/**
+	 * [resetpassword description]
+	 * @return [type] [description]
+	 */
+	public function resetpassword() {
 		
 		return false;
+	}
+
+	/**
+	 * [debug description]
+	 * @return [type] [description]
+	 */
+	public function debug() {
+		
+		$salt 	 = Crypt::GetRandomSalt();
+		$hashed  = Crypt::HashPassword('test', $salt);
+		$values  = array(
+			'salt' => $salt,
+			'hashed' => $hashed,
+			'validate' => Crypt::ValidatePassword('test', $hashed)
+		);
+
+		return $values;
 	}
 }

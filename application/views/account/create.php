@@ -18,8 +18,8 @@
 								<input type="text" class="required-entry input-text" title="Last Name" value="" name="lastname" id="lastname">
 							</div>
 							<div class="clear"></div>
-	
-	</div>                </li>
+						</div>
+					</li>
 					<li>
 						
 						<div class="input-box">
