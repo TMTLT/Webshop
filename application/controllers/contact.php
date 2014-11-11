@@ -1,12 +1,11 @@
 <?php 
-class Contact extends CI_Controller{
+class Contact extends MY_Controller{
 
 	public function index()
 	{
+		$data = $this->data;
 		$data['title'] = 'Contact';
 		
-		$this->load->view('templates/header', $data);
-		$this->load->view('contact/index');
-		$this->load->view('templates/footer', $data);
+		$this->load->template('contact/index', $data);
 	}
 }
