@@ -1,7 +1,7 @@
 <section class="content-wrapper">
 	<div class="content-container container">	
 		<div  class="col-main">
-			<h1 class="page-title">Contact Ons</h1>
+			<h1 class="page-title">Neem contact op</h1>
 			<div class="contact-form-container">
 				<div  class="form-title">Contact Formulier</div>
 				<ul class="form-fields">
