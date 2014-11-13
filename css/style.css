@@ -1514,7 +1514,7 @@ header {
 	float:right;
 	width:490px;
 }
-ul.form-list li input[type='text'], ul.form-list li input[type='password'] {
+ul.form-list li input[type='text'], ul.form-list li input[type='password'], ul.form-list li input[type='email'] {
 	width:240px;
 	line-height:30px;
 	height:30px;
@@ -2946,3 +2946,34 @@ h1.page-title {
 .remain_cart ol li .edit-delete-block{ display:inline-block; width:35px; vertical-align:top; }
 .remain_cart ol li .total-block{ float:left; font-size:16px; line-height:34px; }
 .remain_cart ol li a.colors-btn{ float:right; }
+
+.info, .success, .warning, .error {
+	border: 1px solid;
+	margin: 10px 0px;
+	padding:15px 10px 15px 50px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+}
+.info {
+	color: #00529B;
+	background-color: #BDE5F8;
+	background-image: url('/images/info.png');
+}
+.success {
+	color: #4F8A10;
+	background-color: #DFF2BF;
+	background-image:url('/images/success.png');
+	display: none;
+}
+.warning {
+	color: #9F6000;
+	background-color: #FEEFB3;
+	background-image: url('/images/warning.png');
+	display: none;
+}
+.error {
+	color: #D8000C;
+	background-color: #FFBABA;
+	background-image: url('/images/error.png');
+	display: none;
+}
