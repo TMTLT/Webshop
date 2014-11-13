@@ -1,63 +1,64 @@
 <?php
 /*
-TODO : 
+TODO :
 - Everything
 
 */
 
 require_once(APPPATH . "classes/crypt.php");
 
-class Account_model extends CI_Model {
+    /**
+     * Class Account_model
+     */
+    class Account_model extends CI_Model {
 
-	public function __construct()
+        /**
+         *
+         */
+        public function __construct()
 	{
 		$this->load->database();
 	}
-	
-	/**
-	 * [login description]
-	 * @param  string $username
-	 * @param  string $password
-	 * @return [type]           [description]
-	 */
-	public function login($username, $password) {
-		
-		return false;
-	}
-	
-	/**
-	 * [register description]
-	 * @return [type] [description]
-	 */
-	public function register() {
-		
-		return false;
-	}
-	
-	/**
-	 * [activate description]
-	 * @return [type] [description]
-	 */
-	public function activate() {
-		
-		return false;
-	}
-	
-	/**
-	 * [resetpassword description]
-	 * @return [type] [description]
-	 */
-	public function resetpassword() {
-		
+
+        /**
+         * @param $username
+         * @param $password
+         *
+         * @return bool
+         */public function login($username, $password) {
+
 		return false;
 	}
 
-	/**
-	 * [debug description]
-	 * @return [type] [description]
-	 */
-	public function debug() {
-		
+        /**
+         * @return bool
+         */
+        public function register() {
+
+		return false;
+	}
+
+        /**
+         * @return bool
+         */
+        public function activate() {
+
+		return false;
+	}
+
+        /**
+         * @return bool
+         */
+        public function resetpassword() {
+
+		return false;
+	}
+
+        /**
+         * @return array
+         */
+        public function debug() {
+
 		$salt 	 = Crypt::GetRandomSalt();
 		$hashed  = Crypt::HashPassword('test', $salt);
 		$values  = array(
@@ -69,7 +70,10 @@ class Account_model extends CI_Model {
 		return $values;
 	}
 
-	public function registerSubmit()
+        /**
+         *
+         */
+        public function registerSubmit()
 	{
 		$firstname = $this->input->post('firstname');
 		$affix = $this->input->post('affix');
