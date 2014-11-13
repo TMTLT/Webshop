@@ -11,7 +11,7 @@ class Account_model extends CI_Model {
 
 	public function __construct()
 	{
-		//$this->load->database();
+		$this->load->database();
 	}
 	
 	/**
@@ -67,5 +67,28 @@ class Account_model extends CI_Model {
 		);
 
 		return $values;
+	}
+
+	public function registerSubmit()
+	{
+		$firstname = $this->input->post('firstname');
+		$affix = $this->input->post('affix');
+		$lastname = $this->input->post('lastname');
+		$zip = $this->input->post('zip_code');
+		$number = $this->input->post('house_number');
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+		$password2 = $this->input->post('password2');
+		$salt = Crypt::GetRandomSalt();
+		echo "Voornaam: " . $firstname . "<br />";
+		echo "Tussenvoegsel: " . $affix . "<br />";
+		echo "Achternaam: " . $lastname . "<br />";
+		echo "Postcode: " . $zip . "<br />";
+		echo "Huisnummer: " . $number . "<br />";
+		echo "Email: " . $email . "<br />";
+		echo "Wachtwoord: " . $password . "<br />";
+		echo "Wachtwoord2: " . $password2 . "<br />";
+		echo $salt . "<br />";
+		Crypt::HashPassword($password, $salt);
 	}
 }

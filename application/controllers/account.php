@@ -13,6 +13,7 @@ class Account extends MY_Controller{
 	}
 
 	public function login() {
+		$data = $this->data;
 		$data['title'] = 'Login';
 
 		$this->load->model('Account_model');
@@ -35,6 +36,17 @@ class Account extends MY_Controller{
 		$data = $this->data;
 		$data['title'] = 'Maak een account';
 		
+		
+		$this->load->helper('form');
 		$this->load->template('account/create', $data);
+	}
+
+	public function createSubmit() {
+		$data = $this->data;
+		$data['title'] = 'Maak een account';
+		
+		$this->load->model('Account_model');
+		$this->Account_model->registerSubmit();
+		//$this->load->template('account/create', $data);
 	}
 }
