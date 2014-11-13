@@ -2,44 +2,44 @@
 <section class="content-wrapper">
 	<div class="content-container container">
 		<div class="col-main-left">
-			<h1 class="page-title">About Magashop</h1>
-			<div class="about-banner"><img src="images/640.jpg" title="Image" alt="Image" /><div class="clear"></div></div>
+			<h1 class="page-title">Over Mo's webshop</h1>
+			<div class="about-banner"><img src="/images/lamp.jpg" title="Image" alt="Image" /><div class="clear"></div></div>
 			<div class="block-01">
-				<h4>Excepteur sint occaecat cupidatat non proident, sunt</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<h4>Kwaliteits verlichting met kwaliteits service</h4>
+				<p>Bij Mo's geloven we dat alleen de beste verlichting goed genoeg is</p>
 			</div>
 			<div class="superquote">
-				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+				<p>"Sinds wij onze TL-balken bij Mo's bestellen hebben we geen dag zonder licht gezeten! Bij de concurrentie zagen we geen steek" - Maria's naaistudio</p>
 			</div>
 			<div class="block-01">
 				<p>
-				Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In posuere felis nec tortor. Pellentesque faucibus. Ut accumsan ultricies elit. Maecenas at justo id velit placerat molestie. Donec dictum lectus non odio. Maecenas aliquet velit vel turpis.
+				Simpelweg de beste online lampenwinkel
 				</p>
 				<ul class="listing-block">
 					<li>
-						<strong>A truly unique WordPress experience.</strong>
+						<strong>Een verlichtende ervaring</strong>
 						<ul>
-							<li>Based on a “less is more” approach.</li>
-							<li>Designer for people, not geeks.</li>
-							<li>WordPress works the way you expect it to; we don’t load on tons of extra layers of management tools.</li>
-							<li>No special knowledge or documentation required.</li>
+							<li>Door catogorieen in de webshop is ales gemakkelijk te vinden</li>
+							<li>Snelle en kwalitatieve verzending en verpakking</li>
+							<li>Alle lichtsterktes, vormen en maten beschikbaar</li>
+							<li>Ook bijzondere lampen te verkrijgen</li>
 						</ul>
 					</li>
 					<li>
-						<strong>Integrated plugins for simple, easy content sharing.</strong>
+						<strong>Altijd hulp van experts</strong>
 						<ul>
-							<li>Shortcodes Ultimate Built In.</li>
-							<li>Custom Post Excerpt Management.</li>
-							<li>100% Open &ndash; they move with you to your next theme.</li>
+							<li>3 experts in de klantenservice</li>
+							<li>Direct contact met Philips, Sony en Akai</li>
+							<li>Telefonisch en via e-mail bereikbaar</li>
 						</ul>
 					</li>
 					<li>
-						<strong>A truly unique WordPress experience.</strong>
+						<strong>Supersnelle verzending</strong>
 						<ul>
-							<li>Based on a “less is more” approach.</li>
-							<li>Designer for people, not geeks.</li>
-							<li>WordPress works the way you expect it to; we don’t load on tons of extra layers of management tools.</li>
-							<li>No special knowledge or documentation required.</li>
+							<li>Gegarandeerd binnen 2 werkdagen in huis</li>
+							<li>Voor 21:00 besteld, voor 09:00 in huis</li>
+							<li>Verzending via PostNL</li>
+							<li>Verpakt in bubbeltjesplastic</li>
 						</ul>
 					</li>
 				</ul>
@@ -51,23 +51,20 @@
 				<input type="text" value="Type to search..." />
 			</div>
 			<div class="block widget-img">
-				<a href="#" title=""><img src="images/125.jpg"></a>
-				<a href="#" title=""><img src="images/125.jpg"></a>
-				<a href="#" title=""><img src="images/125.jpg"></a>
-				<a href="#" title=""><img src="images/125.jpg"></a>
+				<a href="#" title=""><img src="/images/Owain.jpg"></a>
+				<a href="#" title=""><img src="/images/Mies.jpg"></a>
+				<a href="#" title=""><img src="/images/Zack.jpg"></a>
+				<a href="#" title=""><img src="/images/125.jpg"></a>
 			</div>
 			<div class="block listing-block">
 				<p>
-					<strong>Theme Features</strong>
-					Donec convallis pede with useful features!
+					<strong>Ons team</strong>
+					Dit is ons team programeurs wat voor u deze webshop heeft gemaakt
 				</p>
 				<ul>
-					<li>Ut ante enim, fringilla eu, condimentum quis.</li>
-					<li>Gravida justo, quis eleifend arcu velit quis lacus.</li>
-					<li>Consectetuer augue nisi quis lacus.</li>
-					<li>Morbi porta, libero id ullamcorper nonummy.</li>
-					<li>Gravida justo, quis eleifend arcu velit quis lacus.</li>
-					<li>Viverra in, gravida eu, mattis in, ante.</li>
+					<li>Owain van Brakel</li>
+					<li>Mies van der Lippe</li>
+					<li>Sek Phubun</li>
 				</ul>
 			</div>
 			<div class="block social-block">
