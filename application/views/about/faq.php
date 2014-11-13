@@ -68,23 +68,20 @@ Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class
 				<input type="text" value="Type to search..." />
 			</div>
 			<div class="block widget-img">
-				<a href="#" title=""><img src="images/125.jpg"></a>
-				<a href="#" title=""><img src="images/125.jpg"></a>
-				<a href="#" title=""><img src="images/125.jpg"></a>
-				<a href="#" title=""><img src="images/125.jpg"></a>
+				<a href="#" title=""><img src="/images/Owain.jpg"></a>
+				<a href="#" title=""><img src="/images/Mies.jpg"></a>
+				<a href="#" title=""><img src="/images/Zack.jpg"></a>
+				<a href="#" title=""><img src="/images/125.jpg"></a>
 			</div>
 			<div class="block listing-block">
 				<p>
-					<strong>Theme Features</strong>
-					Donec convallis pede with useful features!
+					<strong>Ons team</strong>
+					Dit is ons team programeurs wat voor u deze webshop heeft gemaakt
 				</p>
 				<ul>
-					<li>Ut ante enim, fringilla eu, condimentum quis.</li>
-					<li>Gravida justo, quis eleifend arcu velit quis lacus.</li>
-					<li>Consectetuer augue nisi quis lacus.</li>
-					<li>Morbi porta, libero id ullamcorper nonummy.</li>
-					<li>Gravida justo, quis eleifend arcu velit quis lacus.</li>
-					<li>Viverra in, gravida eu, mattis in, ante.</li>
+					<li>Owain van Brakel</li>
+					<li>Mies van der Lippe</li>
+					<li>Sek Phubun</li>
 				</ul>
 			</div>
 			<div class="block social-block">
