@@ -71,7 +71,7 @@ Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class
 				<a href="#" title=""><img src="/images/Owain.jpg"></a>
 				<a href="#" title=""><img src="/images/Mies.jpg"></a>
 				<a href="#" title=""><img src="/images/Zack.jpg"></a>
-				<a href="#" title=""><img src="/images/125.jpg"></a>
+				<a href="http://github.com/tmtlt/Webshop" title=""><img src="/images/Github.jpg"></a>
 			</div>
 			<div class="block listing-block">
 				<p>
