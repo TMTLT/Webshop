@@ -65,7 +65,18 @@
             $data['title'] = 'Maak een account';
 
             $this->load->model('Account_model');
-            $this->Account_model->registerSubmit();
-            //$this->load->template('account/create', $data);
+            if ($this->Account_model->registerSubmit())
+                // TODO: make the success page
+                $this->load->template('account/created', $data);
+            // TODO: error page/message
+            redirect('/account/create');
+        }
+
+        /**
+         *
+         */
+        public function checkMail() {
+            $this->load->model('Account_model');
+            return $this->Account_model->checkMail();
         }
     }

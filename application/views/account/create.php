@@ -9,7 +9,7 @@
 			</div>
 			<div class="fieldset">
 	            <h2 class="legend">Gegevens</h2>
-	            <?php 
+	            <?php
 				$data = array(
 				              'id' => 'createForm'
 				            );
@@ -83,14 +83,15 @@
 </div>
 
 <script>
+    var emailInUse = false;
+    var errorShowing = false;
+
 	function validatePasswords() {
 		var password = $("#password").val();
 		var password2 = $("#password2").val();
 		if ((password != "") && (password === password2)) {
-			console.log(true);
 			return true;
 		} else {
-			console.log(false);
 			return false;
 		}
 	}
@@ -100,10 +101,8 @@
 		str = str.replace(/\s+/g, '').toUpperCase();
 		str = str.replace(/(^\s*)|(\s*$)/g, "");
 		if(str.match(/^[1-9][0-9]{3}[A-Z]{2}$/i)) {
-			console.log(true);
 			return true;
 		} else {
-			console.log(false);
 			return false;
 		}
 	}
@@ -112,42 +111,51 @@
 		var email = $("#email_address").val();
     	var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-		console.log(regex.test(email));
     	return regex.test(email);
-	} 
+	}
 
-	$("#password").keyup(function() {
-	  validatePasswords();
-	});
+    function checkEmail() {
+        var email = $("#email_address").val();
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url(); ?>account/checkMail',
+            data: 'email='+email,
+            success: function(resp) {
+                if (resp = 1) {
+                    emailInUse = true;
+                } else {
+                    emailInUse = false;
+                }
+            }
+        });
+    }
 
-	$("#password2").keyup(function() {
-	  validatePasswords();
-	});
-
-	$("#zip_code").keyup(function() {
-	  validateZipCode();
-	});
-
-	$("#email_address").keyup(function() {
-	  validateEmail();
-	});
+    $("#email_address").keyup(function() {
+        if (validateEmail())
+            checkEmail();
+    });
 
 	$("#createForm").submit(function(event) {
-		var email = validateEmail();
-		var passwords = validatePasswords();
-		var zip = validateZipCode();
+        $(".error").html("");
 
-		if (!email || !passwords || !zip) {
+		var email = validateEmail();
+		var zip = validateZipCode();
+        var passwords = validatePasswords();
+
+		if (!zip || !email || emailInUse || !passwords) {
+            if (!zip) {
+                $(".error").append("De ingevulde postcode is niet geldig <br />");
+            }
 			if (!email) {
-				$(".error").html("Het ingevulde email adres is niet geldig <br />");
+				$(".error").append("Het ingevulde email adres is niet geldig <br />");
 			}
-			if (!passwords) {
-				$(".error").append("De ingevulde wachtwoorden komen niet overeen <br />");
-			}
-			if (!zip) {
-				$(".error").append("De ingevulde postcode is niet geldig");
-			}
-			$(".error").show(299);
+            if (emailInUse) {
+                $(".error").append("Het ingevulde email adres is al in gebruik <br />");
+            }
+            if (!passwords) {
+                $(".error").append("De ingevulde wachtwoorden komen niet overeen");
+            }
+			$(".error").show(300);
 			event.preventDefault();
 		}
 	});

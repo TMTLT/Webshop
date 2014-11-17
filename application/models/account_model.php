@@ -15,6 +15,18 @@
         }
 
         /**
+         * @return bool
+         */
+        public function checkMail() {
+            $email = $this->input->post('email');
+            $this->db->where('email', $email);
+            $this->db->from('users');
+            echo $this->db->count_all_results();
+
+            return false;
+        }
+
+        /**
          * @param $username
          * @param $password
          *
@@ -50,22 +62,6 @@
         }
 
         /**
-         * @return array
-         */
-        public function debug() {
-
-            $salt   = Crypt::GetRandomSalt();
-            $hashed = Crypt::HashPassword('test', $salt);
-            $values = array(
-                'salt'     => $salt,
-                'hashed'   => $hashed,
-                'validate' => Crypt::ValidatePassword('test', $hashed)
-            );
-
-            return $values;
-        }
-
-        /**
          *
          */
         public function registerSubmit() {
@@ -78,15 +74,35 @@
             $password  = $this->input->post('password');
             $password2 = $this->input->post('password2');
             $salt      = Crypt::GetRandomSalt();
-            echo "Voornaam: " . $firstname . "<br />";
-            echo "Tussenvoegsel: " . $affix . "<br />";
-            echo "Achternaam: " . $lastname . "<br />";
-            echo "Postcode: " . $zip . "<br />";
-            echo "Huisnummer: " . $number . "<br />";
-            echo "Email: " . $email . "<br />";
-            echo "Wachtwoord: " . $password . "<br />";
-            echo "Wachtwoord2: " . $password2 . "<br />";
-            echo $salt . "<br />";
-            Crypt::HashPassword($password, $salt);
+            $pepper    = Crypt::createKey();
+            $data      = array(
+                'voornaam'      => Crypt::rijndaelEncrypt($firstname, $pepper) ,
+                'tussenvoegsel' => Crypt::rijndaelEncrypt($affix, $pepper) ,
+                'achternaam'    => Crypt::rijndaelEncrypt($lastname, $pepper) ,
+                'postcode'      => Crypt::rijndaelEncrypt($zip, $pepper) ,
+                'huisnummer'    => Crypt::rijndaelEncrypt($number, $pepper) ,
+                'email'         => $email ,
+                'wachtwoord'    => Crypt::HashPassword($password, $salt) ,
+                'salt'          => $salt ,
+                'pepper'        => $pepper
+            );
+
+            $str = $this->db->insert_string('users', $data);
+
+            $res = $this->db->query($str);
+
+            if (!$res) {
+                // TODO: remove this
+                if (true) {
+                    $msg = $this->db->_error_message();
+                    $num = $this->db->_error_number();
+
+                    $data['msg'] = "Error(" . $num . ") " . $msg;
+                    print_r($data);
+                }
+                // TODO: activation mail
+                return false;
+            }
+            return true;
         }
     }
