@@ -2,7 +2,7 @@
 
 
 class Crypt{
-	
+
 	protected static $pbkdf2_hash_algorithm = "sha256";
 	protected static $pbkdf2_iterations = 1000;
 	protected static $pbkdf2_salt_byte_size = 36;
@@ -16,14 +16,14 @@ class Crypt{
 
 
 	private function __construct(){}
-	
+
 	/**
 	 * [GetRandomSalt]
 	 */
 	public static function GetRandomSalt() {
 		return base64_encode(mcrypt_create_iv(self::$pbkdf2_salt_byte_size, MCRYPT_DEV_URANDOM));
 	}
-	
+
 	/**
 	 * [HashPassword]
 	 * @param mixed $password
@@ -122,37 +122,3 @@ class Crypt{
 	        return bin2hex(substr($output, 0, $key_length));
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* LEMME SCROLL */
