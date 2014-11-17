@@ -29,8 +29,6 @@
 
             $this->load->model('Account_model');
 
-            print_r($this->Account_model->debug());
-
             $this->load->template('account/login', $data);
         }
 
