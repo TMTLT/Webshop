@@ -4,15 +4,18 @@
 class Crypt{
 
 	private static $pbkdf2_hash_algorithm = "sha256";
-	private static $pbkdf2_iterations = 1000;
+	private static $pbkdf2_iterations     = 1000;
 	private static $pbkdf2_salt_byte_size = 36;
 	private static $pbkdf2_hash_byte_size = 24;
 
-	private static $hash_sections = 4;
-	private static $hash_algorithm_index = 0;
-	private static $hash_iteration_index = 1;
-	private static $hash_salt_index = 2;
-	private static $hash_pbkdf2_index = 3;
+	private static $hash_sections         = 4;
+	private static $hash_algorithm_index  = 0;
+	private static $hash_iteration_index  = 1;
+	private static $hash_salt_index       = 2;
+	private static $hash_pbkdf2_index     = 3;
+
+    const MCRYPT_CIPHER                   = MCRYPT_RIJNDAEL_256;
+    const MCRYPT_MODE                     = MCRYPT_MODE_ECB;
 
 	private function __construct(){}
 
@@ -50,7 +53,7 @@ class Crypt{
 	    if(count($params) < self::$hash_sections)
 	       return false;
 	    $pbkdf2 = base64_decode($params[self::$hash_pbkdf2_index]);
-	    return self::slow_equals(
+	    return self::slowEquals(
 	        $pbkdf2,
 	        self::pbkdf2(
 	            $params[self::$hash_algorithm_index],
@@ -69,7 +72,7 @@ class Crypt{
 	 * @param  mixed $b
 	 * @return mixed
 	 */
-	public static function slow_equals($a, $b) {
+	public static function slowEquals($a, $b) {
 	    $diff = strlen($a) ^ strlen($b);
 	    for($i = 0; $i < strlen($a) && $i < strlen($b); $i++)
 	    {
@@ -119,4 +122,27 @@ class Crypt{
 	        return substr($output, 0, $key_length);
         return bin2hex(substr($output, 0, $key_length));
 	}
+
+    public static function createKey() {
+        $iv_size = mcrypt_get_iv_size(self::MCRYPT_CIPHER, self::MCRYPT_MODE);
+        $iv      = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+
+        return $iv;
+    }
+
+    public static function rijndaelEncrypt($string, $key) {
+        $iv        = mcrypt_create_iv(mcrypt_get_iv_size(self::MCRYPT_CIPHER, self::MCRYPT_MODE), MCRYPT_RAND);
+        $passcrypt = trim(mcrypt_encrypt(self::MCRYPT_CIPHER, $key, trim($string), self::MCRYPT_MODE, $iv));
+        $encode    = base64_encode($passcrypt);
+
+        return $encode;
+    }
+
+    public static function rijndaelDecrypt($string, $key) {
+        $decoded   = base64_decode($string);
+        $iv        = mcrypt_create_iv(mcrypt_get_iv_size(self::MCRYPT_CIPHER, self::MCRYPT_MODE), MCRYPT_RAND);
+        $decrypted = trim(mcrypt_decrypt(self::MCRYPT_CIPHER, $key, trim($decoded), self::MCRYPT_MODE, $iv));
+
+        return $decrypted;
+    }
 }
