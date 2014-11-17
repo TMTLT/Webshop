@@ -14,7 +14,6 @@ class Crypt{
 	private static $hash_salt_index = 2;
 	private static $hash_pbkdf2_index = 3;
 
-
 	private function __construct(){}
 
 	/**
@@ -118,7 +117,6 @@ class Crypt{
 
 	    if($raw_output)
 	        return substr($output, 0, $key_length);
-	    else
-	        return bin2hex(substr($output, 0, $key_length));
+        return bin2hex(substr($output, 0, $key_length));
 	}
 }
