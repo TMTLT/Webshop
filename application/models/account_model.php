@@ -72,7 +72,6 @@
             $number    = $this->input->post('house_number');
             $email     = $this->input->post('email');
             $password  = $this->input->post('password');
-            $password2 = $this->input->post('password2');
             $salt      = Crypt::GetRandomSalt();
             $pepper    = Crypt::createKey();
             $data      = array(

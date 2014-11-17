@@ -59,15 +59,8 @@
          *
          */
         public function createSubmit() {
-            $data          = $this->data;
-            $data['title'] = 'Maak een account';
-
             $this->load->model('Account_model');
-            if ($this->Account_model->registerSubmit())
-                // TODO: make the success page
-                $this->load->template('account/created', $data);
-            // TODO: error page/message
-            redirect('/account/create');
+            return $this->Account_model->registerSubmit();
         }
 
         /**
