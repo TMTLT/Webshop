@@ -182,6 +182,7 @@
          * @return string
          */
         public static function rijndaelEncrypt($string, $key) {
+            if (empty($string)) return NULL;
             $key       = base64_decode($key);
             $iv        = mcrypt_create_iv(mcrypt_get_iv_size(self::MCRYPT_CIPHER, self::MCRYPT_MODE), MCRYPT_RAND);
             $passcrypt = trim(mcrypt_encrypt(self::MCRYPT_CIPHER, $key, trim($string), self::MCRYPT_MODE, $iv));
@@ -197,6 +198,7 @@
          * @return string
          */
         public static function rijndaelDecrypt($string, $key) {
+            if (empty($string)) return NULL;
             $key       = base64_decode($key);
             $decoded   = base64_decode($string);
             $iv        = mcrypt_create_iv(mcrypt_get_iv_size(self::MCRYPT_CIPHER, self::MCRYPT_MODE), MCRYPT_RAND);
