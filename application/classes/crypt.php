@@ -3,16 +3,16 @@
 
 class Crypt{
 
-	protected static $pbkdf2_hash_algorithm = "sha256";
-	protected static $pbkdf2_iterations = 1000;
-	protected static $pbkdf2_salt_byte_size = 36;
-	protected static $pbkdf2_hash_byte_size = 24;
+	private static $pbkdf2_hash_algorithm = "sha256";
+	private static $pbkdf2_iterations = 1000;
+	private static $pbkdf2_salt_byte_size = 36;
+	private static $pbkdf2_hash_byte_size = 24;
 
-	protected static $hash_sections = 4;
-	protected static $hash_algorithm_index = 0;
-	protected static $hash_iteration_index = 1;
-	protected static $hash_salt_index = 2;
-	protected static $hash_pbkdf2_index = 3;
+	private static $hash_sections = 4;
+	private static $hash_algorithm_index = 0;
+	private static $hash_iteration_index = 1;
+	private static $hash_salt_index = 2;
+	private static $hash_pbkdf2_index = 3;
 
 
 	private function __construct(){}
