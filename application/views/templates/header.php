@@ -120,9 +120,9 @@
 			   <li class="">
 				  <a href="/store" title="Winkel">Winkel</a>
 				  <ul>
-					 <li><a href="/store/category/tl">TL</a></li>
-					 <li><a href="/store/category/led">LED</a></li>
-					 <li><a href="/store/category/gloei">Gloei</a></li>
+					 <li><a href="/store/category/tl">TL buizen</a></li>
+					 <li><a href="/store/category/led">LED lampen</a></li>
+					 <li><a href="/store/category/gloei">Gloei lampen</a></li>
 					 <li>
 						<a href="/store/category/accesoires">Accesoires</a>
 						<ul>
