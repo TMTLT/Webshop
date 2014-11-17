@@ -7,7 +7,8 @@
 			<div class="fieldset">
 				<div class="error"></div>
 				<div class="success">Uw account is aangemaakt! <br />
-					U ontvangt binnen enkele minuten een email om uw account te activeren.
+					U ontvangt binnen enkele minuten een email om uw account te activeren. <br /><br />
+					Klik <a href="<?php echo base_url(); ?>account/login">hier</a> om in te loggen.
 				</div>
 			</div>
 			<div class="fieldset" id="register">
@@ -18,66 +19,66 @@
 				            );
 	            echo form_open('', $data);
 	            ?>
-				<ul class="form-list">
-					<li class="fields">
-						<div class="customer-name">
+					<ul class="form-list">
+						<li class="fields">
+							<div class="customer-name">
+								<div class="input-box">
+									<label for="firstname">Voornaam<em>*</em></label>
+									<input type="text" class="required-entry input-text" title="Voornaam" value="" name="firstname" id="firstname">
+								</div>
+								<div class="input-box">
+									<label for="affix">Tussenvoegsel</label>
+									<input type="text" class="input-text" title="Tussenvoegsel" value="" name="affix" id="affix">
+								</div>
+								<div class="input-box">
+									<label for="lastname">Achternaam<em>*</em></label>
+									<input type="text" class="required-entry input-text" title="Achternaam" value="" name="lastname" id="lastname">
+								</div>
+								<div class="clear"></div>
+							</div>
+						</li>
+						<li>
 							<div class="input-box">
-								<label for="firstname">Voornaam<em>*</em></label>
-								<input type="text" class="required-entry input-text" title="Voornaam" value="" name="firstname" id="firstname">
+								<label class="required" for="zip_code">Postcode<em>*</em></label>
+								<input type="text" class="input-text required-entry" title="Postcode" value="" id="zip_code" name="zip_code">
 							</div>
 							<div class="input-box">
-								<label for="affix">Tussenvoegsel</label>
-								<input type="text" class="input-text" title="Tussenvoegsel" value="" name="affix" id="affix">
-							</div>
-							<div class="input-box">
-								<label for="lastname">Achternaam<em>*</em></label>
-								<input type="text" class="required-entry input-text" title="Achternaam" value="" name="lastname" id="lastname">
-							</div>
-							<div class="clear"></div>
-						</div>
-					</li>
-					<li>
-						<div class="input-box">
-							<label class="required" for="zip_code">Postcode<em>*</em></label>
-							<input type="text" class="input-text required-entry" title="Postcode" value="" id="zip_code" name="zip_code">
-						</div>
-						<div class="input-box">
-							<label class="required" for="house_number">Huisnummer<em>*</em></label>
-							<input type="text" class="input-text required-entry" title="Huisnummer" value="" id="house_number" name="house_number">
-						</div>
-						<div class="clear"></div>
-					</li>
-					<li>
-						<div class="input-box">
-							<label class="required" for="email_address">Email adres<em>*</em></label>
-							<input type="email" class="input-text validate-email required-entry" title="Email Adres" value="" id="email_address" name="email">
-						</div>
-						<div class="clear"></div>
-					</li>
-				</ul>
-				<h2 class="legend">Login informatie</h2>
-				<ul class="form-list">
-					<li class="fields">
-						<div class="customer-name">
-							<div class="input-box">
-								<label for="firstname">Wachtwoord<em>*</em></label>
-								<input type="password" class="required-entry input-text" title="Password" value="" name="password" id="password">
-							</div>
-							<div class="input-box">
-								<label for="lastname">Bevestig wachtwoord<em>*</em></label>
-								<input type="password" class="required-entry input-text" title="Password" value="" name="password2" id="password2">
+								<label class="required" for="house_number">Huisnummer<em>*</em></label>
+								<input type="text" class="input-text required-entry" title="Huisnummer" value="" id="house_number" name="house_number">
 							</div>
 							<div class="clear"></div>
-						</div>
-					</li>
-				</ul>
-				<div class="buttons-set">
-					<p class="required">* Vereiste velden</p>
-					<a href="/account/index" title="Back" class="f-left">&laquo; Terug</a>
-					<button type="submit" class="colors-btn">Registreren</button>
-					<div class="clear"></div>
-				</div>
-			<?php echo form_close();?>
+						</li>
+						<li>
+							<div class="input-box">
+								<label class="required" for="email_address">Email adres<em>*</em></label>
+								<input type="email" class="input-text validate-email required-entry" title="Email Adres" value="" id="email_address" name="email">
+							</div>
+							<div class="clear"></div>
+						</li>
+					</ul>
+					<h2 class="legend">Login informatie</h2>
+					<ul class="form-list">
+						<li class="fields">
+							<div class="customer-name">
+								<div class="input-box">
+									<label for="firstname">Wachtwoord<em>*</em></label>
+									<input type="password" class="required-entry input-text" title="Password" value="" name="password" id="password">
+								</div>
+								<div class="input-box">
+									<label for="lastname">Bevestig wachtwoord<em>*</em></label>
+									<input type="password" class="required-entry input-text" title="Password" value="" name="password2" id="password2">
+								</div>
+								<div class="clear"></div>
+							</div>
+						</li>
+					</ul>
+					<div class="buttons-set">
+						<p class="required">* Vereiste velden</p>
+						<a href="/account/index" title="Back" class="f-left">&laquo; Terug</a>
+						<button type="submit" class="colors-btn">Registreren</button>
+						<div class="clear"></div>
+					</div>
+				<?php echo form_close();?>
         </div>
 		</div>
 		<div class="clearfix"></div>

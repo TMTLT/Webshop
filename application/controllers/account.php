@@ -27,9 +27,17 @@
             $data          = $this->data;
             $data['title'] = 'Login';
 
-            $this->load->model('Account_model');
+            $this->load->helper('form');
 
             $this->load->template('account/login', $data);
+        }
+
+        /**
+         *
+         */
+        public function loginSubmit() {
+            $this->load->model('Account_model');
+            return $this->Account_model->login();
         }
 
         /**
@@ -52,6 +60,7 @@
             $data['title'] = 'Maak een account';
 
             $this->load->helper('form');
+
             $this->load->template('account/create', $data);
         }
 

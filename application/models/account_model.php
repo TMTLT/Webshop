@@ -27,22 +27,31 @@
         }
 
         /**
-         * @param $username
-         * @param $password
-         *
-         * @return bool
+         * @return int
          */
-        public function login($username, $password) {
+        public function login() {
+            $email     = $this->input->post('email');
+            $password  = $this->input->post('password');
 
-            return false;
-        }
-
-        /**
-         * @return bool
-         */
-        public function register() {
-
-            return false;
+            $this->db->select('wachtwoord, pepper, active');
+            $this->db->from('users');
+            $this->db->where('email', $email);
+            $query = $this->db->get();
+            if ($query->num_rows() > 0)
+            {
+                $row = $query->row_array();
+                if (Crypt::ValidatePassword($password, $row['wachtwoord'])) {
+                    if ($row['active'] == 0) {
+                        echo('2');
+                        return;
+                    } else if ($row['active'] == 1) {
+                        echo('1');
+                        return;
+                    }
+                }
+            }
+            
+            echo('0');
         }
 
         /**
@@ -72,7 +81,7 @@
             $number    = $this->input->post('house_number');
             $email     = $this->input->post('email');
             $password  = $this->input->post('password');
-            $salt      = Crypt::GetRandomSalt();
+            $salt      = Crypt::getRandomSalt();
             $pepper    = Crypt::createKey();
             $data      = array(
                 'voornaam'      => Crypt::rijndaelEncrypt($firstname, $pepper) ,
@@ -81,7 +90,7 @@
                 'postcode'      => Crypt::rijndaelEncrypt($zip, $pepper) ,
                 'huisnummer'    => Crypt::rijndaelEncrypt($number, $pepper) ,
                 'email'         => $email ,
-                'wachtwoord'    => Crypt::HashPassword($password, $salt) ,
+                'wachtwoord'    => Crypt::hashPassword($password, $salt) ,
                 'salt'          => $salt ,
                 'pepper'        => $pepper
             );
