@@ -122,7 +122,7 @@
 				<ul>
 				<?php 
 					foreach($categories as $category)
-					print('<li><a href="/store/category/' . $category->titel . '">' . $category->titel . '</a></li>');
+						print('<li><a href="/store/category/' . $category->titel . '">' . $category->titel . '</a></li>');
 				?>
 			</ul>
 				<li class=""><a href="/about/blog" title="Blog">Blog</a></li>

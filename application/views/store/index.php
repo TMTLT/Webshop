@@ -37,11 +37,11 @@
         </ul>
       </div>
       <div class="paypal-block">
-        <a href="#" title="Paypal"><img src="images/paypal_img.png" title="Paypal" alt="Paypal" /></a>
+        <a href="#" title="Paypal"><img src="/images/paypal_img.png" title="Paypal" alt="Paypal" /></a>
       </div>
     </div>
     <div class="col-main">
-      <div class="category-banner"><img src="images/sunglass.jpg" title="Banner" alt="Banner" /></div>
+      <div class="category-banner"><img src="/images/sunglass.jpg" title="Banner" alt="Banner" /></div>
       <div class="pager-container">
         <div class="pager">
           <div class="show-items">6 Item(s)</div>
@@ -61,7 +61,7 @@
       <div class="new-product-block">
         <ul class="product-grid">
           <li>
-            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
+            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="/images/default_img.png" /></div>
             <div class="pro-content"><p>White Round Neck T-Shirt</p></div>
             <div class="pro-price">$600.00</div>
             <div class="pro-btn-block">
@@ -74,7 +74,7 @@
             </div>
           </li>
           <li>
-            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
+            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="/images/default_img.png" /></div>
             <div class="pro-content"><p>White Round Neck T-Shirt</p></div>
             <div class="pro-price">$600.00</div>
             <div class="pro-btn-block">
@@ -87,48 +87,7 @@
             </div>
           </li>
           <li>
-            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
-            <div class="pro-content"><p>White Round Neck T-Shirt</p></div>
-            <div class="pro-price">$600.00</div>
-            <div class="pro-btn-block">
-              <a class="add-cart left" href="#" title="Add to Cart">Add to Cart</a>
-              <a class="add-cart right quickCart inline" href="#quick-view-container" title="Quick View">Quick View</a>         </div>
-            <div class="pro-link-block">
-              <a class="add-wishlist left" href="#" title="Add to wishlist">Add to wishlist</a>
-              <a class="add-compare right" href="#" title="Add to Compare">Add to Compare</a>
-              <div class="clearfix"></div>
-            </div>
-          </li>
-        </ul>
-        <ul class="product-grid">
-          <li>
-            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
-            <div class="pro-content"><p>White Round Neck T-Shirt</p></div>
-            <div class="pro-price">$600.00</div>
-            <div class="pro-btn-block">
-              <a class="add-cart left" href="#" title="Add to Cart">Add to Cart</a>
-              <a class="add-cart right quickCart inline" href="#quick-view-container" title="Quick View">Quick View</a>         </div>
-            <div class="pro-link-block">
-              <a class="add-wishlist left" href="#" title="Add to wishlist">Add to wishlist</a>
-              <a class="add-compare right" href="#" title="Add to Compare">Add to Compare</a>
-              <div class="clearfix"></div>
-            </div>
-          </li>
-          <li>
-            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
-            <div class="pro-content"><p>White Round Neck T-Shirt</p></div>
-            <div class="pro-price">$600.00</div>
-            <div class="pro-btn-block">
-              <a class="add-cart left" href="#" title="Add to Cart">Add to Cart</a>
-              <a class="add-cart right quickCart inline" href="#quick-view-container" title="Quick View">Quick View</a>         </div>
-            <div class="pro-link-block">
-              <a class="add-wishlist left" href="#" title="Add to wishlist">Add to wishlist</a>
-              <a class="add-compare right" href="#" title="Add to Compare">Add to Compare</a>
-              <div class="clearfix"></div>
-            </div>
-          </li>
-          <li>
-            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
+            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="/images/default_img.png" /></div>
             <div class="pro-content"><p>White Round Neck T-Shirt</p></div>
             <div class="pro-price">$600.00</div>
             <div class="pro-btn-block">
@@ -143,7 +102,7 @@
         </ul>
         <ul class="product-grid">
           <li>
-            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
+            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="/images/default_img.png" /></div>
             <div class="pro-content"><p>White Round Neck T-Shirt</p></div>
             <div class="pro-price">$600.00</div>
             <div class="pro-btn-block">
@@ -156,7 +115,7 @@
             </div>
           </li>
           <li>
-            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
+            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="/images/default_img.png" /></div>
             <div class="pro-content"><p>White Round Neck T-Shirt</p></div>
             <div class="pro-price">$600.00</div>
             <div class="pro-btn-block">
@@ -169,7 +128,48 @@
             </div>
           </li>
           <li>
-            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
+            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="/images/default_img.png" /></div>
+            <div class="pro-content"><p>White Round Neck T-Shirt</p></div>
+            <div class="pro-price">$600.00</div>
+            <div class="pro-btn-block">
+              <a class="add-cart left" href="#" title="Add to Cart">Add to Cart</a>
+              <a class="add-cart right quickCart inline" href="#quick-view-container" title="Quick View">Quick View</a>         </div>
+            <div class="pro-link-block">
+              <a class="add-wishlist left" href="#" title="Add to wishlist">Add to wishlist</a>
+              <a class="add-compare right" href="#" title="Add to Compare">Add to Compare</a>
+              <div class="clearfix"></div>
+            </div>
+          </li>
+        </ul>
+        <ul class="product-grid">
+          <li>
+            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="/images/default_img.png" /></div>
+            <div class="pro-content"><p>White Round Neck T-Shirt</p></div>
+            <div class="pro-price">$600.00</div>
+            <div class="pro-btn-block">
+              <a class="add-cart left" href="#" title="Add to Cart">Add to Cart</a>
+              <a class="add-cart right quickCart inline" href="#quick-view-container" title="Quick View">Quick View</a>         </div>
+            <div class="pro-link-block">
+              <a class="add-wishlist left" href="#" title="Add to wishlist">Add to wishlist</a>
+              <a class="add-compare right" href="#" title="Add to Compare">Add to Compare</a>
+              <div class="clearfix"></div>
+            </div>
+          </li>
+          <li>
+            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="/images/default_img.png" /></div>
+            <div class="pro-content"><p>White Round Neck T-Shirt</p></div>
+            <div class="pro-price">$600.00</div>
+            <div class="pro-btn-block">
+              <a class="add-cart left" href="#" title="Add to Cart">Add to Cart</a>
+              <a class="add-cart right quickCart inline" href="#quick-view-container" title="Quick View">Quick View</a>         </div>
+            <div class="pro-link-block">
+              <a class="add-wishlist left" href="#" title="Add to wishlist">Add to wishlist</a>
+              <a class="add-compare right" href="#" title="Add to Compare">Add to Compare</a>
+              <div class="clearfix"></div>
+            </div>
+          </li>
+          <li>
+            <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="/images/default_img.png" /></div>
             <div class="pro-content"><p>White Round Neck T-Shirt</p></div>
             <div class="pro-price">$600.00</div>
             <div class="pro-btn-block">
@@ -236,11 +236,11 @@ jQuery (function(){
       <h2>Sunglass RB3184</h2>
       <div class="product-img-box">
         <p class="product-image">
-          <img src="images/sale_icon_img.png" title="Sale" alt="Sale" class="sale-img" />
-          <a href="view.html" title="Image"><img src="images/quick_view_img.png" title="Image" alt="Image" /></a>       </p>
+          <img src="/images/sale_icon_img.png" title="Sale" alt="Sale" class="sale-img" />
+          <a href="view.html" title="Image"><img src="/images/quick_view_img.png" title="Image" alt="Image" /></a>       </p>
         <ul class="thum-img">
-          <li><img  src="images/quick_thum_img.png" title="" alt="" /></li>
-          <li><img  src="images/quick_thum_img.png" title="" alt="" /></li>
+          <li><img  src="/images/quick_thum_img.png" title="" alt="" /></li>
+          <li><img  src="/images/quick_thum_img.png" title="" alt="" /></li>
         </ul>
       </div>
     </div>
@@ -271,9 +271,9 @@ jQuery (function(){
       <div class="add-to-cart-box">
         <span class="qty-box">
           <label for="qty">Qty:</label>
-          <a class="prev" title="" href="#"><img alt="" title="" src="images/qty_prev.png"></a>
+          <a class="prev" title="" href="#"><img alt="" title="" src="/images/qty_prev.png"></a>
           <input type="text" name="qty" class="input-text qty" id="qty" maxlength="12" value="1">
-          <a class="next" title="" href="#"><img alt="" title="" src="images/qty_next.png"></a>       </span>
+          <a class="next" title="" href="#"><img alt="" title="" src="/images/qty_next.png"></a>       </span>
         <button title="Add to Cart" class="form-button"><span>Add to Cart</span></button>
       </div>
             </div>

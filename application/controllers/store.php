@@ -16,6 +16,13 @@ class Store extends MY_Controller {
 		$this->load->template('store/index', $data);
 	}
 
+	public function category() {
+		$data = $this->data;
+		$data['title'] = 'Catogory';
+		
+		$this->load->template('store/index', $data);
+	}
+
 	public function checkOut() {
 
 		$data = $this->data;
