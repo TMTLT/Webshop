@@ -69,6 +69,7 @@
          */
         public function createSubmit() {
             $this->load->model('Account_model');
+            
             return $this->Account_model->registerSubmit();
         }
 

@@ -108,9 +108,18 @@
                     $data['msg'] = "Error(" . $num . ") " . $msg;
                     print_r($data);
                 }
-                // TODO: activation mail
                 return false;
             }
+
+            $this->load->library('email');
+
+            $this->email->from('your@example.com', 'Your Name');
+            $this->email->to('test@ict-lab.nl');
+            $this->email->subject('Email Test');
+            $this->email->message('Testing the email class.');
+
+            $this->email->send();
+
             return true;
         }
     }
