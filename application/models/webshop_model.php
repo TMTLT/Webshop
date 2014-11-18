@@ -18,4 +18,16 @@ class Webshop_model extends CI_Model {
 
 		return $rows;
 	}
+
+	public function GetProducts($category = '*') {
+
+		$this->db->select('id, titel, beschrijving, prijs, categorie, aantal');
+        $this->db->from('products');
+        //$this->db->where('categorie', $category);
+        
+        $query	 = $this->db->get();
+        $rows	 = $query->result_array();
+
+		return $rows;
+	}
 }
