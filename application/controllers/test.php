@@ -26,7 +26,7 @@ class Test extends MY_Controller{
 		$returnURL	 = 'http://tmtl-06.ict-lab.nl/about';
 		$failURL	 = 'http://tmtl-06.ict-lab.nl/index.php/account/login';
 
-		$StartURL = PayMe::StartTransaction(1000, 1, 000001, urlencode('Test der tests'), $returnURL, $failURL);
+		$StartURL = PayMe::StartTransactionURL(1000, 1, 000001, urlencode('Test der tests'), $returnURL, $failURL);
 		
 		$data['testdata'][] = $StartURL;
 
