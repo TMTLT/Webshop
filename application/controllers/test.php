@@ -13,6 +13,8 @@ class Test extends MY_Controller{
 		$data = $this->data;
 		$data['title'] = 'Test';
 		
+		$data['testdata'] = 'Testing the testpage. Don\' do stuff here pls';
+
 		$this->load->template('test/index', $data);
 	}
 
