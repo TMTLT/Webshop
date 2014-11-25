@@ -118,20 +118,13 @@
 			<ul id="nav">
 			   <li class="active"><a href="/home" title="Home">Home</a></li>
 			   <li class="">
-				  <a href="/store" title="Winkel">Winkel</a>
-				  <ul>
-					 <li><a href="/store/category/tl">TL buizen</a></li>
-					 <li><a href="/store/category/led">LED lampen</a></li>
-					 <li><a href="/store/category/gloei">Gloei lampen</a></li>
-					 <li>
-						<a href="/store/category/accesoires">Accesoires</a>
-						<ul>
-						   <li><a href="/store/category/accesoroies/tools">Gereedschap</a></li>
-						   <li><a href="/store/category/accesoires/sockets">Fittingen</a></li>
-						</ul>
-					 </li>
-				  </ul>
-			   </li>
+				<a href="/store" title="Winkel">Winkel</a>
+				<ul>
+				<?php 
+					foreach($categories as $category)
+						print('<li><a href="/store/category/' . $category->titel . '">' . $category->titel . '</a></li>');
+				?>
+			</ul>
 				<li class=""><a href="/about/blog" title="Blog">Blog</a></li>
 				<li class=""><a href="/about/faq" title="Faq">FAQ</a></li>
 				<li class=""><a href="/about" title="About us">Over ons</a></li>
