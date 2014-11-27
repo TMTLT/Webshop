@@ -101,6 +101,37 @@ CREATE TABLE IF NOT EXISTS `users` (
   `active` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `contact` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `Naam` varchar(10) NOT NULL,
+  `Email` varchar(20) NOT NULL,
+  `Bericht` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `Naam`, `Email`, `Bericht`) VALUES
+(1, '3fe432f', '32323232@gmail.com', '3232323232'),
+(2, '143214', '72362@glr.nl', 'g3knj34n4iun'),
+(3, '1324', '72362@glr.nl', ' r21r3r'),
+(4, '1324', '72362@glr.nl', ' r21r3r'),
+(5, '323232', '32323232@gmail.com', '32323232'),
+(6, '323232', '32323232@gmail.com', '32233232'),
+(7, '313232', '72362@glr.nl', '3232323232'),
+(8, '313232', '72362@glr.nl', '3232323232'),
+(9, '323232', '72362@glr.nl', '32323232'),
+(10, '323232', '72362@glr.nl', '32323232'),
+(11, '323232', '72362@glr.nl', '32323232'),
+(12, '323232', '72362@glr.nl', '32323232'),
+(13, '323232', '32323232@gmail.com', '323232'),
+(14, '3232', '32323232@gmail.com', '323232'),
+(15, '3232', '32323232@gmail.com', '323232'),
+(16, '3232', '32323232@gmail.com', '323232'),
+(17, '3232', '32323232@gmail.com', '323232'),
+(18, '3232', '32323232@gmail.com', '323232');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
