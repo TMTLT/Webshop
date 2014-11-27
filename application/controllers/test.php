@@ -46,10 +46,16 @@ class Test extends MY_Controller{
 
 	public function paymestatus(){
 
+		$data = $this->data;
+		$data['title'] = 'Payme Test';
+		
 		$this->load->model('payme_model');
 		$result = $this->payme_model->GetActiveTransactions();
 
 		foreach($result as $transaction)
-			print_r(PayMe::GetTransactionStatus($transaction['transid'], $transaction['hash']));
+			$data['testdata'][] = PayMe::GetTransactionStatus($transaction['transid'], $transaction['hash']);
+
+
+		$this->load->template('test/index', $data);
 	}
 }
