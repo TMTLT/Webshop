@@ -101,6 +101,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `active` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Table structure for table `contact`
+--
+
 CREATE TABLE IF NOT EXISTS `contact` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `Naam` varchar(10) NOT NULL,
