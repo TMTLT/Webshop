@@ -1,17 +1,22 @@
 <?php
 
 /*
-	TODO : 
-	- Starttransaction 
-		- Do a call
-		- Database interaction
-			- After starting transaction
+ * Copyright (C) 2014 Mies van der Lippe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-*/
-
-require_once(APPPATH . "classes/crypt.php");
-
-class Payme extends Crypt{
+class Payme{
 
 	const email	 = "71989@ict-lab.nl";
 	const pmid	 = "86nmb6fonm";
@@ -62,28 +67,39 @@ class Payme extends Crypt{
 		return $replacedURL;
 	}
 
-	public static function StartTransactionURL($amount, $bankID, $purchaseID, $description, $returnURL, $failURL){
+	public static function StartTransaction($amount, $bankID, $purchaseID, $description, $returnURL, $failURL){
 
 		$returnURL	 = self::SpecialUrlEncode($returnURL);
 		$failURL	 = self::SpecialUrlEncode($failURL);
 
 		$verifcationKey = sha1(self::pmid . self::pmkey . $purchaseID . $amount);
 
-		$url = "http://payme.ict-lab.nl/api/starttrans/" . self::pmid . "/" . self::pmkey . "/" . $amount . "/" . $bankID . "/" . $purchaseID . "/" . $description . "/" . $returnURL . "/" . $failURL. "/" . $verifcationKey . "/";
+		$url = 'http://payme.ict-lab.nl/api/starttrans/' . self::pmid . '/' . self::pmkey . '/' . $amount . '/' . $bankID . '/' . $purchaseID . '/' . urlencode($description) . '/' . $returnURL . '/' . $failURL. '/' . $verifcationKey . '/';
 
-		return $url;
+		$data = self::CurlGet($url);
+		$data = json_decode($data, true);
+
+		if($data['sha1'] == $verifcationKey)
+			$data['keyMatch'] = true;
+		else
+			$data['keyMatch'] = false;
+
+		$data['fwdurl'] = urldecode($data['fwdurl']);
+
+		return $data;
 	}
 
 	public static function GetTransactionStatus($transactionID, $sha1){
 
-		$URL = 'http://payme.ict-lab.nl/api/statusrequest/PWiRkJiv/2a37726251599c6ad50ca0aec02e09e02bd3c3f4';
+		$url = 'http://payme.ict-lab.nl/api/statusrequest/';
 
-		$URL = $URL . $transactionID . '/' . $sha1 . '/'; 
+		$url = $url . $transactionID . '/' . $sha1 . '/'; 
 
-		$data = self::CurlGet($URL);
+		$data = self::CurlGet($url);
+		$data = json_decode($data, true);
 
-		$dataArray = json_decode($data, true);
+		$data['keymatch'] = $data['sha1'] == $sha1;
 
-		return $dataArray;
+		return $data;
 	}
 }

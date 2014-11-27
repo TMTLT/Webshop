@@ -19,6 +19,7 @@ class Test extends MY_Controller{
 	}
 
 	public function payme(){
+		
 		$data = $this->data;
 		$data['title'] = 'Payme Test';
 
@@ -28,10 +29,27 @@ class Test extends MY_Controller{
 		$returnURL	 = 'http://tmtl-06.ict-lab.nl/about';
 		$failURL	 = 'http://tmtl-06.ict-lab.nl/index.php/account/login';
 
-		$StartURL = PayMe::StartTransactionURL(1000, 1, 000001, urlencode('Test der tests'), $returnURL, $failURL);
+		$StartData = PayMe::StartTransaction(1000, 1, 000001, 'Test der tests', $returnURL, $failURL);
 		
-		$data['testdata'][] = $StartURL;
+		$data['testdata'][] = $StartData;
+
+		if($StartData['keyMatch']){
+
+			$data['fwdurl'] = $StartData['fwdurl'];
+
+			$this->load->model('payme_model');
+			$this->payme_model->SaveTransaction($StartData['transid'], $StartData['sha1']);
+		}
 
 		$this->load->template('test/index', $data);
+	}
+
+	public function paymestatus(){
+
+		$this->load->model('payme_model');
+		$result = $this->payme_model->GetActiveTransactions();
+
+		foreach($result as $transaction)
+			print_r(PayMe::GetTransactionStatus($transaction['transid'], $transaction['hash']));
 	}
 }

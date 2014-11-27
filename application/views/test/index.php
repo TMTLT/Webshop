@@ -5,6 +5,7 @@
 			<h1 class="page-title">FAQ</h1>
 			<div class="block-01">
 				<?=var_dump($testdata)?>
+				<a href='<?=$fwdurl?>'>Betalen</a>
 			</div>
 		</div>
 		<aside class="right-sidebar">
