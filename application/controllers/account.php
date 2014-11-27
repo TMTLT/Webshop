@@ -16,6 +16,15 @@
         /**
          *
          */
+        public function activate() {
+            $this->load->model('Account_model');
+
+            echo $this->Account_model->activate();
+        }
+
+        /**
+         *
+         */
         public function index() {
             redirect('/account/login');
         }

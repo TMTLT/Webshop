@@ -58,8 +58,23 @@
          * @return bool
          */
         public function activate() {
+            $this->db->select('id, email, active');
+            $this->db->from('users');
+            $this->db->where('pepper', base64_decode($this->uri->rsegment(3)));
+            $query = $this->db->get();
 
-            return false;
+            if (!empty($query) && $query->num_rows() > 0)
+            {
+                $row = $query->row_array();
+                if (md5($row['email']) == $this->uri->rsegment(4)) {
+                    if  ($row['active'] == 0) {
+                        return 0;
+                    } else if ($row['active'] == 1) {
+                        return 1;
+                    }
+                }
+            }
+            return 3;
         }
 
         /**
@@ -87,7 +102,7 @@
                 'voornaam'      => Crypt::rijndaelEncrypt($firstname, $pepper) ,
                 'tussenvoegsel' => Crypt::rijndaelEncrypt($affix, $pepper) ,
                 'achternaam'    => Crypt::rijndaelEncrypt($lastname, $pepper) ,
-                'postcode'      => Crypt::rijndaelEncrypt($zip, $pepper) ,
+                'postcode'      => Crypt::rijndaelEncrypt(str_replace(' ', '', $zip), $pepper) ,
                 'huisnummer'    => Crypt::rijndaelEncrypt($number, $pepper) ,
                 'email'         => $email ,
                 'wachtwoord'    => Crypt::hashPassword($password, $salt) ,
@@ -113,10 +128,10 @@
 
             $this->load->library('email');
 
-            $this->email->from('your@example.com', 'Your Name');
-            $this->email->to('test@ict-lab.nl');
-            $this->email->subject('Email Test');
-            $this->email->message('Testing the email class.');
+            $this->email->from('no-reply@mo.nl', "Mo's webshop");
+            $this->email->to($email);
+            $this->email->subject('Account activeren');
+            $this->email->message('<a href="' . base_url() . 'account/activate/' . base64_encode($pepper) . '/' . md5($email) .'">Activeren</a>');
 
             $this->email->send();
 
