@@ -44,6 +44,22 @@ class Test extends MY_Controller{
 		$this->load->template('test/index', $data);
 	}
 
+	public function aanbiedingen(){
+
+		$data = $this->data;
+		$data['title'] = 'Aanbideingen test Test';
+
+		/*
+			Code hier
+
+			Niks printen of echoen, 
+
+			Data in $data['testdata']['Aanbiedingen']
+		*/
+
+		$this->load->template('test/index', $data);
+	}
+
 	public function paymestatus(){
 
 		$data = $this->data;
