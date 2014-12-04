@@ -2426,6 +2426,7 @@ h1.page-title {
 	vertical-align:top;
 	border:1px solid #B6B6B6;
 	line-height:15px;
+	resize: none; 
 }
 .button-set {
 	display:inline-block;

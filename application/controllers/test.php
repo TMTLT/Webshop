@@ -44,12 +44,34 @@ class Test extends MY_Controller{
 		$this->load->template('test/index', $data);
 	}
 
+	public function aanbiedingen(){
+
+		$data = $this->data;
+		$data['title'] = 'Aanbideingen test Test';
+
+		/*
+			Code hier
+
+			Niks printen of echoen, 
+
+			Data in $data['testdata']['Aanbiedingen']
+		*/
+
+		$this->load->template('test/index', $data);
+	}
+
 	public function paymestatus(){
 
+		$data = $this->data;
+		$data['title'] = 'Payme Test';
+		
 		$this->load->model('payme_model');
 		$result = $this->payme_model->GetActiveTransactions();
 
 		foreach($result as $transaction)
-			print_r(PayMe::GetTransactionStatus($transaction['transid'], $transaction['hash']));
+			$data['testdata'][] = PayMe::GetTransactionStatus($transaction['transid'], $transaction['hash']);
+
+
+		$this->load->template('test/index', $data);
 	}
 }

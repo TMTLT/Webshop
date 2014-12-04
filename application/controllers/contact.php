@@ -22,7 +22,7 @@ class Contact extends MY_Controller{
 	public function create()
 	{
 		$data = $this->data;
-		
+		$data['title'] = 'Contact';
 		$this->load->library('form_validation');
 		$this->load->helper('form');
 		
