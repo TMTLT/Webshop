@@ -19,11 +19,28 @@ class Webshop_model extends CI_Model {
 		return $rows;
 	}
 
-	public function GetProducts($category = '*') {
+	public function GetProducts($category = 'all') {
+		
+		if('all' != $category){
+			
+			$this->db->select('id, titel, parent, beschrijving');
+			$this->db->from('categories');
+
+			$this->db->where('titel', urldecode($category));
+		
+			$query	 = $this->db->get();
+			$rows	 = $query->result_array();
+
+			if(count($rows) > 0)
+				$result  = $rows[0];
+		}
 
 		$this->db->select('id, titel, beschrijving, prijs, categorie, aantal');
         $this->db->from('products');
-        //$this->db->where('categorie', $category);
+
+        /* By default Codeigniter selects all. If we have a category set we set the where condition. */
+        if('all' != $category && isset($result['id']))
+        	$this->db->where('categorie', $result['id']);
         
         $query	 = $this->db->get();
         $rows	 = $query->result_array();
