@@ -39,6 +39,7 @@
 */
 
 $route['default_controller'] = "home";
+$route['store/category/(:any)'] = "store/category/$1";
 $route['404_override'] = 'error404';
 
 
