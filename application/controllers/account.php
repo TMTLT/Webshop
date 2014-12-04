@@ -38,7 +38,7 @@
 
             $this->load->helper('form');
 
-            $this->load->template('account/login', $data);
+            $this->load->template('settings/admin', $data);
         }
 
         /**
