@@ -18,11 +18,11 @@ class Store extends MY_Controller {
 		$this->load->template('store/index', $data);
 	}
 
-	public function category() {
+	public function category($category ) {
 		$data = $this->data;
 		
-		$data['title'] = 'Catogory';
-		$data['products'] = $this->Webshop_model->GetProducts();
+		$data['title'] = 'Category - '.urldecode($category);
+		$data['products'] = $this->Webshop_model->GetProducts($category);
 
 		$this->load->template('store/index', $data);
 	}

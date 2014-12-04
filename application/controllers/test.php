@@ -7,6 +7,7 @@ class Test extends MY_Controller{
 	public function __construct(){
 
 		parent::__construct();
+		$this->load->helper(array('form', 'url'));
 	}
 
 	public function index(){
@@ -73,5 +74,40 @@ class Test extends MY_Controller{
 
 
 		$this->load->template('test/index', $data);
+	}
+
+	public function upload(){
+
+		$data = $this->data;
+		$data['title'] = 'Upload test';
+
+		if($this->input->post('userfile')){
+			print('Userfile not set');
+			$this->load->template('test/upload', $data);
+		}else{
+
+			$config['upload_path'] = FCPATH .'/database/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']	= '100';
+			$config['max_width']  = '1024';
+			$config['max_height']  = '768';
+			$config['file_name']        = "what123ever";
+			$this->load->library('upload', $config);
+			$result = $this->upload->do_upload();
+
+			if($result){
+
+				$data['testdata'][] = 'Gelukt';
+				$data['testdata'][] = $this->upload->data();
+
+			}else{
+
+				$data['testdata'][] = 'Niet gelukt';
+				$data['testdata'][] = $this->upload->display_errors();
+			}
+
+			$this->load->template('test/upload', $data);
+		}
+
 	}
 }
