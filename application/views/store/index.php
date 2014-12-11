@@ -1,39 +1,14 @@
 <!--Content Block-->
 <section class="content-wrapper">
 	<div class="content-container container">
-		<div class="breadcrum-container">
-			<ul>
-				<li><a href="#" title="Home">Home</a></li>
-				<li>Man</li>
-			</ul>
-		</div>
 		<div class="col-left">
 			<div class="block man-block">
-				<div class="block-title">MAN</div>
+				<div class="block-title">Categories</div>
 				<ul>
-					<li>
-						<li><a href="#" title="SWEATERS">SWEATERS</a></li>
-						<ul>
-							<li><a href="#" title="SWEATERS">SWEATERS1</a></li>
-							<li><a href="#" title="SWEATERS">SWEATERS2</a></li>
-							<li><a href="#" title="SWEATERS">SWEATERS3</a></li>
-							<li><a href="#" title="SWEATERS">SWEATERS4</a></li>
-						</ul>
-					</li>
-					<li><a href="#" title="KNIT TOPS">KNIT TOPS</a></li>
-					<li><a href="#" title="SHIRTS & BLOUSES">SHIRTS & BLOUSES</a></li>
-					<li><a href="#" title="TEE SHIRTS">TEE SHIRTS</a></li>
-					<li><a href="#" title="OUTERWEAR & JACKETS">OUTERWEAR & JACKETS</a></li>
-				</ul>
-			</div>
-			<div class="block shop-by-block">
-				<div class="block-title">SHOP BY</div>
-				<ul>
-					<li>Price</li>
-					<li><a href="#" title="$300.00 - $399.99 (1)">$300.00 - $399.99 (1)</a></li>
-					<li><a href="#" title="$300.00 - $399.99 (1)">$300.00 - $399.99 (1)</a></li>
-					<li><a href="#" title="$300.00 - $399.99 (1)">$300.00 - $399.99 (1)</a></li>
-					<li><a href="#" title="$300.00 - $399.99 (1)">$300.00 - $399.99 (1)</a></li>
+					<?php 
+						foreach($categories as $category)
+							print('<li><a href="/store/category/' . $category->titel . '">' . $category->titel . '</a></li>');
+					?>
 				</ul>
 			</div>
 			<div class="paypal-block">
