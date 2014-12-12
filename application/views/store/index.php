@@ -5,7 +5,7 @@
 			<div class="block man-block">
 				<div class="block-title">Categories</div>
 				<ul>
-					<?php 
+					<?php
 						foreach($categories as $category)
 							print('<li><a href="/store/category/' . $category->titel . '">' . $category->titel . '</a></li>');
 					?>
@@ -34,7 +34,7 @@
 				</div>
 			</div>
 			<div class="new-product-block">
-					<?php 
+					<?php
 						$products = array_values($products);
 
 						$counter = 0;
@@ -47,7 +47,7 @@
 										<img title="Freature Product" alt="Freature Product" src="/images/default_img.png" />
 									</div>
 									<div class="pro-content"><p>' . $product['titel'] . '</p></div>
-									<div class="pro-price">E ' . $product['prijs'] . '</div>
+									<div class="pro-price">&euro; ' . $product['prijs'] . '</div>
 									<div class="pro-btn-block">
 										<a class="add-cart left" href="#" title="Add to Cart">Add to Cart</a>
 										<a class="add-cart right quickCart inline" href="#quick-view-container" title="Quick View">Quick View</a>
@@ -55,7 +55,7 @@
 									<div class="clearfix"></div></li>');
 								$counter += 1;
 							}
-							
+
 							if($counter > 2){
 								print('</ul>');
 								print('<ul class="product-grid">');
@@ -76,7 +76,7 @@
 				<input type="text" value="Enter email address" title="" />
 				<input type="submit" value="Submit" title="Submit" />
 			</div>
-		</div>	
+		</div>
 	</div>
 </section>
 </div>
