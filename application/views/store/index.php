@@ -73,8 +73,8 @@
 							data: {
 								id: id
 							},
-							success: function(resp) {
-								console.log(resp);
+							success: function() {
+								updatecart();
 							}
 						});
 					}
