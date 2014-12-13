@@ -27,12 +27,28 @@
             $this->load->template('store/index', $data);
         }
 
-        public function checkOut() {
+        /* Checkout's default progress is 1, cart overview. Set to prevent PHP warnings.*/
+        public function checkOut($progress = 1) {
 
             $data          = $this->data;
             $data['title'] = 'Checkout';
 
-            $this->load->template('store/checkout', $data);
+            switch($progress){
+                /* Step 1 : Cart overview (also default) */
+                case 1:
+                    $data['title'] = 'Checkout' . $progress;
+                    $this->load->template('store/checkout', $data);
+                    break;
+                /* Step 2 : Choosing payment options */
+                case 2:
+                    $data['title'] = 'Checkout' . $progress;
+                    $this->load->template('store/checkout', $data);
+                    break;
+                /* Default : Cart overview */
+                default:
+                    $data['title'] = 'Checkout' . $progress;
+                    $this->load->template('store/checkout', $data);
+            }
         }
 
         /**
