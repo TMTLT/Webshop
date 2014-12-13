@@ -198,11 +198,9 @@
 
                 if (parseInt(data['aantal']) > 0) {
                     $('#tabDetail > .availability').css('color', '#73B334');
-                    $('#tabDetail > .add-to-cart-box').css('visibility', 'visible');
                     $('#tabDetail > .availability').html("Nog <span id='qty-stock'>" + data['aantal'] + "</span> op vooraad.");
                 } else {
                     $('#tabDetail > .availability').css('color', '#FA0234');
-                    $('#tabDetail > .add-to-cart-box').css('visibility', 'hidden');
                     $('#tabDetail > .availability').html("Niet op vooraad.");
                 }
             }
