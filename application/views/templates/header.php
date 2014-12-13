@@ -65,7 +65,7 @@
                     <div class="cart-block">
                         <ul>
                             <li id="cartamount">(0)</li>
-                            <li><a href="/store/cart" title="Cart"><img title="Item" alt="Item"
+                            <li><a href="/store/checkout" title="Cart"><img title="Item" alt="Item"
                                                                         src="/images/item_icon.png"/></a></li>
                             <li>Item</li>
                         </ul>
