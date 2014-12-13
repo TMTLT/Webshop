@@ -43,8 +43,6 @@
 
             $id = $this->input->post('id');
 
-            $item = $this->Webshop_model->GetProduct($id);
-
             $flag = true;
 
             foreach($this->cart->contents() as $item) {
@@ -64,11 +62,14 @@
             }
 
             if($flag) {
+                $item = $this->Webshop_model->GetProduct($id);
+
                 $data = array(
                     'id'    => $id,
                     'qty'   => 1,
                     'price' => $item['prijs'],
-                    'name'  => $item['titel']
+                    'name'  => $item['titel'],
+                    'description' => $item['beschrijving']
                 );
                 $this->cart->insert($data);
 

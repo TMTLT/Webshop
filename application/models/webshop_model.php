@@ -49,7 +49,7 @@
         }
 
         public function GetProduct($id) {
-            $this->db->select('titel, prijs, aantal');
+            $this->db->select('titel, beschrijving, prijs, aantal');
             $this->db->from('products');
             $this->db->where('id', $id);
 

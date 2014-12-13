@@ -77,7 +77,8 @@
                             data: {
                                 id: id
                             },
-                            success: function () {
+                            success: function (resp) {
+                                console.log(resp);
                                 updatecart();
                             }
                         });

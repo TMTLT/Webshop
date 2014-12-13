@@ -2791,6 +2791,7 @@ h1.page-title {
 
 .shopping-cart-table li {
     float: left;
+    margin-bottom: 20px;
     width: 50%;
 }
 
@@ -2807,8 +2808,8 @@ h1.page-title {
 }
 
 .shopping-cart-table li .remove-item-btn {
-    float: left;
-    width: 100%;
+    float: right;
+    width: 15%;
 }
 
 .shopping-cart-table li .remove-item-btn img {
@@ -2816,15 +2817,27 @@ h1.page-title {
 }
 
 .shopping-cart-table li .pro-name {
-    float: left;
     width: 100%;
-    font-size: 11px;
+    font-size: 13px;
     padding: 1px 0px 5px;
+    margin-left: 100px;
+}
+
+.shopping-cart-table li .pro-description {
+    width: 100%;
+    max-width: 300px;
+    height: 40px;
+    overflow: hidden;
+    font-size: 9px;
+    word-wrap: break-word;
+    padding: 1px 0px 5px;
+    margin-left: 100px;
 }
 
 .shopping-cart-table li .pro-qty {
-    float: left;
-    width: 100%;
+    float: right;
+    margin-top: -50px;
+    width: 18%;
 }
 
 .shopping-cart-table li .pro-qty input {
@@ -2839,8 +2852,8 @@ h1.page-title {
 }
 
 .shopping-cart-table li .pro-price {
-    float: left;
-    width: 100%;
+    float: right;
+    margin-right: 45px;
     font-size: 15px;
     font-weight: bold;
 }
