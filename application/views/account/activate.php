@@ -7,11 +7,11 @@
                 <?php if ($activate == "0") { ?>
                 <div class="success" style="display: inherit">
                     Uw account is geactiveerd! <br/>
-                    U kunt meteen beginnen met winkelen!å
+                    U kunt meteen beginnen met winkelen!
                 </div>
                 <?php } else if ($activate == "1") { ?>
                 <div class="error" style="display: inherit">
-                    Uw account was al geactiveerd!
+                    Uw account is al geactiveerd!
                 </div>
                 <?php } else if ($activate == "2") { ?>
                 <div class="error" style="display: inherit">
