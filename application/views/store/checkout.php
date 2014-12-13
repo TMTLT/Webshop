@@ -44,7 +44,7 @@
                 var qty = 0, totalprice = 0;
 
                 $.each(data, function () {
-                    totalprice = totalprice + (parseInt(this['qty']) * parseInt(this['price']));
+                    totalprice = totalprice + (parseFloat(this['qty']) * parseFloat(this['price']));
 
                     items += '<li>' +
                     '<div class="img-box">' +
@@ -60,7 +60,7 @@
                     '<div class="pro-qty">' +
                     '<input type="text" value="' + this["qty"] + '"/>' +
                     '</div>' +
-                    '<div class="pro-price">&euro;' + (parseInt(this['qty']) * parseInt(this['price'])).formatMoney(2) + '</div>' +
+                    '<div class="pro-price">&euro;' + (parseFloat(this['qty']) * parseFloat(this['price'])).formatMoney(2) + '</div>' +
                     '</li>'
                 });
 

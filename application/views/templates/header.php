@@ -114,8 +114,8 @@
                                         '</div>' +
                                         '</li>';
 
-                                        qty = qty + parseInt(this['qty']);
-                                        totalprice = totalprice + (parseInt(this['qty']) * parseInt(this['price']));
+                                        qty = qty + parseFloat(this['qty']);
+                                        totalprice = totalprice + (parseFloat(this['qty']) * parseFloat(this['price']));
                                     });
 
                                     $('#cartamount').html('(' + qty + ')');
