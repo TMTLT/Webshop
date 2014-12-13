@@ -40,16 +40,15 @@
 						$counter = 0;
 						print('<ul class="product-grid">');
 						foreach($products as $product) {
-
 							if(null != $product) {
-								print('<li>
+								print('<li class="' . $product['categorie'] . '">
 									<div class="pro-img">
 										<img title="Freature Product" alt="Freature Product" src="/images/default_img.png" />
 									</div>
 									<div class="pro-content"><p>' . $product['titel'] . '</p></div>
 									<div class="pro-price">&euro; ' . $product['prijs'] . '</div>
 									<div class="pro-btn-block">
-										<a class="add-cart left" href="#" title="Add to Cart">Add to Cart</a>
+										<a class="add-cart left" title="Add to Cart" onclick="addToCart(' . $product['id'] . ');return false;">Add to Cart</a>
 										<a class="add-cart right quickCart inline" href="#quick-view-container" title="Quick View">Quick View</a>
 									</div>
 									<div class="clearfix"></div></li>');
@@ -65,6 +64,22 @@
 						print('</ul>');
 					?>
 				</ul>
+
+				<script type="text/javascript">
+					function addToCart(id) {
+						$.ajax({
+							type: 'POST',
+							url: '<?php echo base_url(); ?>store/addtocart/',
+							data: {
+								id: id
+							},
+							success: function(resp) {
+								console.log(resp);
+							}
+						});
+					}
+				</script>
+
 		<div class="clearfix"></div>
 		<div class="news-letter-container">
 			<div class="free-shipping-block">

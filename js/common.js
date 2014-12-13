@@ -2,14 +2,14 @@ $(function() {
 		$(".currencyBox").hover(function() {
 			$(this).addClass('active');
 			$(".currency_detial").stop(true, true).delay(300).slideDown(500, "easeOutBounce");
-			},  
+			},
 			function() {
 			$(".currency_detial").stop(true, true).delay(300).fadeOut(100, "easeInCubic");
 		});
 		$(".cart-block").hover(function() {
 			$(this).addClass('active');
 			$("#minicart").stop(true, true).delay(300).slideDown(500, "easeOutBounce");
-			},  
+			},
 			function() {
 			$("#minicart").stop(true, true).delay(300).fadeOut(100, "easeInCubic");
 		});
@@ -34,7 +34,7 @@ $(document).ready(function(){
 			animation: 750,
 			visible: 0,
 			auto: 0
-		});	
+		});
 		$('#like-pro').jcarousel({
 			scroll: 1,
 			easing: 'swing',
@@ -56,7 +56,7 @@ $(document).ready(function(){
 			visible: 0,
 			auto: 0
 		});
-			
+
 
 	$('.menuBox').click(function() {
 			if ($('#menuInnner').is(":hidden"))

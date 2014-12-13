@@ -61,49 +61,68 @@
 			<section class="header-bottom">
 			   <div class="cart-block">
 				  <ul>
-					 <li>(2)</li>
+					 <li id="cartamount">(0)</li>
 					 <li><a href="/store/cart" title="Cart"><img title="Item" alt="Item" src="/images/item_icon.png" /></a></li>
 					 <li>Item</li>
 				  </ul>
 				  <div id="minicart" class="remain_cart" style="display: none;">
-					 <p class="empty">You have 2 items in your shopping cart.</p>
-					 <ol>
+					 <ol id="cartitems">
 						<li>
-						   <div class="img-block"><img src="/images/small_img.png" title="" alt="" /></div>
-						   <div class="detail-block">
-							  <h4><a href="/#" title="Htc Mobile 1120">Htc Mobile 1120</a></h4>
-							  <p>
-								 <strong>1</strong> x $900.00
-							  </p>
-							  <a href="/#" title="Details">Details</a>
-						   </div>
-						   <div class="edit-delete-block">
-							  <a href="/#" title="Edit"><img src="/images/edit_icon.png" alt="Edit" title="Edit" /></a>
-							  <a href="/#" title="Remove"><img src="/images/delete_item_btn.png" alt="Remove" title="Remove" /></a>
-						   </div>
-						</li>
-						<li>
-						   <div class="img-block"><img src="/images/small_img.png" title="" alt="" /></div>
-						   <div class="detail-block">
-							  <h4><a href="/#" title="Htc Mobile 1120">Htc Mobile 1120</a></h4>
-							  <p>
-								 <strong>1</strong> x $900.00
-							  </p>
-							  <a href="/#" title="Details">Details</a>
-						   </div>
-						   <div class="edit-delete-block">
-							  <a href="/#" title="Edit"><img src="/images/edit_icon.png" alt="Edit" title="Edit" /></a>
-							  <a href="/#" title="Remove"><img src="/images/delete_item_btn.png" alt="Remove" title="Remove" /></a>
-						   </div>
-						</li>
-						<li>
-						   <div class="total-block">Total:<span>$1,900.00</span></div>
+						   <div class="total-block">Totaal:<span id="carttotal">&euro;0,00</span></div>
 						   <a href="/store/checkout" title="Checkout" class="colors-btn">Afrekenen</a>
 						   <div class="clear"></div>
 						</li>
 					 </ol>
 				  </div>
 			   </div>
+
+				<script type="text/javascript">
+					Number.prototype.formatMoney = function(c, d, t){
+						var n = this,
+							c = isNaN(c = Math.abs(c)) ? 2 : c,
+							d = d == undefined ? "," : d,
+							t = t == undefined ? "." : t,
+							s = n < 0 ? "-" : "",
+							i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+							j = (j = i.length) > 3 ? j % 3 : 0;
+						return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+					};
+
+					function updatecart() {
+						$.ajax({
+							url: '<?php echo base_url(); ?>store/cartcontent/',
+							success: function(resp) {
+								var data = $.parseJSON(resp);
+								var items = '';
+								var qty = 0, totalprice = 0;
+
+								$.each(data, function() {
+									items += '<li>' +
+									'<div class="img-block">' +
+									'<img src="/images/small_img.png" title="" alt="" />' +
+									'</div>' +
+									'<div class="detail-block">' +
+									'<h4><a href="/#" title="'+ this["name"] + '">'+ this["name"] + '</a></h4>' +
+									'<p>' +
+									'<strong>' + this["qty"] +'</strong> x ' + this["price"] +
+									'</p>' +
+									'</div>' +
+									'</li>';
+
+									qty = qty + parseInt(this['qty']);
+									totalprice = totalprice + (parseInt(this['qty']) * parseInt(this['price']));
+								});
+
+								$('#cartamount').html('(' + qty + ')');
+								$('#carttotal').html(' &euro;' + totalprice.formatMoney(2));
+								$('#cartitems').prepend(items);
+
+							}
+						});
+					}
+					updatecart();
+				</script>
+
 			   <div class="search-block">
 				  <input type="text" value="Search" />
 				  <input type="submit" value="Search" title="Search" />
@@ -120,7 +139,7 @@
 			   <li class="">
 				<a href="/store" title="Winkel">Winkel</a>
 				<ul>
-				<?php 
+				<?php
 					foreach($categories as $category)
 						print('<li><a href="/store/category/' . $category->titel . '">' . $category->titel . '</a></li>');
 				?>
