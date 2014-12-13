@@ -138,10 +138,13 @@
 
             $this->load->library('email');
 
+            $this->email->set_mailtype("html");
+            $this->email->set_newline("\r\n");
+
             $this->email->from('no-reply@mo.nl', "Mo's webshop");
             $this->email->to($email);
             $this->email->subject('Account activeren');
-            $this->email->message('<a href="' . base_url() . 'account/activate/' . base64_encode($pepper) . '/' . md5($email) . '">Activeren</a>');
+            $this->email->message('Beste gebruiker,<br /><br />U hebt zich aangemeld op Mo\'s webshop de lampen speciaalzaak<br /><a href="' . base_url() . 'account/activate/' . base64_encode($pepper) . '/' . md5($email) . '">klik hier om uw account te activeren</a><br /><br>Met vriendelijke groet,<br /><br>Mo');
 
             $this->email->send();
 
