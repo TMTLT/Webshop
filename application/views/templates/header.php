@@ -97,7 +97,7 @@
 								var qty = 0, totalprice = 0;
 
 								$.each(data, function() {
-									items += '<li>' +
+									items += '<li class="item">' +
 									'<div class="img-block">' +
 									'<img src="/images/small_img.png" title="" alt="" />' +
 									'</div>' +
@@ -115,6 +115,7 @@
 
 								$('#cartamount').html('(' + qty + ')');
 								$('#carttotal').html(' &euro;' + totalprice.formatMoney(2));
+								$('#cartitems > .item').remove();
 								$('#cartitems').prepend(items);
 
 							}
