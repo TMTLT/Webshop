@@ -1,21 +1,19 @@
 <?php
 
-/**
- * /application/core/MY_Loader.php
- *
- */
-class MY_Loader extends CI_Loader {
+    /**
+     * /application/core/MY_Loader.php
+     *
+     */
+    class MY_Loader extends CI_Loader {
 
-    public function template($template_name, $vars = array(), $return = FALSE)
-    {
+        public function template($template_name, $vars = array(), $return = false) {
 
-        $content  = $this->view('templates/header', $vars, $return);
-        $content .= $this->view($template_name, $vars, $return);
-        $content .= $this->view('templates/footer', $vars, $return);
+            $content = $this->view('templates/header', $vars, $return);
+            $content .= $this->view($template_name, $vars, $return);
+            $content .= $this->view('templates/footer', $vars, $return);
 
-        if ($return)
-        {
-            return $content;
+            if($return) {
+                return $content;
+            }
         }
     }
-}

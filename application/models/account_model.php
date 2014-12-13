@@ -30,27 +30,28 @@
          * @return int
          */
         public function login() {
-            $email     = $this->input->post('email');
-            $password  = $this->input->post('password');
+            $email    = $this->input->post('email');
+            $password = $this->input->post('password');
 
             $this->db->select('wachtwoord, pepper, active');
             $this->db->from('users');
             $this->db->where('email', $email);
             $query = $this->db->get();
-            if ($query->num_rows() > 0)
-            {
+            if($query->num_rows() > 0) {
                 $row = $query->row_array();
-                if (Crypt::ValidatePassword($password, $row['wachtwoord'])) {
-                    if ($row['active'] == 0) {
+                if(Crypt::ValidatePassword($password, $row['wachtwoord'])) {
+                    if($row['active'] == 0) {
                         echo('2');
+
                         return;
-                    } else if ($row['active'] == 1) {
+                    } else if($row['active'] == 1) {
                         echo('1');
+
                         return;
                     }
                 }
             }
-            
+
             echo('0');
         }
 
@@ -63,17 +64,17 @@
             $this->db->where('pepper', base64_decode($this->uri->rsegment(3)));
             $query = $this->db->get();
 
-            if (!empty($query) && $query->num_rows() > 0)
-            {
+            if(!empty($query) && $query->num_rows() > 0) {
                 $row = $query->row_array();
-                if (md5($row['email']) == $this->uri->rsegment(4)) {
-                    if  ($row['active'] == 0) {
+                if(md5($row['email']) == $this->uri->rsegment(4)) {
+                    if($row['active'] == 0) {
                         return 0;
-                    } else if ($row['active'] == 1) {
+                    } else if($row['active'] == 1) {
                         return 1;
                     }
                 }
             }
+
             return 3;
         }
 
@@ -99,14 +100,14 @@
             $salt      = Crypt::getRandomSalt();
             $pepper    = Crypt::createKey();
             $data      = array(
-                'voornaam'      => Crypt::rijndaelEncrypt($firstname, $pepper) ,
-                'tussenvoegsel' => Crypt::rijndaelEncrypt($affix, $pepper) ,
-                'achternaam'    => Crypt::rijndaelEncrypt($lastname, $pepper) ,
-                'postcode'      => Crypt::rijndaelEncrypt(str_replace(' ', '', $zip), $pepper) ,
-                'huisnummer'    => Crypt::rijndaelEncrypt($number, $pepper) ,
-                'email'         => $email ,
-                'wachtwoord'    => Crypt::hashPassword($password, $salt) ,
-                'salt'          => $salt ,
+                'voornaam'      => Crypt::rijndaelEncrypt($firstname, $pepper),
+                'tussenvoegsel' => Crypt::rijndaelEncrypt($affix, $pepper),
+                'achternaam'    => Crypt::rijndaelEncrypt($lastname, $pepper),
+                'postcode'      => Crypt::rijndaelEncrypt(str_replace(' ', '', $zip), $pepper),
+                'huisnummer'    => Crypt::rijndaelEncrypt($number, $pepper),
+                'email'         => $email,
+                'wachtwoord'    => Crypt::hashPassword($password, $salt),
+                'salt'          => $salt,
                 'pepper'        => $pepper
             );
 
@@ -114,15 +115,16 @@
 
             $res = $this->db->query($str);
 
-            if (!$res) {
+            if(!$res) {
                 // TODO: remove this
-                if (true) {
+                if(true) {
                     $msg = $this->db->_error_message();
                     $num = $this->db->_error_number();
 
                     $data['msg'] = "Error(" . $num . ") " . $msg;
                     print_r($data);
                 }
+
                 return false;
             }
 
@@ -131,7 +133,7 @@
             $this->email->from('no-reply@mo.nl', "Mo's webshop");
             $this->email->to($email);
             $this->email->subject('Account activeren');
-            $this->email->message('<a href="' . base_url() . 'account/activate/' . base64_encode($pepper) . '/' . md5($email) .'">Activeren</a>');
+            $this->email->message('<a href="' . base_url() . 'account/activate/' . base64_encode($pepper) . '/' . md5($email) . '">Activeren</a>');
 
             $this->email->send();
 

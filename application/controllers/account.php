@@ -46,6 +46,7 @@
          */
         public function loginSubmit() {
             $this->load->model('Account_model');
+
             return $this->Account_model->login();
         }
 
@@ -78,7 +79,7 @@
          */
         public function createSubmit() {
             $this->load->model('Account_model');
-            
+
             return $this->Account_model->registerSubmit();
         }
 
@@ -87,6 +88,7 @@
          */
         public function checkMail() {
             $this->load->model('Account_model');
+
             return $this->Account_model->checkMail();
         }
     }

@@ -1,33 +1,33 @@
 <?php
 
-class Payme_model extends CI_Model {
+    class Payme_model extends CI_Model {
 
-	public function __construct() {
-		
-		parent::__construct();
-	}
+        public function __construct() {
 
-	public function SaveTransaction($transID, $hash) {
+            parent::__construct();
+        }
 
-		$data = array(
-			'transid' => $transID ,
-			'hash' => $hash
-		);
+        public function SaveTransaction($transID, $hash) {
 
-		$result = $this->db->insert('transactions', $data); 
-        
-		return $result;
-	}
+            $data = array(
+                'transid' => $transID,
+                'hash'    => $hash
+            );
 
-	public function GetActiveTransactions(){
+            $result = $this->db->insert('transactions', $data);
 
-		$this->db->select('id, transid, hash');
-        $this->db->from('transactions');
-        $this->db->where('status', '0');
-        
-        $query	 = $this->db->get();
-        $rows	 = $query->result_array();
+            return $result;
+        }
 
-        return $rows;
-	}
-}
+        public function GetActiveTransactions() {
+
+            $this->db->select('id, transid, hash');
+            $this->db->from('transactions');
+            $this->db->where('status', '0');
+
+            $query = $this->db->get();
+            $rows  = $query->result_array();
+
+            return $rows;
+        }
+    }

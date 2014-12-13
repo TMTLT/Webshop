@@ -22,7 +22,7 @@
     class Payme {
 
         const email = "71989@ict-lab.nl";
-        const pmid  = "86nmb6fonm";
+        const pmid = "86nmb6fonm";
         const pmkey = "ikjw6gux6954m3cjgaj5d77rs70ncbey";
 
         /**
@@ -80,19 +80,6 @@
         }
 
         /**
-         * @param $url
-         *
-         * @return encoded url
-         */
-        public static function SpecialUrlEncode($url) {
-
-            $replacedURL = str_replace("/", "#", $url);
-            $encodedURL  = urlencode($replacedURL);
-
-            return $encodedURL;
-        }
-
-        /**
          * @param $amount
          * @param $bankID
          * @param $purchaseID
@@ -121,6 +108,19 @@
             $data['fwdurl'] = urldecode($data['fwdurl']);
 
             return $data;
+        }
+
+        /**
+         * @param $url
+         *
+         * @return encoded url
+         */
+        public static function SpecialUrlEncode($url) {
+
+            $replacedURL = str_replace("/", "#", $url);
+            $encodedURL  = urlencode($replacedURL);
+
+            return $encodedURL;
         }
 
         /**

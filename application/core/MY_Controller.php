@@ -1,24 +1,24 @@
 <?php
 
-class MY_Controller extends CI_Controller {
+    class MY_Controller extends CI_Controller {
 
-	public function __construct() {
+        public function __construct() {
 
-		parent::__construct();
-		
-		$this->load->helper('url');
-		$uri = explode('/', uri_string());
+            parent::__construct();
 
-		$data = array(
-			"loggedIn"      => true,
-			"currentUser"   => Null
-		);
+            $this->load->helper('url');
+            $uri = explode('/', uri_string());
 
-		$this->load->database();
-		$this->load->model('Webshop_model');
+            $data = array(
+                "loggedIn"    => true,
+                "currentUser" => null
+            );
 
-		$data['categories'] = $this->Webshop_model->GetCategories();
+            $this->load->database();
+            $this->load->model('Webshop_model');
 
-		$this->data = $data;
-	}
-}
+            $data['categories'] = $this->Webshop_model->GetCategories();
+
+            $this->data = $data;
+        }
+    }

@@ -1,4 +1,3 @@
-
 <!--Content Block-->
 <section class="content-wrapper">
     <div class="content-container container">
@@ -10,34 +9,38 @@
                 </ul>
             </div>
         </div>
-        <div  class="col-main">
+        <div class="col-main">
 
             <h1 class="page-title">Product toevoegen</h1>
+
             <div class="contact-form-container">
                 <?php
-                $data = array(
-                    'id' => 'addProductsForm'
-                );
-                echo form_open('', $data);
+                    $data = array(
+                        'id' => 'addProductsForm'
+                    );
+                    echo form_open('', $data);
                 ?>
-                <div  class="form-title">
+                <div class="form-title">
                     <div class="error">test</div>
                 </div>
                 <ul class="form-fields">
                     <li class="left">
                         <label for='name'>Product naam</label>
+
                         <p>
                             <input type='text' name='name' id="name">
                         </p>
                     </li>
                     <li class="left">
                         <label for='price'>Prijs</label>
+
                         <P>
                             <input type='text' name='price' id="price">
                         </p>
                     </li>
                     <li class="left">
                         <label for='category'>Categorie</label>
+
                         <P>
                             <input type='text' name='category' id="category">
                         </p>
@@ -45,6 +48,7 @@
                     <li class="full-row">
                         <p>
                             <label for='description'>Beschrijving</label>
+
                         <p>
                             <textarea name='description' id="description"></textarea>
                         </p>
@@ -56,19 +60,20 @@
                 </form>
 
             </div>
-        <div class="clearfix"></div>
-        <div class="news-letter-container">
-            <div class="free-shipping-block">
-                <h1>ENJOY FREE SHIPPING</h1>
-                <p>on all orders as our holiday gift for you!</p>
-            </div>
-            <div class="news-letter-block">
-                <h2>SIGN UP FOR OUR NEWSLETTER</h2>
-                <input type="text" value="Enter email address" title="" />
-                <input type="submit" value="Submit" title="Submit" />
+            <div class="clearfix"></div>
+            <div class="news-letter-container">
+                <div class="free-shipping-block">
+                    <h1>ENJOY FREE SHIPPING</h1>
+
+                    <p>on all orders as our holiday gift for you!</p>
+                </div>
+                <div class="news-letter-block">
+                    <h2>SIGN UP FOR OUR NEWSLETTER</h2>
+                    <input type="text" value="Enter email address" title=""/>
+                    <input type="submit" value="Submit" title="Submit"/>
+                </div>
             </div>
         </div>
-    </div>
 </section>
 </div>
 
@@ -88,7 +93,7 @@
         return true;
     }
 
-    $("#addProductsForm").submit(function(event) {
+    $("#addProductsForm").submit(function (event) {
         event.preventDefault();
 
         $(".error").html("");
@@ -127,7 +132,7 @@
                     category: $("#category").val(),
                     description: $("#description").val()
                 },
-                success: function(resp) {
+                success: function (resp) {
                     console.log(resp);
                 }
             });

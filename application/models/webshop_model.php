@@ -1,61 +1,61 @@
 <?php
 
-class Webshop_model extends CI_Model {
+    class Webshop_model extends CI_Model {
 
-	public function __construct() {
+        public function __construct() {
 
-		parent::__construct();
-	}
+            parent::__construct();
+        }
 
-	public function GetCategories($parent = 0) {
+        public function GetCategories($parent = 0) {
 
-		$this->db->select('id, titel, beschrijving');
-        $this->db->from('categories');
-        $this->db->where('parent', $parent);
+            $this->db->select('id, titel, beschrijving');
+            $this->db->from('categories');
+            $this->db->where('parent', $parent);
 
-        $query	 = $this->db->get();
-        $rows	 = $query->result();
+            $query = $this->db->get();
+            $rows  = $query->result();
 
-		return $rows;
-	}
+            return $rows;
+        }
 
-	public function GetProducts($category = 'all') {
+        public function GetProducts($category = 'all') {
 
-		if('all' != $category){
+            if('all' != $category) {
 
-			$this->db->select('id, titel, parent, beschrijving');
-			$this->db->from('categories');
+                $this->db->select('id, titel, parent, beschrijving');
+                $this->db->from('categories');
 
-			$this->db->where('titel', urldecode($category));
+                $this->db->where('titel', urldecode($category));
 
-			$query	 = $this->db->get();
-			$rows	 = $query->result_array();
+                $query = $this->db->get();
+                $rows  = $query->result_array();
 
-			if(count($rows) > 0)
-				$result  = $rows[0];
-		}
+                if(count($rows) > 0)
+                    $result = $rows[0];
+            }
 
-		$this->db->select('id, titel, beschrijving, prijs, categorie, aantal');
-		$this->db->from('products');
+            $this->db->select('id, titel, beschrijving, prijs, categorie, aantal');
+            $this->db->from('products');
 
-		/* By default Codeigniter selects all. If we have a category set we set the where condition. */
-		if('all' != $category && isset($result['id']))
-			$this->db->where('categorie', $result['id']);
+            /* By default Codeigniter selects all. If we have a category set we set the where condition. */
+            if('all' != $category && isset($result['id']))
+                $this->db->where('categorie', $result['id']);
 
-		$query	 = $this->db->get();
-		$rows	 = $query->result_array();
+            $query = $this->db->get();
+            $rows  = $query->result_array();
 
-		return $rows;
-	}
+            return $rows;
+        }
 
-	public function GetProduct($id) {
-		$this->db->select('titel, prijs, aantal');
-		$this->db->from('products');
-		$this->db->where('id', $id);
+        public function GetProduct($id) {
+            $this->db->select('titel, prijs, aantal');
+            $this->db->from('products');
+            $this->db->where('id', $id);
 
-		$query	 = $this->db->get();
-		$rows	 = $query->row_array();
+            $query = $this->db->get();
+            $rows  = $query->row_array();
 
-		return $rows;
-	}
-}
+            return $rows;
+        }
+    }

@@ -23,7 +23,7 @@
             $this->load->helper('form');
             $this->load->model('Settings_model');
 
-            if (!$this->Settings_model->admin() == true) {
+            if(!$this->Settings_model->admin() == true) {
                 redirect('/home/index');
             }
 
@@ -35,8 +35,8 @@
          */
         public function addproduct() {
             $this->load->model('Settings_model');
+
             return $this->Settings_model->addproduct();
         }
-
 
     }

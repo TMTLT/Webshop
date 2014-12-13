@@ -1,113 +1,112 @@
 <?php
 
-require_once(APPPATH . "classes/payme.php");
+    require_once(APPPATH . "classes/payme.php");
 
-class Test extends MY_Controller{
-	
-	public function __construct(){
+    class Test extends MY_Controller {
 
-		parent::__construct();
-		$this->load->helper(array('form', 'url'));
-	}
+        public function __construct() {
 
-	public function index(){
-		$data = $this->data;
-		$data['title'] = 'Test';
-		
-		$data['testdata'] = 'Testing the testpage. Don\' do stuff here pls';
+            parent::__construct();
+            $this->load->helper(array('form', 'url'));
+        }
 
-		$this->load->template('test/index', $data);
-	}
+        public function index() {
+            $data          = $this->data;
+            $data['title'] = 'Test';
 
-	public function payme(){
-		
-		$data = $this->data;
-		$data['title'] = 'Payme Test';
+            $data['testdata'] = 'Testing the testpage. Don\' do stuff here pls';
 
-		$data['testdata'][] = 'Payme';
-		$data['testdata'][] = implode(',' , PayMe::GetBankList());
+            $this->load->template('test/index', $data);
+        }
 
-		$returnURL	 = 'http://tmtl-06.ict-lab.nl/about';
-		$failURL	 = 'http://tmtl-06.ict-lab.nl/index.php/account/login';
+        public function payme() {
 
-		$StartData = PayMe::StartTransaction(1000, 1, 000001, 'Test der tests', $returnURL, $failURL);
-		
-		$data['testdata'][] = $StartData;
+            $data          = $this->data;
+            $data['title'] = 'Payme Test';
 
-		if($StartData['keyMatch']){
+            $data['testdata'][] = 'Payme';
+            $data['testdata'][] = implode(',', PayMe::GetBankList());
 
-			$data['fwdurl'] = $StartData['fwdurl'];
+            $returnURL = 'http://tmtl-06.ict-lab.nl/about';
+            $failURL   = 'http://tmtl-06.ict-lab.nl/index.php/account/login';
 
-			$this->load->model('payme_model');
-			$this->payme_model->SaveTransaction($StartData['transid'], $StartData['sha1']);
-		}
+            $StartData = PayMe::StartTransaction(1000, 1, 000001, 'Test der tests', $returnURL, $failURL);
 
-		$this->load->template('test/index', $data);
-	}
+            $data['testdata'][] = $StartData;
 
-	public function aanbiedingen(){
+            if($StartData['keyMatch']) {
 
-		$data = $this->data;
-		$data['title'] = 'Aanbideingen test Test';
+                $data['fwdurl'] = $StartData['fwdurl'];
 
-		/*
-			Code hier
+                $this->load->model('payme_model');
+                $this->payme_model->SaveTransaction($StartData['transid'], $StartData['sha1']);
+            }
 
-			Niks printen of echoen, 
+            $this->load->template('test/index', $data);
+        }
 
-			Data in $data['testdata']['Aanbiedingen']
-		*/
+        public function aanbiedingen() {
 
-		$this->load->template('test/index', $data);
-	}
+            $data          = $this->data;
+            $data['title'] = 'Aanbideingen test Test';
 
-	public function paymestatus(){
+            /*
+                Code hier
 
-		$data = $this->data;
-		$data['title'] = 'Payme Test';
-		
-		$this->load->model('payme_model');
-		$result = $this->payme_model->GetActiveTransactions();
+                Niks printen of echoen,
 
-		foreach($result as $transaction)
-			$data['testdata'][] = PayMe::GetTransactionStatus($transaction['transid'], $transaction['hash']);
+                Data in $data['testdata']['Aanbiedingen']
+            */
 
+            $this->load->template('test/index', $data);
+        }
 
-		$this->load->template('test/index', $data);
-	}
+        public function paymestatus() {
 
-	public function upload(){
+            $data          = $this->data;
+            $data['title'] = 'Payme Test';
 
-		$data = $this->data;
-		$data['title'] = 'Upload test';
+            $this->load->model('payme_model');
+            $result = $this->payme_model->GetActiveTransactions();
 
-		if($this->input->post('userfile')){
-			print('Userfile not set');
-			$this->load->template('test/upload', $data);
-		}else{
+            foreach($result as $transaction)
+                $data['testdata'][] = PayMe::GetTransactionStatus($transaction['transid'], $transaction['hash']);
 
-			$config['upload_path'] = FCPATH .'/database/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']	= '100';
-			$config['max_width']  = '1024';
-			$config['max_height']  = '768';
-			$config['file_name']        = "what123ever";
-			$this->load->library('upload', $config);
-			$result = $this->upload->do_upload();
+            $this->load->template('test/index', $data);
+        }
 
-			if($result){
+        public function upload() {
 
-				$data['testdata'][] = 'Gelukt';
-				$data['testdata'][] = $this->upload->data();
+            $data          = $this->data;
+            $data['title'] = 'Upload test';
 
-			}else{
+            if($this->input->post('userfile')) {
+                print('Userfile not set');
+                $this->load->template('test/upload', $data);
+            } else {
 
-				$data['testdata'][] = 'Niet gelukt';
-				$data['testdata'][] = $this->upload->display_errors();
-			}
+                $config['upload_path']   = FCPATH . '/database/';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size']      = '100';
+                $config['max_width']     = '1024';
+                $config['max_height']    = '768';
+                $config['file_name']     = "what123ever";
+                $this->load->library('upload', $config);
+                $result = $this->upload->do_upload();
 
-			$this->load->template('test/upload', $data);
-		}
+                if($result) {
 
-	}
-}
+                    $data['testdata'][] = 'Gelukt';
+                    $data['testdata'][] = $this->upload->data();
+
+                } else {
+
+                    $data['testdata'][] = 'Niet gelukt';
+                    $data['testdata'][] = $this->upload->display_errors();
+                }
+
+                $this->load->template('test/upload', $data);
+            }
+
+        }
+    }

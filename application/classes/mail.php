@@ -1,8 +1,8 @@
 <?php
 
-class Mail{
+    class Mail {
 
-	private function __construct(){}
-	
-	
-}
+        private function __construct() {
+        }
+
+    }
