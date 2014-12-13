@@ -46,7 +46,7 @@
                 <li><a href="/about/" title="Over ons">OVER ONS</a></li>
                 <li><a href="/contact/" title="Contact">CONTACT</a></li>
             </ul>
-            <p class="copyright-block">� 2014 MO's Webshop, All Rights Reserved.</p>
+            <p class="copyright-block">&copy; 2014 MO's Webshop, All Rights Reserved.</p>
         </div>
     </footer>
 </section>
