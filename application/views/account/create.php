@@ -138,7 +138,6 @@
             data: 'email=' + email,
             async: false,
             success: function (resp) {
-                console.log(resp)
                 if (resp == 1) {
                     emailInUse = true;
                 } else {

@@ -19,7 +19,11 @@
         public function activate() {
             $this->load->model('Account_model');
 
-            echo $this->Account_model->activate();
+            $data          = $this->data;
+            $data['title'] = 'Activeren';
+            $data['activate'] = $this->Account_model->activate();
+
+            $this->load->template('account/activate', $data);
         }
 
         /**
@@ -38,7 +42,7 @@
 
             $this->load->helper('form');
 
-            $this->load->template('settings/admin', $data);
+            $this->load->template('account/login', $data);
         }
 
         /**

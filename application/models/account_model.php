@@ -56,7 +56,7 @@
         }
 
         /**
-         * @return bool
+         * @return int
          */
         public function activate() {
             $this->db->select('id, email, active');
@@ -68,6 +68,14 @@
                 $row = $query->row_array();
                 if(md5($row['email']) == $this->uri->rsegment(4)) {
                     if($row['active'] == 0) {
+
+                        $data = array(
+                            'active' => 1,
+                        );
+
+                        $this->db->where('pepper', base64_decode($this->uri->rsegment(3)));
+                        $this->db->update('users', $data);
+
                         return 0;
                     } else if($row['active'] == 1) {
                         return 1;
@@ -75,7 +83,7 @@
                 }
             }
 
-            return 3;
+            return 2;
         }
 
         /**
