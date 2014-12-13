@@ -1374,7 +1374,7 @@ header {
 
 .content-wrapper .content-container .new-product-block .product-grid li .pro-btn-block a {
     font-size: 11px;
-    padding: 9px 15px;
+    padding: 9px 10px;
     text-align: center;
     color: #fff;
     -moz-transition: all 400ms ease-in-out 0s;
@@ -2555,10 +2555,10 @@ ul.form-list li input[type='checkbox'] {
 }
 
 .quick-view-wrapper .quick-view-container .quick-view-left h2 {
-    font-size: 22px;
+    font-size: 15px;
     font-weight: normal;
     color: #352E26;
-    margin: 0px;
+    margin-bottom: 10px;
     display: block;
     vertical-align: top;
     padding: 0px 0px 0px 18px;

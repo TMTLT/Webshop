@@ -42,13 +42,14 @@
             $this->load->library('cart');
 
             $id = $this->input->post('id');
+            $qty = $this->input->post('qty');
 
             $flag = true;
 
             foreach($this->cart->contents() as $item) {
 
                 if($item['id'] == $id) {
-                    $qtyn = $item['qty'] + 1;
+                    $qtyn = $item['qty'] + $qty;
 
                     $data = array(
                         'rowid' => $item['rowid'],
@@ -66,7 +67,7 @@
 
                 $data = array(
                     'id'    => $id,
-                    'qty'   => 1,
+                    'qty'   => $qty,
                     'price' => $item['prijs'],
                     'name'  => $item['titel'],
                     'description' => $item['beschrijving']
@@ -83,4 +84,15 @@
             $this->load->library('cart');
             echo json_encode($this->cart->contents());
         }
+
+        /**
+         *
+         */
+        public function itemdetails() {
+            $id = $this->input->post('id');
+
+            echo json_encode($this->Webshop_model->GetProduct($id));
+        }
+
+
     }
