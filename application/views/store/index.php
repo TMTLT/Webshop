@@ -129,11 +129,11 @@
                     <div class="add-to-cart-box">
                         <span class="qty-box">
                         <label for="qty">Aantal:</label>
-                            <a class="prev" title="" id="qty-down">
+                            <a class="prev" href="#" title="" id="qty-down">
                                 <img alt="" title="" src="/images/qty_prev.png">
                             </a>
                             <input type="text" name="qty" class="input-text qty" id="qty" maxlength="12" value="1">
-                            <a class="next" title="" id="qty-up">
+                            <a class="next" href="#" title="" id="qty-up">
                                 <img alt="" title="" src="/images/qty_next.png">
                             </a>
                         </span>
