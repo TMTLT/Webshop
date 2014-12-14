@@ -3,7 +3,7 @@
     <div class="content-container container">
         <div class="col-left">
             <div class="block man-block">
-                <div class="block-title">Categories</div>
+                <div class="block-title">Categoriën</div>
                 <ul>
                     <?php
                         foreach($categories as $category)
@@ -19,28 +19,27 @@
             <div class="category-banner"><img src="/images/sunglass.jpg" title="Banner" alt="Banner"/></div>
             <div class="pager-container">
                 <div class="pager">
-                    <div class="show-items">6 Item(s)</div>
-                    <div class="show-per-page"><label>Show</label> <select>
+                    <div class="show-items">
+                        <?php
+                            $products = array_values($products);
+
+                            echo (count($products) . " Items");
+                        ?>
+                    </div>
+                    <!--<div class="show-per-page"><label>Show</label> <select>
                             <option>09</option>
-                        </select></div>
+                        </select></div>-->
                 </div>
                 <div class="view-by-block">
-                    <ul class="view-by">
-                        <li>View as:</li>
-                        <li><a href="#" title="Grid" class="grid">Grid</a></li>
-                        <li><a href="#" title="List" class="list">List</a></li>
-                    </ul>
                     <div class="short-by">
-                        <label>Sort By</label><select>
-                            <option>Position</option>
+                        <label>Sorteer op</label><select>
+                            <option>Laatst toegevoegd</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="new-product-block">
                 <?php
-                    $products = array_values($products);
-
                     $counter = 0;
                     print('<ul class="product-grid">');
                     foreach($products as $product) {
