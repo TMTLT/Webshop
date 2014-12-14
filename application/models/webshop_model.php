@@ -40,7 +40,7 @@
                 if($batchResult){
 
                     /* Everything worked!*/
-                    return true;
+                    return $this->db->insert_id();
                 }else{
                     /* Something failed, remove order, return false */
                     $this->db->where('userid', $userid);
