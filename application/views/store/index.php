@@ -4,10 +4,24 @@
         <div class="col-left">
             <div class="block man-block">
                 <div class="block-title">Categoriën</div>
+                <script type="text/javascript">
+                    function reorder(id) {
+                        $.each($('.product-grid li'), function () {
+                            if (id == -1) {
+                                $(this).show(500);
+                            } else if ($(this).attr('class') != id) {
+                                $(this).hide(500);
+                            } else {
+                                $(this).show(500);
+                            }
+                        });
+                    }
+                </script>
                 <ul>
+                    <li><a href="#" onclick="reorder(-1)">Alle artikelen</a></li>
                     <?php
                         foreach($categories as $category)
-                            print('<li><a href="/store/category/' . $category->titel . '">' . $category->titel . '</a></li>');
+                            print('<li><a href="#" onclick="reorder(' . $category->id . ')">' . $category->titel . '</a></li>');
                     ?>
                 </ul>
             </div>
