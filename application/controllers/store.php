@@ -30,6 +30,8 @@
         /* Checkout's default progress is 1, cart overview. Set to prevent PHP warnings.*/
         public function checkOut($progress = 1) {
 
+            $loggedIn = true; //Waiting for account model
+
             $data          = $this->data;
             $data['title'] = 'Checkout';
 
@@ -39,10 +41,42 @@
                     $data['title'] = 'Checkout' . $progress;
                     $this->load->template('store/checkout', $data);
                     break;
-                /* Step 2 : Choosing payment options */
+
+                /* Prompt for login if !logged in*/
                 case 2:
+                    
+                    if($loggedIn){
+                        redirect('/store/checkout/3');
+                    }else{
+                        $data['title'] = 'Checkout';
+                        /* Load login prompt. If only we had partial views...
+                        Waiting for Owain to make redirects*/
+                        $this->load->template('store/checkout', $data);
+                    }
+                    break;
+                /* Step 3 : Choosing payment options */
+                case 3:
+                    if(!$loggedIn)
+                        redirect('/store/checkout/2');
+
                     $data['title'] = 'Checkout' . $progress;
-                    $this->load->template('store/checkout', $data);
+
+                    /* Libs : */
+                    $this->load->library('cart');
+                    $cartContent = $this->cart->contents();
+
+                    $userid = 24;
+
+                    $result = $this->Webshop_model->CreateOrder($cartContent, $userid);
+
+                    /* Just in case your numeric orderid suddenly is false in text. */
+                    if($result === false){
+                        //Break code.
+                        redirect('/store/checkout/1');
+                    }else{
+                        $this->cart->destroy();
+                        redirect('/store/pay/'.$result); //Implement unreadable orderID (hash hex with userid?)
+                    }
                     break;
                 /* Default : Cart overview */
                 default:
