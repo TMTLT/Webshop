@@ -18,10 +18,10 @@
                     }
                 </script>
                 <ul>
-                    <li><a href="#" onclick="reorder(-1)">Alle artikelen</a></li>
+                    <li><a onclick="reorder(-1)" style="cursor:pointer">Alle artikelen</a></li>
                     <?php
                         foreach($categories as $category)
-                            print('<li><a href="#" onclick="reorder(' . $category->id . ')">' . $category->titel . '</a></li>');
+                            print('<li><a onclick="reorder(' . $category->id . ')" style="cursor:pointer">' . $category->titel . '</a></li>');
                     ?>
                 </ul>
             </div>
