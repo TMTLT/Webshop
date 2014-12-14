@@ -116,7 +116,11 @@
                         $(".error").html("Sorry, verkeerde inloggegevens!");
                         $(".error").show(300);
                     } else if (resp == 1) {
-                        window.location.replace("/home/index");
+                        if (document.referrer.indexOf("account/login") == -1) {
+                            window.location.replace(document.referrer);
+                        } else {
+                            window.location.replace("/home/index");
+                        }
                     } else if (resp == 2) {
                         $(".error").html("Uw account is nog niet actief, u hebt een email van ons ontvangen om uw account te activeren!");
                         $(".error").show(300);

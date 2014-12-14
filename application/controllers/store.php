@@ -85,6 +85,13 @@
             }
         }
 
+        public function pay($id){
+
+            $orderDetails = $this->Webshop_model->GetOrderDetails($id);
+
+            print_r($orderDetails);
+        }
+
         /**
          *
          */

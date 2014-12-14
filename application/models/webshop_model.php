@@ -28,8 +28,6 @@
 
             $query = $this->db->get();
             $products  = $query->result_array();
-
-            print($this->db->last_query());
             
             $relevant['products'] = $products;
 
