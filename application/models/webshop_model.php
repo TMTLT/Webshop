@@ -9,6 +9,7 @@
 
         public function GetOrderDetails($id){
 
+            /* Get order */
             $this->db->select('orderid, userid, transid');
             $this->db->from('orders');
             $this->db->where('orderid', $id);
@@ -18,6 +19,17 @@
             $rows  = $query->result_array();
 
             $relevant = $rows[0];
+
+            /* Get products related to order*/
+            $this->db->select('orderid, productid, quantity, products.titel, products.beschrijving');
+            $this->db->from('orderedproducts');
+            $this->db->join('products', 'orderedproducts.productid = products.id', 'left outer');
+            $this->db->where('orderid', $id);
+
+            $query = $this->db->get();
+            $products  = $query->result_array();
+            
+            $relevant['products'] = $products;
 
             return $relevant;
         }
