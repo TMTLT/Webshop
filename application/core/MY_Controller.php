@@ -10,8 +10,10 @@
             $uri = explode('/', uri_string());
 
             $this->load->library('session');
-
-            if (!empty($this->session->userdata('userid'))) {
+            
+            $userid = $this->session->userdata('userid');
+            
+            if (!empty($userid)) {
                 $data = array(
                     'loggedin'  => true,
                     'userid'    => $this->session->userdata('id'),
