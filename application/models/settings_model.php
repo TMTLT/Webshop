@@ -13,10 +13,14 @@
 
         /**
          * @return bool
-         * TODO: Get admin state from session
+         *
          */
         public function admin() {
-            return true;
+            if ($this->session->userdata('admin')) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
         public function addproduct() {

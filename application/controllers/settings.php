@@ -11,6 +11,10 @@
         public function __construct() {
             parent::__construct();
             $this->load->helper('url');
+
+            if (!$this->session->userdata('admin')) {
+                redirect('/home/index');
+            }
         }
 
         /**
@@ -22,10 +26,6 @@
 
             $this->load->helper('form');
             $this->load->model('Settings_model');
-
-            if(!$this->Settings_model->admin() == true) {
-                redirect('/home/index');
-            }
 
             $this->load->template('settings/admin', $data);
         }
