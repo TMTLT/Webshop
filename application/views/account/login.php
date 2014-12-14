@@ -123,13 +123,14 @@
                     password: $("#password").val()
                 },
                 success: function (resp) {
+                    console.log(resp);
                     if (resp == 0) {
                         $(".error").html("Sorry, verkeerde inloggegevens!");
                         $(".error").show(300);
                     } else if (resp == 1) {
-                        console.log('goed en actief')
+                        window.location.replace("/home/index");
                     } else if (resp == 2) {
-                        $(".error").html("Uw account is nog niet actief, u hebt een email van ons ontvangen om uw accoutn te activeren!");
+                        $(".error").html("Uw account is nog niet actief, u hebt een email van ons ontvangen om uw account te activeren!");
                         $(".error").show(300);
                     }
                 }

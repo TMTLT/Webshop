@@ -33,7 +33,7 @@
             $email    = $this->input->post('email');
             $password = $this->input->post('password');
 
-            $this->db->select('wachtwoord, pepper, active');
+            $this->db->select('id, voornaam, tussenvoegsel, achternaam, wachtwoord, pepper, active, admin');
             $this->db->from('users');
             $this->db->where('email', $email);
             $query = $this->db->get();
@@ -45,8 +45,18 @@
 
                         return;
                     } else if($row['active'] == 1) {
-                        echo('1');
+                        $this->load->library('session');
 
+                        $data = array(
+                            'userid' => $row['id'],
+                            'firstname' => Crypt::rijndaelDecrypt($row['voornaam'], $row['pepper']),
+                            'affix' => Crypt::rijndaelDecrypt($row['tussenvoegsel'], $row['pepper']),
+                            'lastname' => Crypt::rijndaelDecrypt($row['achternaam'], $row['pepper']),
+                            'email' => $email,
+                            'admin' => $row['admin']
+                        );
+                        $this->session->set_userdata($data);
+                        echo('1');
                         return;
                     }
                 }
@@ -59,7 +69,7 @@
          * @return int
          */
         public function activate() {
-            $this->db->select('id, email, active');
+            $this->db->select('id, voornaam, tussenvoegsel, achternaam, email, active, admin');
             $this->db->from('users');
             $this->db->where('pepper', base64_decode($this->uri->rsegment(3)));
             $query = $this->db->get();
@@ -75,6 +85,18 @@
 
                         $this->db->where('pepper', base64_decode($this->uri->rsegment(3)));
                         $this->db->update('users', $data);
+
+                        $this->load->library('session');
+
+                        $data = array(
+                            'userid' => $row['id'],
+                            'firstname' => Crypt::rijndaelDecrypt($row['voornaam'], base64_decode($this->uri->rsegment(3))),
+                            'affix' => Crypt::rijndaelDecrypt($row['tussenvoegsel'], base64_decode($this->uri->rsegment(3))),
+                            'lastname' => Crypt::rijndaelDecrypt($row['achternaam'], base64_decode($this->uri->rsegment(3))),
+                            'email' => $row['email'],
+                            'admin' => $row['admin']
+                        );
+                        $this->session->set_userdata($data);
 
                         return 0;
                     } else if($row['active'] == 1) {
