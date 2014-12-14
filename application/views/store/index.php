@@ -54,7 +54,6 @@
             </div>
             <div class="new-product-block">
                 <?php
-                    $counter = 0;
                     print('<ul class="product-grid">');
                     foreach($products as $product) {
                         if(null != $product) {
@@ -69,13 +68,6 @@
 										<a class="add-cart right quickCart inline" href="#quick-view-container" onclick="quickView(' . $product['id'] . ');return false;" title="Details">Details</a>
 									</div>
 									<div class="clearfix"></div></li>');
-                            $counter += 1;
-                        }
-
-                        if($counter > 2) {
-                            print('</ul>');
-                            print('<ul class="product-grid">');
-                            $counter = 0;
                         }
                     }
                     print('</ul>');

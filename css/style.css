@@ -1241,8 +1241,8 @@ header {
     width: 243px;
 }
 
-.content-wrapper .content-container .new-product-block .product-grid li + li {
-    margin-left: 14px;
+.content-wrapper .content-container .new-product-block .product-grid li {
+    margin-left: 10px;
 }
 
 .content-wrapper .content-container .feature-block .product-grid li {
