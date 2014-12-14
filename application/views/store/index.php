@@ -8,11 +8,11 @@
                     function reorder(id) {
                         $.each($('.product-grid li'), function () {
                             if (id == -1) {
-                                $(this).show(500);
+                                $(this).show(300);
                             } else if ($(this).attr('class') != id) {
-                                $(this).hide(500);
+                                $(this).hide(300);
                             } else {
-                                $(this).show(500);
+                                $(this).show(300);
                             }
                         });
                     }
