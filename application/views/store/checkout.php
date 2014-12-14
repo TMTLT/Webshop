@@ -34,6 +34,8 @@
 
 
 <script type="text/javascript">
+    $('.checkout-types li button').click(window.location.replace('/store/checkout/2'));
+
     function checkoutinfo() {
         $.ajax({
             url: '<?php echo base_url(); ?>store/cartcontent/',
