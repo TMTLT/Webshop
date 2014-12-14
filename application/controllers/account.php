@@ -48,6 +48,14 @@
         /**
          *
          */
+        public function signout() {
+            $this->session->sess_destroy();
+            redirect('account/login');
+        }
+
+        /**
+         *
+         */
         public function loginSubmit() {
             $this->load->model('Account_model');
 

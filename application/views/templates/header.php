@@ -55,11 +55,16 @@
         <header class="container">
             <div class="head-right">
                 <ul class="top-nav">
-                    <li class=""><a href="/account/"
-                                    title="My Account"><?= ($loggedIn ? 'Mijn account' : 'Log in') ?></a></li>
+                    <?php if ($loggedin) { ?>
+                        <li class=""><a href="/account/" title="Mijn account">Mijn account</a></li>
+                    <?php } ?>
                     <li class="contact-us"><a href="/contact/" title="Contact Us">Neem contact op</a></li>
                     <li class="checkout"><a href="/store/checkout" title="Checkout">Afrekenen</a></li>
-                    <li class="log-in"><a href="/account/login" title="Log In">Log In</a></li>
+                    <?php if (!$loggedin) { ?>
+                        <li class="log-in"><a href="/account/login" title="Log In">Log In</a></li>
+                    <?php } else { ?>
+                        <li class="log-in"><a href="/account/signout" title="Uitloggen">Uitloggen</a></li>
+                    <?php } ?>
                 </ul>
                 <section class="header-bottom">
                     <div class="cart-block">
@@ -141,7 +146,7 @@
             </h1>
             <nav id="smoothmenu1" class="ddsmoothmenu mainMenu">
                 <ul id="nav">
-                    <li class="active"><a href="/home" title="Home">Home</a></li>
+                    <li class=""><a href="/home" title="Home">Home</a></li>
                     <li class="">
                         <a href="/store" title="Winkel">Winkel</a>
                         <ul>

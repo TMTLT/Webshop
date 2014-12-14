@@ -9,10 +9,23 @@
             $this->load->helper('url');
             $uri = explode('/', uri_string());
 
-            $data = array(
-                "loggedIn"    => true,
-                "currentUser" => null
-            );
+            $this->load->library('session');
+
+            if (!empty($this->session->userdata('userid'))) {
+                $data = array(
+                    'loggedin'  => true,
+                    'userid'    => $this->session->userdata('id'),
+                    'firstname' => $this->session->userdata('firstname'),
+                    'affix'     => $this->session->userdata('affix'),
+                    'lastname'  => $this->session->userdata('lastname'),
+                    'email'     => $this->session->userdata('email'),
+                    'admin'     => $this->session->userdata('admin')
+                );
+            } else {
+                $data = array(
+                    'loggedin'  => false
+                );
+            }
 
             $this->load->database();
             $this->load->model('Webshop_model');
