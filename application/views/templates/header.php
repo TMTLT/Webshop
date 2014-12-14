@@ -58,12 +58,14 @@
                     <?php if ($loggedin) { ?>
                         <li class=""><a href="/account/" title="Mijn account">Mijn account</a></li>
                     <?php } ?>
-                    <li class="contact-us"><a href="/contact/" title="Contact Us">Neem contact op</a></li>
-                    <li class="checkout"><a href="/store/checkout" title="Checkout">Afrekenen</a></li>
+                    <li class="contact-us"><a href="/contact/" title="Contact">Neem contact op</a></li>
+                    <li class="checkout"><a href="/store/checkout" title="Afrekenen">Afrekenen</a></li>
                     <?php if (!$loggedin) { ?>
                         <li class="log-in"><a href="/account/login" title="Log In">Log In</a></li>
                     <?php } else { ?>
                         <li class="log-in"><a href="/account/signout" title="Uitloggen">Uitloggen</a></li>
+                    <?php } if ($admin) { ?>
+                        <li class="log-in"><a href="/settings/admin" title="Admin paneel">Admin paneel</a></li>
                     <?php } ?>
                 </ul>
                 <section class="header-bottom">
