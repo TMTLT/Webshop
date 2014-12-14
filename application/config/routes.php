@@ -42,6 +42,7 @@
     $route['default_controller']    = "home";
     $route['store/category/(:any)'] = "store/category/$1";
     $route['store/checkout/(:any)'] = "store/checkout/$1";
+    $route['store/pay/(:any)']      = "store/pay/$1";
     $route['404_override']          = 'error404';
 
 

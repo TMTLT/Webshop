@@ -60,7 +60,7 @@
                     <?php } ?>
                     <li class="contact-us"><a href="/contact/" title="Contact">Neem contact op</a></li>
                     <li class="checkout"><a href="/store/checkout" title="Afrekenen">Afrekenen</a></li>
-                    <?php if ($admin) { ?>
+                    <?php if (isset($admin) && $admin) { ?>
                         <li class="log-in"><a href="/settings/admin" title="Admin paneel">Admin paneel</a></li>
                     <?php } if (!$loggedin) { ?>
                         <li class="log-in"><a href="/account/login" title="Log In">Log In</a></li>
