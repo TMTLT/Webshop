@@ -7,6 +7,50 @@
             parent::__construct();
         }
 
+        public function CreateOrder($products, $userid){
+
+            /* Just create a near empty record. */
+            $orderData = array(
+                'userid'=>$userid
+            );
+            /* Create orderID*/
+            $result      = $this->db->insert('orders', $orderData);
+            $orderid     = $this->db->insert_id();
+
+            /* Break in case of failed order creation*/
+            if(!$result)
+
+                //Break
+                return false;
+            else{
+
+                /* Add products to order */
+                foreach($products as $product){
+
+                    $data[] = array(
+                        'orderid'   =>$orderid,
+                        'productid' =>$product['id'],
+                        'quantity'  =>$product['qty'],
+                        'price'     =>$product['price']
+                    );
+                }
+
+                $batchResult = $this->db->insert_batch('orderedproducts', $data);
+
+                if($batchResult){
+
+                    /* Everything worked!*/
+                    return true;
+                }else{
+                    /* Something failed, remove order, return false */
+                    $this->db->where('userid', $userid);
+                    $this->db->delete('orders');
+
+                    return false;
+                }
+            }
+        }
+
         public function GetCategories($parent = 0) {
 
             $this->db->select('id, titel, beschrijving');
