@@ -7,6 +7,21 @@
             parent::__construct();
         }
 
+        public function GetOrderDetails($id){
+
+            $this->db->select('orderid, userid, transid');
+            $this->db->from('orders');
+            $this->db->where('orderid', $id);
+            $this->db->limit('1');
+
+            $query = $this->db->get();
+            $rows  = $query->result_array();
+
+            $relevant = $rows[0];
+
+            return $relevant;
+        }
+
         public function CreateOrder($products, $userid){
 
             /* Just create a near empty record. */
@@ -40,7 +55,7 @@
                 if($batchResult){
 
                     /* Everything worked!*/
-                    return $this->db->insert_id();
+                    return $orderid;
                 }else{
                     /* Something failed, remove order, return false */
                     $this->db->where('userid', $userid);
