@@ -6,7 +6,6 @@
 
             </ul>
             <div class="update-shopping-cart">
-                <button class="colors-btn">Winkelwagen bijwerken</button>
             </div>
             <div class="shopping-cart-totals">
                 <div class="subtotal-row notax">
@@ -46,30 +45,69 @@
                 $.each(data, function () {
                     totalprice = totalprice + (parseFloat(this['qty']) * parseFloat(this['price']));
 
-                    items += '<li>' +
+                    items += '<li id="item' + this['id'] + '">' +
                     '<div class="img-box">' +
                     '<img src="/images//small_img.png" width="70px" height="70px" title="" alt=""/>' +
                     '</div>' +
                     '<div class="remove-item-btn">' +
-                    '<a href="#" title="Remove">' +
+                    '<a href="#" title="Remove" onclick="removeitem(' + this['id']  +');return false;"">' +
                     '<img src="/images/delete_item_btn.png" title="Remove" alt="Remove"/>' +
                     '</a>' +
                     '</div>' +
                     '<div class="pro-name">' + this["name"] + '</div>' +
                     '<div class="pro-description">' + this["description"] + '</div>' +
                     '<div class="pro-qty">' +
-                    '<input type="text" value="' + this["qty"] + '"/>' +
+                    '<input type="text" id="qty' + this['id'] + '" value="' + this["qty"] + '" onchange="update(' + this['id']  +', ' + this['price']  +');return false;"/>' +
                     '</div>' +
                     '<div class="pro-price">&euro;' + (parseFloat(this['qty']) * parseFloat(this['price'])).formatMoney(2) + '</div>' +
-                    '</li>'
+                    '</li>';
                 });
 
                 $('.shopping-cart-totals > .notax > .right').html('&euro;' + (totalprice * 0.79).formatMoney(2));
                 $('.shopping-cart-totals > .tax > .right').html('&euro;' + (totalprice * 0.21).formatMoney(2));
                 $('.shopping-cart-totals > .grand-row > .right').html('&euro;' + totalprice.formatMoney(2));
+
+                $('#items').html('');
                 $('#items').html(items);
             }
         });
     }
+
+    function removeitem(id) {
+        console.log(id);
+        $("#item" + id).hide(500);
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url(); ?>store/removeitem/',
+            data: {
+                id: id
+            },
+            success: function () {
+                checkoutinfo();
+                updatecart();
+            }
+        });
+    }
+
+    function update(id, price) {
+        console.log(id);
+        console.log(price);
+        console.log($("#qty" + id).val());
+        console.log((parseFloat($("#qty" + id).val()) * parseFloat(price)).formatMoney(2));
+
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url(); ?>store/itemamount/',
+            data: {
+                id: id,
+                qty: $("#qty" + id).val()
+            },
+            success: function () {
+                checkoutinfo();
+                updatecart();
+            }
+        });
+    }
+
     checkoutinfo();
 </script>

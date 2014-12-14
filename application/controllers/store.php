@@ -63,7 +63,6 @@
             $flag = true;
 
             foreach($this->cart->contents() as $item) {
-
                 if($item['id'] == $id) {
                     $qtyn = $item['qty'] + $qty;
 
@@ -89,7 +88,51 @@
                     'description' => $item['beschrijving']
                 );
                 $this->cart->insert($data);
+            }
+        }
 
+        /**
+         *
+         */
+        public function removeitem() {
+            $this->load->library('cart');
+
+            $id = $this->input->post('id');
+
+            foreach($this->cart->contents() as $item) {
+
+                if($item['id'] == $id) {
+                    $data = array(
+                        'rowid' => $item['rowid'],
+                        'qty'   => 0
+                    );
+
+                    $this->cart->update($data);
+                    break;
+                }
+            }
+        }
+
+        /**
+         *
+         */
+        public function itemamount() {
+            $this->load->library('cart');
+
+            $id = $this->input->post('id');
+            $qty = $this->input->post('qty');
+
+            foreach($this->cart->contents() as $item) {
+
+                if($item['id'] == $id) {
+                    $data = array(
+                        'rowid' => $item['rowid'],
+                        'qty'   => $qty
+                    );
+
+                    $this->cart->update($data);
+                    break;
+                }
             }
         }
 
