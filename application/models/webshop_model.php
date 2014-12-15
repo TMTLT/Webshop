@@ -7,6 +7,15 @@
             parent::__construct();
         }
 
+        public function GetOrderTotal($id){
+            
+            $query = $this->db->query('SELECT SUM(`orderedproducts`.`price` * `orderedproducts`.`quantity`)AS total FROM `orderedproducts` WHERE orderid='.$id);
+            
+            $result = $query->result_array();
+
+            return $result[0]['total'];
+        }
+
         public function GetOrderDetails($id) {
 
             /* Get order */

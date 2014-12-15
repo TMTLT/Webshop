@@ -33,7 +33,7 @@
             $data          = $this->data;
             $data['title'] = 'Checkout';
 
-            $loggedIn = $data['loggedin']; //Waiting for account model
+            $loggedIn = $data['loggedin'];
 
             switch($progress) {
 
@@ -45,26 +45,32 @@
 
                 /* Prompt for login if !logged in*/
                 case 2:
+                    /* Libs : */
+                    $this->load->library('cart');
+                    $cartContent = $this->cart->contents();
+
+                    if(empty($cartContent))
+                        redirect('/store', 'refresh');//Very not cool fix but it works
 
                     if(!$loggedIn){
                         redirect('/account/login', 'refresh');
                     }else{
-                        $data['title'] = 'Checkout';
-                        /* Load login prompt. If only we had partial views...
-                        Waiting for Owain to make redirects*/
-                        $this->load->template('store/checkout', $data);
+                        redirect('/store/checkout/3', 'refresh');
                     }
                     break;
                 /* Step 3 : Choosing payment options */
                 case 3:
+                    /* Libs : */
+                    $this->load->library('cart');
+                    $cartContent = $this->cart->contents();
+
+                    if(empty($cartContent))
+                        redirect('/store', 'refresh');//Very not cool fix but it works
+
                     if(!$loggedIn)
                         redirect('/account/login', 'refresh');
 
                     $data['title'] = 'Checkout' . $progress;
-
-                    /* Libs : */
-                    $this->load->library('cart');
-                    $cartContent = $this->cart->contents();
 
                     $userid = 24;
 
@@ -86,16 +92,49 @@
             }
         }
 
+        public function cancel($id){
+
+            /* Cancel order */
+        }
+
+        public function status($id){
+            //PayMe::GetTransactionStatus($id, $sha1);
+            
+            /* View payment status */
+        }
+
         public function pay($id) {
 
             $data          = $this->data;
             $data['title'] = 'Payment';
 
-            $orderDetails = $this->Webshop_model->GetOrderDetails($id);
+            if($this->input->server('REQUEST_METHOD') == 'POST'){
+                $this->load->model('Payme_model');
 
-            $data['orderDetails'] = $orderDetails;
+                /* Start transaction */
+                $amount      = $this->Webshop_model->GetOrderTotal($id);
+                $bankID      = $this->input->post('bank');
+                $purchaseID  = $id;
+                $description = 'Uw order bij Mos OrderNo '.$id;
+                $returnURL   = 'tmtl-06.ict-lab.nl/store/status/'.$id;
+                $failURL     = 'tmtl-06.ict-lab.nl/store/cancel/'.$id;
 
-            $this->load->template('store/payment', $data);
+                $data = PayMe::StartTransaction($amount, $bankID, $purchaseID, $description, $returnURL, $failURL);
+
+                $this->Payme_model->SaveTransaction($data['transid'], $data['sha1']);
+
+                redirect($data['fwdurl']);
+            }else{
+                /* Display orderdetails */
+                $orderDetails = $this->Webshop_model->GetOrderDetails($id);
+                $total = $this->Webshop_model->GetOrderTotal($id);;
+
+                $data['orderDetails'] = $orderDetails;
+                $data['orderDetails']['total'] = $total;
+                $data['payme']['banklist'] = PayMe::GetBankList();
+
+                $this->load->template('store/payment', $data);
+            }
         }
 
         /**
