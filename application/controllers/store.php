@@ -33,7 +33,7 @@
             $data          = $this->data;
             $data['title'] = 'Checkout';
 
-            $loggedIn = $data['loggedin']; //Waiting for account model
+            $loggedIn = $data['loggedin'];
 
             switch($progress) {
 
@@ -55,10 +55,7 @@
                     if(!$loggedIn){
                         redirect('/account/login', 'refresh');
                     }else{
-                        $data['title'] = 'Checkout';
-                        /* Load login prompt. If only we had partial views...
-                        Waiting for Owain to make redirects*/
-                        $this->load->template('store/checkout', $data);
+                        redirect('/store/checkout/3', 'refresh');
                     }
                     break;
                 /* Step 3 : Choosing payment options */
