@@ -74,7 +74,7 @@
                         redirect('/account/login', 'refresh');
 
                     $data['title'] = 'Checkout' . $progress;
-                    
+
                     $userid = 24;
 
                     $result = $this->Webshop_model->CreateOrder($cartContent, $userid);
@@ -100,11 +100,19 @@
             $data          = $this->data;
             $data['title'] = 'Payment';
 
-            $orderDetails = $this->Webshop_model->GetOrderDetails($id);
+            if($this->input->server('REQUEST_METHOD') == 'POST'){
+                /* Start transaction */
+            }else{
+                /* Display orderdetails */
+                $orderDetails = $this->Webshop_model->GetOrderDetails($id);
+                $total = $this->Webshop_model->GetOrderTotal($id);
 
-            $data['orderDetails'] = $orderDetails;
+                $data['orderDetails'] = $orderDetails;
+                $data['orderDetails']['total'] = $total;
+                $data['payme']['banklist'] = PayMe::GetBankList();
 
-            $this->load->template('store/payment', $data);
+                $this->load->template('store/payment', $data);
+            }
         }
 
         /**

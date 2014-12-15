@@ -27,22 +27,20 @@
                                 <li>
                                     <label>Bank<em>*</em></label>
                                     <select>
-                                        <option>United States</option>
+                                    <?php 
+                                    foreach($payme['banklist'] as $bankid=>$bankname)
+                                        print('<option value="'.$bankid.'">'.$bankname.'</option>');
+                                    ?>
                                     </select>
                                 </li>
                             </ul>
                         </div>
-                        <button class="colors-btn" title="Get a Quote">Get a Quote</button>
                     </div>
                 </div>
                 <div class="shopping-cart-totals">
-                    <div class="subtotal-row">
-                        <div class="left">Subtotal</div>
-                        <div class="right">$1,000,00</div>
-                    </div>
                     <div class="grand-row">
-                        <div class="left">Grand Total</div>
-                        <div class="right">$1,000.00</div>
+                        <div class="left">Totaal</div>
+                        <div class="right"><?=$orderDetails['total']?></div>
                     </div>
                     <ul class="checkout-types">
                         <li>
