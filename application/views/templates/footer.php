@@ -18,6 +18,7 @@
             $('.pro-line.' + this['productid']).show();
             $('.pro-price.' + this['productid'] + '.second').html('&euro; ' + parseFloat(this['prijs']).formatMoney(2));
             $('.pro-price.' + this['productid'] + '.second').visible();
+            $('.pro-price.' + this['productid'] + '.featured').html('&euro; ' + parseFloat(this['prijs']).formatMoney(2));
         });
     });
 </script>

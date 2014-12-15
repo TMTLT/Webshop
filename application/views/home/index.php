@@ -41,7 +41,7 @@
 
                                         <div class="link-block">
                                             <a href="#quick-view-container" class="quickllook inline" title="Quick View" onclick="quickView(' . $product['id'] . ');return false;">Details</a>
-                                        <div class="pro-price">&euro; ' . str_replace(".", ",", $product['prijs']) . '</div>
+                                        <div class="pro-price ' . $product['id'] . ' featured">&euro; ' . str_replace(".", ",", $product['prijs']) . '</div>
                                     </div></li>');
                         }
                         if($count == 4)
