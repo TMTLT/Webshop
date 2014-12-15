@@ -135,7 +135,6 @@
                     parent: cat
                 },
                 success: function (resp) {
-                    console.log(resp)
                     if (resp == 1) {
                         document.getElementById("addCategoryForm").reset();
                         $('.success').show(300);

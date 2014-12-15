@@ -97,7 +97,6 @@
                     price: $("#price").val()
                 },
                 success: function (resp) {
-                    console.log(resp)
                     if (resp == 1) {
                         document.getElementById("addSaleForm").reset();
                         $('.success').show(300);

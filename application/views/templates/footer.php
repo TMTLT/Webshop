@@ -13,19 +13,11 @@
     }(jQuery));
 
     $.get('<?php echo base_url(); ?>store/onsale/', function(resp) {
-        console.log(resp);
         var data = $.parseJSON(resp);
-        console.log(data);
         $.each(data, function () {
-                console.log(this['id']);
-                console.log(this['productid']);
-                console.log(this['prijs']);
-
             $('.pro-line.' + this['productid']).show();
             $('.pro-price.' + this['productid'] + '.second').html('&euro; ' + parseFloat(this['prijs']).formatMoney(2));
             $('.pro-price.' + this['productid'] + '.second').visible();
-
-
         });
     });
 </script>
