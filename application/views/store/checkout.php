@@ -22,7 +22,7 @@
                 </div>
                 <ul class="checkout-types">
                     <li>
-                        <button class="colors-btn" title="Afrekenen">Afrekenen</button>
+                        <button class="colors-btn" id="redirectToCheckout" title="Afrekenen" onclick="window.location = '/store/checkout/2';">Afrekenen</button>
                     </li>
                 </ul>
             </div>
@@ -33,7 +33,6 @@
 
 
 <script type="text/javascript">
-    $('.checkout-types li button').click(window.location.replace('/store/checkout/2'));
 
     function checkoutinfo() {
         $.ajax({
@@ -75,7 +74,6 @@
     }
 
     function removeitem(id) {
-        console.log(id);
         $("#item" + id).hide(500);
         $.ajax({
             type: 'POST',
@@ -91,11 +89,6 @@
     }
 
     function update(id, price) {
-        console.log(id);
-        console.log(price);
-        console.log($("#qty" + id).val());
-        console.log((parseFloat($("#qty" + id).val()) * parseFloat(price)).formatMoney(2));
-
         $.ajax({
             type: 'POST',
             url: '<?php echo base_url(); ?>store/itemamount/',
