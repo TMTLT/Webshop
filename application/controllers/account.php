@@ -19,8 +19,8 @@
         public function activate() {
             $this->load->model('Account_model');
 
-            $data          = $this->data;
-            $data['title'] = 'Activeren';
+            $data             = $this->data;
+            $data['title']    = 'Activeren';
             $data['activate'] = $this->Account_model->activate();
 
             $this->load->template('account/activate', $data);

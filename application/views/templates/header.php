@@ -26,6 +26,8 @@
     <script src="/js/jquery.jcarousel.min.js"></script>
     <script src="/js/jquery.accordion.js"></script>
     <script src="/js/light_box.js"></script>
+    <script src="/js/jquery.color.js"></script>
+    <script src="/js/jquery.Jcrop.min.js"></script>
     <script type="text/javascript">$(document).ready(function () {
             $(".inline").colorbox({inline: true, width: "50%"});
         });</script>
@@ -40,6 +42,7 @@
     <link rel="stylesheet" href="/css/elastislide.css"/>
     <link rel="stylesheet" href="/css/home_flexslider.css"/>
     <link rel="stylesheet" href="/css/light_box.css"/>
+    <link rel="stylesheet" href="/css/jquery.Jcrop.min.css"/>
     <link href="../../../html5shiv.googlecode.com/svn/trunk/html5.js">
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -55,25 +58,26 @@
         <header class="container">
             <div class="head-right">
                 <ul class="top-nav">
-                    <?php if ($loggedin) { ?>
+                    <?php if($loggedin) { ?>
                         <li class=""><a href="/account/" title="Mijn account">Mijn account</a></li>
                     <?php } ?>
                     <li class="contact-us"><a href="/contact/" title="Contact">Neem contact op</a></li>
                     <li class="checkout"><a href="/store/checkout" title="Afrekenen">Afrekenen</a></li>
-                    <?php if (isset($admin) && $admin) { ?>
-                        <li class="log-in"><a href="/settings/admin" title="Admin paneel">Admin paneel</a></li>
-                    <?php } if (!$loggedin) { ?>
-                        <li class="log-in"><a href="/account/login" title="Log In">Log In</a></li>
-                    <?php } else { ?>
-                        <li class="log-in"><a href="/account/signout" title="Uitloggen">Uitloggen</a></li>
-                    <?php } ?>
+                    <?php if(isset($admin) && $admin) { ?>
+                        <li class="log-in"><a href="/settings/addproduct" title="Admin paneel">Admin paneel</a></li>
+                    <?php }
+                        if(!$loggedin) { ?>
+                            <li class="log-in"><a href="/account/login" title="Log In">Log In</a></li>
+                        <?php } else { ?>
+                            <li class="log-in"><a href="/account/signout" title="Uitloggen">Uitloggen</a></li>
+                        <?php } ?>
                 </ul>
                 <section class="header-bottom">
                     <div class="cart-block">
                         <ul>
                             <li id="cartamount">(0)</li>
                             <li><a href="/store/checkout" title="Cart"><img title="Item" alt="Item"
-                                                                        src="/images/item_icon.png"/></a></li>
+                                                                            src="/images/item_icon.png"/></a></li>
                             <li>Item</li>
                         </ul>
                         <div id="minicart" class="remain_cart" style="display: none;">
@@ -111,7 +115,7 @@
                                     $.each(data, function () {
                                         items += '<li class="item">' +
                                         '<div class="img-block">' +
-                                        '<img src="/images/small_img.png" title="" alt="" />' +
+                                        '<img src="/database/' + this["image"] + '" width="77px" height=77px title="" alt="" />' +
                                         '</div>' +
                                         '<div class="detail-block">' +
                                         '<h4><a href="/#" title="' + this["name"] + '">' + this["name"] + '</a></h4>' +
@@ -133,6 +137,21 @@
                                 }
                             });
                         }
+
+                        function addToCart(id) {
+                            $.ajax({
+                                type: 'POST',
+                                url: '<?php echo base_url(); ?>store/addtocart/',
+                                data: {
+                                    id: id,
+                                    qty: 1
+                                },
+                                success: function () {
+                                    updatecart();
+                                }
+                            });
+                        }
+
                         updatecart();
                     </script>
 

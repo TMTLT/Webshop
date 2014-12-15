@@ -21,11 +21,11 @@
 
         public function session() {
             $this->load->library('session');
-            echo ($this->session->userdata('firstname') . "<br />" .
-                  $this->session->userdata('affix') . "<br />" .
-                  $this->session->userdata('lastname') . "<br />" .
-                  $this->session->userdata('email') . "<br />" .
-                  $this->session->userdata('admin'));
+            echo($this->session->userdata('firstname') . "<br />" .
+                 $this->session->userdata('affix') . "<br />" .
+                 $this->session->userdata('lastname') . "<br />" .
+                 $this->session->userdata('email') . "<br />" .
+                 $this->session->userdata('admin'));
         }
 
         public function payme() {

@@ -48,15 +48,16 @@
                         $this->load->library('session');
 
                         $data = array(
-                            'userid' => $row['id'],
+                            'userid'    => $row['id'],
                             'firstname' => Crypt::rijndaelDecrypt($row['voornaam'], $row['pepper']),
-                            'affix' => Crypt::rijndaelDecrypt($row['tussenvoegsel'], $row['pepper']),
-                            'lastname' => Crypt::rijndaelDecrypt($row['achternaam'], $row['pepper']),
-                            'email' => $email,
-                            'admin' => $row['admin']
+                            'affix'     => Crypt::rijndaelDecrypt($row['tussenvoegsel'], $row['pepper']),
+                            'lastname'  => Crypt::rijndaelDecrypt($row['achternaam'], $row['pepper']),
+                            'email'     => $email,
+                            'admin'     => $row['admin']
                         );
                         $this->session->set_userdata($data);
                         echo('1');
+
                         return;
                     }
                 }
@@ -89,12 +90,12 @@
                         $this->load->library('session');
 
                         $data = array(
-                            'userid' => $row['id'],
+                            'userid'    => $row['id'],
                             'firstname' => Crypt::rijndaelDecrypt($row['voornaam'], base64_decode($this->uri->rsegment(3))),
-                            'affix' => Crypt::rijndaelDecrypt($row['tussenvoegsel'], base64_decode($this->uri->rsegment(3))),
-                            'lastname' => Crypt::rijndaelDecrypt($row['achternaam'], base64_decode($this->uri->rsegment(3))),
-                            'email' => $row['email'],
-                            'admin' => $row['admin']
+                            'affix'     => Crypt::rijndaelDecrypt($row['tussenvoegsel'], base64_decode($this->uri->rsegment(3))),
+                            'lastname'  => Crypt::rijndaelDecrypt($row['achternaam'], base64_decode($this->uri->rsegment(3))),
+                            'email'     => $row['email'],
+                            'admin'     => $row['admin']
                         );
                         $this->session->set_userdata($data);
 

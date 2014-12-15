@@ -1227,7 +1227,7 @@ header {
 
 .content-wrapper .content-container .feature-block .product-grid li, .content-wrapper .content-container .new-product-block .product-grid li {
     float: left;
-    width: 240px;
+    width: 238px;
     border: 1px solid #DAD8D8;
     position: relative;
     margin-bottom: 10px;
@@ -3486,4 +3486,15 @@ h1.page-title {
     background-color: #FFBABA;
     background-image: url('/images/error.png');
     display: none;
+}
+
+.fileUpload {
+    position: relative;
+    margin: 10px;
+}
+
+.fileUpload input.upload {
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
 }

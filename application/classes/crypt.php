@@ -20,6 +20,14 @@
      */
     class Crypt {
         /**
+         *
+         */
+        const MCRYPT_CIPHER = MCRYPT_RIJNDAEL_256;
+        /**
+         *
+         */
+        const MCRYPT_MODE = MCRYPT_MODE_ECB;
+        /**
          * @var string
          */
         private static $pbkdf2_hash_algorithm = "sha256";
@@ -55,20 +63,14 @@
          * @var int
          */
         private static $hash_pbkdf2_index = 3;
-        /**
-         *
-         */
-        const MCRYPT_CIPHER = MCRYPT_RIJNDAEL_256;
-        /**
-         *
-         */
-        const MCRYPT_MODE = MCRYPT_MODE_ECB;
+
         /**
          * [GetRandomSalt]
          */
         public static function getRandomSalt() {
             return base64_encode(mcrypt_create_iv(self::$pbkdf2_salt_byte_size, MCRYPT_DEV_URANDOM));
         }
+
         /**
          * [HashPassword]
          *
@@ -86,44 +88,7 @@
                        true
                    ));
         }
-        /**
-         * [ValidatePassword]
-         *
-         * @param mixed $password
-         * @param mixed $hash
-         */
-        public static function validatePassword($password, $hash) {
-            $params = explode(":", $hash);
-            if(count($params) < self::$hash_sections)
-                return false;
-            $pbkdf2 = base64_decode($params[self::$hash_pbkdf2_index]);
-            return self::slowEquals(
-                $pbkdf2,
-                self::pbkdf2(
-                    $params[self::$hash_algorithm_index],
-                    $password,
-                    $params[self::$hash_salt_index],
-                    (int)$params[self::$hash_iteration_index],
-                    strlen($pbkdf2),
-                    true
-                )
-            );
-        }
-        /**
-         * [slow_equals]
-         *
-         * @param  mixed $a
-         * @param  mixed $b
-         *
-         * @return mixed
-         */
-        public static function slowEquals($a, $b) {
-            $diff = strlen($a) ^ strlen($b);
-            for($i = 0; $i < strlen($a) && $i < strlen($b); $i++) {
-                $diff |= ord($a[$i]) ^ ord($b[$i]);
-            }
-            return $diff === 0;
-        }
+
         /**
          * [pbkdf2]
          *
@@ -146,11 +111,12 @@
                 if(!$raw_output) {
                     $key_length = $key_length * 2;
                 }
+
                 return hash_pbkdf2($algorithm, $password, $salt, $count, $key_length, $raw_output);
             }
             $hash_length = strlen(hash($algorithm, "", true));
             $block_count = ceil($key_length / $hash_length);
-            $output = "";
+            $output      = "";
             for($i = 1; $i <= $block_count; $i++) {
                 $last = $salt . pack("N", $i);
                 $last = $xorsum = hash_hmac($algorithm, $last, $password, true);
@@ -161,16 +127,62 @@
             }
             if($raw_output)
                 return substr($output, 0, $key_length);
+
             return bin2hex(substr($output, 0, $key_length));
         }
+
+        /**
+         * [ValidatePassword]
+         *
+         * @param mixed $password
+         * @param mixed $hash
+         */
+        public static function validatePassword($password, $hash) {
+            $params = explode(":", $hash);
+            if(count($params) < self::$hash_sections)
+                return false;
+            $pbkdf2 = base64_decode($params[self::$hash_pbkdf2_index]);
+
+            return self::slowEquals(
+                $pbkdf2,
+                self::pbkdf2(
+                    $params[self::$hash_algorithm_index],
+                    $password,
+                    $params[self::$hash_salt_index],
+                    (int)$params[self::$hash_iteration_index],
+                    strlen($pbkdf2),
+                    true
+                )
+            );
+        }
+
+        /**
+         * [slow_equals]
+         *
+         * @param  mixed $a
+         * @param  mixed $b
+         *
+         * @return mixed
+         */
+        public static function slowEquals($a, $b) {
+            $diff = strlen($a) ^ strlen($b);
+            for($i = 0; $i < strlen($a) && $i < strlen($b); $i++) {
+                $diff |= ord($a[$i]) ^ ord($b[$i]);
+            }
+
+            return $diff === 0;
+        }
+
         /**
          * @return string
          */
         public static function createKey() {
             $iv_size = mcrypt_get_iv_size(self::MCRYPT_CIPHER, self::MCRYPT_MODE);
             $iv      = base64_encode(mcrypt_create_iv($iv_size, MCRYPT_DEV_URANDOM));
+
             return $iv;
         }
+
         /**
          * @param $string
          * @param $key
@@ -178,13 +190,16 @@
          * @return string
          */
         public static function rijndaelEncrypt($string, $key) {
-            if (empty($string)) return NULL;
+            if(empty($string))
+                return null;
             $key       = base64_decode($key);
             $iv        = mcrypt_create_iv(mcrypt_get_iv_size(self::MCRYPT_CIPHER, self::MCRYPT_MODE), MCRYPT_RAND);
             $passcrypt = trim(mcrypt_encrypt(self::MCRYPT_CIPHER, $key, trim($string), self::MCRYPT_MODE, $iv));
             $encode    = base64_encode($passcrypt);
+
             return $encode;
         }
+
         /**
          * @param $string
          * @param $key
@@ -192,11 +207,13 @@
          * @return string
          */
         public static function rijndaelDecrypt($string, $key) {
-            if (empty($string)) return NULL;
+            if(empty($string))
+                return null;
             $key       = base64_decode($key);
             $decoded   = base64_decode($string);
             $iv        = mcrypt_create_iv(mcrypt_get_iv_size(self::MCRYPT_CIPHER, self::MCRYPT_MODE), MCRYPT_RAND);
             $decrypted = trim(mcrypt_decrypt(self::MCRYPT_CIPHER, $key, trim($decoded), self::MCRYPT_MODE, $iv));
+
             return $decrypted;
         }
     }

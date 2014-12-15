@@ -32,8 +32,9 @@
 </div>
 
 
-
 <script type="text/javascript">
+    $('.checkout-types li button').click(window.location.replace('/store/checkout/2'));
+
     function checkoutinfo() {
         $.ajax({
             url: '<?php echo base_url(); ?>store/cartcontent/',
@@ -47,17 +48,17 @@
 
                     items += '<li id="item' + this['id'] + '">' +
                     '<div class="img-box">' +
-                    '<img src="/images//small_img.png" width="70px" height="70px" title="" alt=""/>' +
+                    '<img src="/database/' + this["image"] + '" width="70px" height="70px" title="" alt=""/>' +
                     '</div>' +
                     '<div class="remove-item-btn">' +
-                    '<a href="#" title="Remove" onclick="removeitem(' + this['id']  +');return false;"">' +
+                    '<a href="#" title="Remove" onclick="removeitem(' + this['id'] + ');return false;"">' +
                     '<img src="/images/delete_item_btn.png" title="Remove" alt="Remove"/>' +
                     '</a>' +
                     '</div>' +
                     '<div class="pro-name">' + this["name"] + '</div>' +
                     '<div class="pro-description">' + this["description"] + '</div>' +
                     '<div class="pro-qty">' +
-                    '<input type="text" id="qty' + this['id'] + '" value="' + this["qty"] + '" onchange="update(' + this['id']  +', ' + this['price']  +');return false;"/>' +
+                    '<input type="text" id="qty' + this['id'] + '" value="' + this["qty"] + '" onchange="update(' + this['id'] + ', ' + this['price'] + ');return false;"/>' +
                     '</div>' +
                     '<div class="pro-price">&euro;' + (parseFloat(this['qty']) * parseFloat(this['price'])).formatMoney(2) + '</div>' +
                     '</li>';
