@@ -125,4 +125,30 @@
                 echo 1;
             }
         }
+
+        public function addsale() {
+            $this->load->database();
+
+            $data = array(
+                'productid'   => $this->input->post('id'),
+                'prijs'       => str_replace(",", ".", $this->input->post('price'))
+            );
+
+            $str = $this->db->insert_string('sale', $data);
+
+            $res = $this->db->query($str);
+
+            if(!$res) {
+                // TODO: remove this
+                if(true) {
+                    $msg = $this->db->_error_message();
+                    $num = $this->db->_error_number();
+
+                    $data['msg'] = "Error(" . $num . ") " . $msg;
+                    print_r($data);
+                }
+            } else {
+                echo 1;
+            }
+        }
     }

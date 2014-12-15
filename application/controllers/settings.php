@@ -63,4 +63,27 @@
             return $this->Settings_model->addcategory();
         }
 
+        /**
+         *
+         */
+        public function addsale() {
+            $data          = $this->data;
+            $data['title'] = 'Admin paneel';
+            $data['products']   = $this->Webshop_model->GetProducts();
+
+            $this->load->helper('form');
+            $this->load->model('Settings_model');
+
+            $this->load->template('settings/addsale', $data);
+        }
+
+        /**
+         *
+         */
+        public function addsalepost() {
+            $this->load->model('Settings_model');
+
+            return $this->Settings_model->addsale();
+        }
+
     }

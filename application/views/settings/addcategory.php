@@ -7,6 +7,7 @@
                 <ul>
                     <li><a href="/settings/addproduct" title="">Producten toevoegen</a></li>
                     <li><a href="/settings/addcategory" title="">Categorie toevoegen</a></li>
+                    <li><a href="/settings/addsale" title="">Aanbieding toevoegen</a></li>
                 </ul>
             </div>
         </div>
