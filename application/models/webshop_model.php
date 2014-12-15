@@ -139,6 +139,17 @@
             return $rows;
         }
 
+        public function GetProductsOnSale() {
+            $this->db->select('products.id, products.titel, products.image, products.beschrijving, products.prijs, products.categorie, products.aantal');
+            $this->db->from('sale');
+            $this->db->join('products', 'products.id = sale.productid', 'left');
+            $this->db->limit(4);
+            $query = $this->db->get();
+            $rows  = $query->result_array();
+
+            return $rows;
+        }
+
         public function GetNewestProducts() {
 
             $this->db->select('id, titel, image, beschrijving, prijs, categorie, aantal');

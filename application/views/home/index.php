@@ -51,6 +51,34 @@
             </ul>
         </div>
         <div class="heading-block">
+            <h1>In de aanbieding</h1>
+        </div>
+        <div class="new-product-block">
+            <?php
+                $products = array_values($saleproducts);
+                print('<ul class="product-grid">');
+                foreach($products as $product) {
+                    if(null != $product) {
+                        print('<li class="' . $product['categorie'] . '">
+									<div class="pro-img">
+										<img title=" Product" alt="Product" src="/database/' . $product['image'] . '" width="170px" height=170px />
+									</div>
+									<div class="pro-content"><p>' . $product['titel'] . '</p></div>
+									<div class="pro-price">&euro; ' . str_replace(".", ",", $product['prijs']) . '</div>
+									<div class="pro-line ' . $product['id'] . '" style="width: 43px; height: 47px; margin-top: -95px; margin-left: 95px; border-bottom: 2px solid red; -webkit-transform: translateY(20px) translateX(5px) rotate(-15deg); position: absolute; display: none"></div>
+									<div class="pro-price ' . $product['id'] . ' second" style="margin-top: -25px; visibility: hidden">&euro;</div>
+									<div class="pro-btn-block">
+										<a class="add-cart left" title="Add to Cart" onclick="addToCart(' . $product['id'] . ');return false;">Toevoegen aan winkelmand</a>
+										<a class="add-cart right quickCart inline" href="#quick-view-container" onclick="quickView(' . $product['id'] . ');return false;" title="Details">Details</a>
+									</div>
+									<div class="clearfix"></div></li>');
+                    }
+                }
+                print('</ul>');
+            ?>
+            </ul>
+        </div>
+        <div class="heading-block">
             <h1>Nieuwe Producten</h1>
         </div>
         <div class="new-product-block">
