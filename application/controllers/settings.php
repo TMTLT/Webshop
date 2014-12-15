@@ -20,20 +20,20 @@
         /**
          *
          */
-        public function admin() {
+        public function addproduct() {
             $data          = $this->data;
             $data['title'] = 'Admin paneel';
 
             $this->load->helper('form');
             $this->load->model('Settings_model');
 
-            $this->load->template('settings/admin', $data);
+            $this->load->template('settings/addproduct', $data);
         }
 
         /**
          *
          */
-        public function addproduct() {
+        public function addproductpost() {
             $this->load->model('Settings_model');
 
             return $this->Settings_model->addproduct();

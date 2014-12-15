@@ -49,7 +49,7 @@
 
                     items += '<li id="item' + this['id'] + '">' +
                     '<div class="img-box">' +
-                    '<img src="/images//small_img.png" width="70px" height="70px" title="" alt=""/>' +
+                    '<img src="/database/' + this["image"] + '" width="70px" height="70px" title="" alt=""/>' +
                     '</div>' +
                     '<div class="remove-item-btn">' +
                     '<a href="#" title="Remove" onclick="removeitem(' + this['id']  +');return false;"">' +

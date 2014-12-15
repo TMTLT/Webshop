@@ -26,6 +26,8 @@
     <script src="/js/jquery.jcarousel.min.js"></script>
     <script src="/js/jquery.accordion.js"></script>
     <script src="/js/light_box.js"></script>
+    <script src="/js/jquery.color.js"></script>
+    <script src="/js/jquery.Jcrop.min.js"></script>
     <script type="text/javascript">$(document).ready(function () {
             $(".inline").colorbox({inline: true, width: "50%"});
         });</script>
@@ -40,6 +42,7 @@
     <link rel="stylesheet" href="/css/elastislide.css"/>
     <link rel="stylesheet" href="/css/home_flexslider.css"/>
     <link rel="stylesheet" href="/css/light_box.css"/>
+    <link rel="stylesheet" href="/css/jquery.Jcrop.min.css"/>
     <link href="../../../html5shiv.googlecode.com/svn/trunk/html5.js">
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -61,7 +64,7 @@
                     <li class="contact-us"><a href="/contact/" title="Contact">Neem contact op</a></li>
                     <li class="checkout"><a href="/store/checkout" title="Afrekenen">Afrekenen</a></li>
                     <?php if (isset($admin) && $admin) { ?>
-                        <li class="log-in"><a href="/settings/admin" title="Admin paneel">Admin paneel</a></li>
+                        <li class="log-in"><a href="/settings/addproduct" title="Admin paneel">Admin paneel</a></li>
                     <?php } if (!$loggedin) { ?>
                         <li class="log-in"><a href="/account/login" title="Log In">Log In</a></li>
                     <?php } else { ?>
@@ -111,7 +114,7 @@
                                     $.each(data, function () {
                                         items += '<li class="item">' +
                                         '<div class="img-block">' +
-                                        '<img src="/images/small_img.png" title="" alt="" />' +
+                                        '<img src="/database/' +  this["image"] + '" width="77px" height=77px title="" alt="" />' +
                                         '</div>' +
                                         '<div class="detail-block">' +
                                         '<h4><a href="/#" title="' + this["name"] + '">' + this["name"] + '</a></h4>' +

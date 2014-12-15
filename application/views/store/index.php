@@ -59,7 +59,7 @@
                         if(null != $product) {
                             print('<li class="' . $product['categorie'] . '">
 									<div class="pro-img">
-										<img title="Freature Product" alt="Freature Product" src="/images/default_img.png" />
+										<img title=" Product" alt="Product" src="/database/'. $product['image'] .'" width="170px" height=170px />
 									</div>
 									<div class="pro-content"><p>' . $product['titel'] . '</p></div>
 									<div class="pro-price">&euro; ' . str_replace(".", ",", $product['prijs']) . '</div>

@@ -28,7 +28,7 @@
 
             $query = $this->db->get();
             $products  = $query->result_array();
-            
+
             $relevant['products'] = $products;
 
             return $relevant;
@@ -106,7 +106,7 @@
                     $result = $rows[0];
             }
 
-            $this->db->select('id, titel, beschrijving, prijs, categorie, aantal');
+            $this->db->select('id, titel, image, beschrijving, prijs, categorie, aantal');
             $this->db->from('products');
 
             /* By default Codeigniter selects all. If we have a category set we set the where condition. */
@@ -120,7 +120,7 @@
         }
 
         public function GetProduct($id) {
-            $this->db->select('id, titel, beschrijving, prijs, aantal');
+            $this->db->select('id, titel, image, beschrijving, prijs, aantal');
             $this->db->from('products');
             $this->db->where('id', $id);
 

@@ -3487,3 +3487,13 @@ h1.page-title {
     background-image: url('/images/error.png');
     display: none;
 }
+
+.fileUpload {
+    position: relative;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}

@@ -44,7 +44,7 @@
 
                 /* Prompt for login if !logged in*/
                 case 2:
-                    
+
                     if($loggedIn){
                         redirect('/store/checkout/3');
                     }else{
@@ -126,7 +126,8 @@
                     'qty'   => $qty,
                     'price' => $item['prijs'],
                     'name'  => $item['titel'],
-                    'description' => $item['beschrijving']
+                    'description' => $item['beschrijving'],
+                    'image' => $item['image']
                 );
                 $this->cart->insert($data);
             }
