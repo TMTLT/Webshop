@@ -95,17 +95,42 @@
             }
         }
 
+        public function cancel($id){
+
+            /* Cancel order */
+        }
+
+        public function status($id){
+            //PayMe::GetTransactionStatus($id, $sha1);
+            
+            /* View payment status */
+        }
+
         public function pay($id) {
 
             $data          = $this->data;
             $data['title'] = 'Payment';
 
             if($this->input->server('REQUEST_METHOD') == 'POST'){
+                $this->load->model('Payme_model');
+
                 /* Start transaction */
+                $amount      = $this->Webshop_model->GetOrderTotal($id);
+                $bankID      = $this->input->post('bank');
+                $purchaseID  = $id;
+                $description = 'Uw order bij Mos OrderNo '.$id;
+                $returnURL   = 'tmtl-06.ict-lab.nl/store/status/'.$id;
+                $failURL     = 'tmtl-06.ict-lab.nl/store/cancel/'.$id;
+
+                $data = PayMe::StartTransaction($amount, $bankID, $purchaseID, $description, $returnURL, $failURL);
+
+                $this->Payme_model->SaveTransaction($data['transid'], $data['sha1']);
+
+                redirect($data['fwdurl']);
             }else{
                 /* Display orderdetails */
                 $orderDetails = $this->Webshop_model->GetOrderDetails($id);
-                $total = $this->Webshop_model->GetOrderTotal($id);
+                $total = $this->Webshop_model->GetOrderTotal($id);;
 
                 $data['orderDetails'] = $orderDetails;
                 $data['orderDetails']['total'] = $total;
