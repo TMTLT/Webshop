@@ -173,6 +173,7 @@
                 $('#quick-view-description').html(data['beschrijving']);
                 $('#quick-view-title').html(data['titel']);
                 $('#tabDetail > .price-box > .price').html('&euro;' + parseFloat(data['prijs']).formatMoney(2));
+                $('.product-image > img').attr("src", '/database/' + data['image']);
                 $('#qty').val(1);
                 $('#addtocartdetails').bind('click', function() {
                     $.ajax({
