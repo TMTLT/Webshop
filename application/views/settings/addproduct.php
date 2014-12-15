@@ -46,7 +46,7 @@
                         <label>Categorie</label>
 
 
-                        <select>
+                        <select style="width: 270px;height: 35px;float: left;border: 1px solid #B4B4B4;padding: 8px 6px 7px;font-size: 11px;color: #5F5F5F;">
                             <?php
                                 print_r($categories);
                                 foreach($categories as $category)

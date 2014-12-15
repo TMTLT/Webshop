@@ -32,7 +32,7 @@
                         <label for='description'>Selecteer product</label>
 
                         <p>
-                            <select>
+                            <select style="width: 270px;height: 35px;float: left;border: 1px solid #B4B4B4;padding: 8px 6px 7px;font-size: 11px;color: #5F5F5F;">
                                 <?php
                                     foreach($products as $product)
                                         print('<option value="' . $product['id'] .  '">' . $product['titel'] .  ' (&euro;' . str_replace(".", ",", $product['prijs']) . ')</option>');

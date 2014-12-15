@@ -62,7 +62,7 @@
                         <label for='description'>Selecteer categorie</label>
 
                         <p>
-                            <select>
+                            <select style="width: 270px;height: 35px;float: left;border: 1px solid #B4B4B4;padding: 8px 6px 7px;font-size: 11px;color: #5F5F5F;">
                                 <?php
                                     foreach($categories as $category)
                                         print('<option value="' . $category->id .  '">' . $category->titel .  '</option>');
