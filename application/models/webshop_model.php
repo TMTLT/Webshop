@@ -7,6 +7,21 @@
             parent::__construct();
         }
 
+        public function CancelTransaction($id){
+            
+            /* Remove transaction from transactionDB */
+            $this->db->where('transid', $id);
+            $this->db->delete('transactions');
+
+            /* Reset transaction id from orders*/
+            $toUpdate = array(
+                'transid'=> null
+            );
+
+            $this->db->where('transid', $id);
+            $this->db->update('orders', $toUpdate);
+        }
+
         public function AddTransaction($id, $transid){
             
             $toUpdate = array(

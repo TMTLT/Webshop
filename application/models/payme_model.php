@@ -40,6 +40,6 @@
             $query = $this->db->get();
             $rows  = $query->result_array();
 
-            return $rows[0];
+            return (isset($rows[0]) ? $rows[0] : false);
         }
     }
