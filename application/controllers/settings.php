@@ -23,6 +23,7 @@
         public function addproduct() {
             $data          = $this->data;
             $data['title'] = 'Admin paneel';
+            $data['categories']   = $this->Webshop_model->GetCategories(-1);
 
             $this->load->helper('form');
             $this->load->model('Settings_model');
@@ -45,7 +46,7 @@
         public function addcategory() {
             $data          = $this->data;
             $data['title'] = 'Admin paneel';
-            $data['category']   = $this->Webshop_model->GetCategories();
+            $data['categories']   = $this->Webshop_model->GetCategories();
 
             $this->load->helper('form');
             $this->load->model('Settings_model');

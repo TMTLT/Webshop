@@ -82,8 +82,9 @@
 
             $this->db->select('id, titel, beschrijving');
             $this->db->from('categories');
-            $this->db->where('parent', $parent);
-
+            if ($parent != -1) {
+                $this->db->where('parent', $parent);
+            }
             $query = $this->db->get();
             $rows  = $query->result();
 

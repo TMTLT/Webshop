@@ -42,11 +42,16 @@
                         </p>
                     </li>
                     <li class="left">
-                        <label for='category'>Categorie</label>
+                        <label>Categorie</label>
 
-                        <P>
-                            <input type='text' name='category' id="category">
-                        </p>
+
+                        <select>
+                            <?php
+                                print_r($categories);
+                                foreach($categories as $category)
+                                    print('<option value="' . $category->id .  '">' . $category->titel .  '</option>');
+                            ?>
+                        </select>
                     </li>
                     <li class="full-row">
                         <p>
@@ -221,11 +226,10 @@
 
         var name = checkEmpty('name');
         var priceval = checkEmpty('price');
-        var category = checkEmpty('category');
         var description = checkEmpty('description');
         var price = validatePrice();
 
-        if (!name || !priceval || !category || !description || !price) {
+        if (!name || !priceval || !description || !price) {
             if (!name) {
                 $(".error").append("U hebt geen product naam ingevuld <br />");
             }
@@ -234,9 +238,6 @@
             }
             if (priceval && !price) {
                 $(".error").append("U hebt geen geldige prijs ingevuld <br />");
-            }
-            if (!category) {
-                $(".error").append("U hebt geen categorie geselecteerd <br />");
             }
             if (!description) {
                 $(".error").append("U hebt geen beschrijving ingevuld <br />");
