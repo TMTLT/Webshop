@@ -111,7 +111,6 @@
                     password: $("#password").val()
                 },
                 success: function (resp) {
-                    console.log(resp);
                     if (resp == 0) {
                         $(".error").html("Sorry, verkeerde inloggegevens!");
                         $(".error").show(300);

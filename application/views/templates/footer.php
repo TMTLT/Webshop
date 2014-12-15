@@ -1,3 +1,27 @@
+<script type="application/javascript">
+    (function($) {
+        $.fn.invisible = function() {
+            return this.each(function() {
+                $(this).css("visibility", "hidden");
+            });
+        };
+        $.fn.visible = function() {
+            return this.each(function() {
+                $(this).css("visibility", "visible");
+            });
+        };
+    }(jQuery));
+
+    $.get('<?php echo base_url(); ?>store/onsale/', function(resp) {
+        var data = $.parseJSON(resp);
+        $.each(data, function () {
+            $('.pro-line.' + this['productid']).show();
+            $('.pro-price.' + this['productid'] + '.second').html('&euro; ' + parseFloat(this['prijs']).formatMoney(2));
+            $('.pro-price.' + this['productid'] + '.second').visible();
+        });
+    });
+</script>
+
 <!--Footer Block-->
 <section class="footer-wrapper">
     <footer class="container">

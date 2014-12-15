@@ -116,7 +116,7 @@
 
         public function status($id){
             //PayMe::GetTransactionStatus($id, $sha1);
-            
+
             /* View payment status */
         }
 
@@ -184,7 +184,7 @@
 
             if($flag) {
                 $item = $this->Webshop_model->GetProduct($id);
-
+                print_r($item);echo($item);
                 $data = array(
                     'id'          => $id,
                     'qty'         => $qty,
@@ -257,6 +257,13 @@
             $id = $this->input->post('id');
 
             echo json_encode($this->Webshop_model->GetProduct($id));
+        }
+
+        /**
+         *
+         */
+        public function onsale() {
+            echo json_encode($this->Webshop_model->GetSaleProducts());
         }
 
     }

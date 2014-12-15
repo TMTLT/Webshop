@@ -206,7 +206,6 @@
                     password: $("#password").val()
                 },
                 success: function (resp) {
-                    console.log(resp);
                     if (resp = 1) {
                         $(".error").hide(300);
                         $("#register").hide(300);
