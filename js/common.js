@@ -28,7 +28,7 @@ $(document).ready(function () {
             $('body').removeClass('loading');
         }
     });
-    $('#mix').jcarousel({
+    /*$('#mix').jcarousel({
         scroll: 1,
         easing: 'swing',
         animation: 750,
@@ -55,7 +55,7 @@ $(document).ready(function () {
         animation: 750,
         visible: 0,
         auto: 0
-    });
+    });*/
 
 
     $('.menuBox').click(function () {

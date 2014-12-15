@@ -1227,7 +1227,7 @@ header {
 
 .content-wrapper .content-container .feature-block .product-grid li, .content-wrapper .content-container .new-product-block .product-grid li {
     float: left;
-    width: 240px;
+    width: 238px;
     border: 1px solid #DAD8D8;
     position: relative;
     margin-bottom: 10px;

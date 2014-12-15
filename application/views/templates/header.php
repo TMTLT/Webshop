@@ -136,6 +136,21 @@
                                 }
                             });
                         }
+
+                        function addToCart(id) {
+                            $.ajax({
+                                type: 'POST',
+                                url: '<?php echo base_url(); ?>store/addtocart/',
+                                data: {
+                                    id: id,
+                                    qty: 1
+                                },
+                                success: function () {
+                                    updatecart();
+                                }
+                            });
+                        }
+
                         updatecart();
                     </script>
 

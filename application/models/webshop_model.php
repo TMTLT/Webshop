@@ -94,7 +94,7 @@
 
             if('all' != $category) {
 
-                $this->db->select('id, titel, parent, beschrijving');
+                $this->db->select('id, titel, image, beschrijving, prijs, categorie, aantal');
                 $this->db->from('categories');
 
                 $this->db->where('titel', urldecode($category));
@@ -113,6 +113,30 @@
             if('all' != $category && isset($result['id']))
                 $this->db->where('categorie', $result['id']);
 
+            $query = $this->db->get();
+            $rows  = $query->result_array();
+
+            return $rows;
+        }
+
+        public function GetNewestProducts() {
+
+            $this->db->select('id, titel, image, beschrijving, prijs, categorie, aantal');
+            $this->db->from('products');
+            $this->db->order_by("id", "desc");
+            $this->db->limit(8);
+            $query = $this->db->get();
+            $rows  = $query->result_array();
+
+            return $rows;
+        }
+
+        public function GetRandomProducts() {
+
+            $this->db->select('id, titel, image, beschrijving, prijs, categorie, aantal');
+            $this->db->from('products');
+            $this->db->order_by("id", "RANDOM");
+            $this->db->limit(30);
             $query = $this->db->get();
             $rows  = $query->result_array();
 
