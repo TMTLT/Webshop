@@ -81,7 +81,6 @@
                         //Break code.
                         redirect('/store/checkout/1');
                     } else {
-                        $this->cart->destroy();
                         redirect('/store/pay/' . $result); //Implement unreadable orderID (hash hex with userid?)
                     }
                     break;
@@ -93,7 +92,7 @@
         }
 
         public function cancel($id){
-            
+
             $data          = $this->data;
             $data['title'] = 'Checkout';
 
@@ -127,7 +126,7 @@
 
             $data          = $this->data;
             $data['title'] = 'Checkout';
-            
+
             /* View payment status */
             $this->load->model('Payme_model');
             $transID = $this->input->get('transid', false);
@@ -141,6 +140,8 @@
 
                 if($status['status'] == 'success'){
                     $this->Webshop_model->SetOrderStatus($status['transid'], 1);
+                    $this->load->library('cart');
+                    $this->cart->destroy();
                 }
             }
 
