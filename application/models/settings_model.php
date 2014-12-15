@@ -98,4 +98,31 @@
                 echo 1;
             }
         }
+
+        public function addcategory() {
+            $this->load->database();
+
+            $data = array(
+                'titel'        => $this->input->post('name'),
+                'parent'       => $this->input->post('parent'),
+                'beschrijving' => $this->input->post('description')
+            );
+
+            $str = $this->db->insert_string('categories', $data);
+
+            $res = $this->db->query($str);
+
+            if(!$res) {
+                // TODO: remove this
+                if(true) {
+                    $msg = $this->db->_error_message();
+                    $num = $this->db->_error_number();
+
+                    $data['msg'] = "Error(" . $num . ") " . $msg;
+                    print_r($data);
+                }
+            } else {
+                echo 1;
+            }
+        }
     }

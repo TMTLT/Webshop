@@ -39,4 +39,27 @@
             return $this->Settings_model->addproduct();
         }
 
+        /**
+         *
+         */
+        public function addcategory() {
+            $data          = $this->data;
+            $data['title'] = 'Admin paneel';
+            $data['category']   = $this->Webshop_model->GetCategories();
+
+            $this->load->helper('form');
+            $this->load->model('Settings_model');
+
+            $this->load->template('settings/addcategory', $data);
+        }
+
+        /**
+         *
+         */
+        public function addcategorypost() {
+            $this->load->model('Settings_model');
+
+            return $this->Settings_model->addcategory();
+        }
+
     }

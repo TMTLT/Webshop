@@ -5,7 +5,8 @@
             <div class="block man-block">
                 <div class="block-title">Opties</div>
                 <ul>
-                    <li><a href="/settings/admin" title="">Producten toevoegen</a></li>
+                    <li><a href="/settings/addproduct" title="">Producten toevoegen</a></li>
+                    <li><a href="/settings/addcategory" title="">Categorie toevoegen</a></li>
                 </ul>
             </div>
         </div>
