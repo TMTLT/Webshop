@@ -133,8 +133,8 @@
                 $bankID      = $this->input->post('bank');
                 $purchaseID  = $id;
                 $description = 'Uw order bij Mos OrderNo '.$id;
-                $returnURL   = 'tmtl-06.ict-lab.nl/store/status/'.$id;
-                $failURL     = 'tmtl-06.ict-lab.nl/store/cancel/'.$id;
+                $returnURL   = 'http://tmtl-06.ict-lab.nl/store/status/'.$id;
+                $failURL     = 'http://tmtl-06.ict-lab.nl/store/cancel/'.$id;
 
                 $data = PayMe::StartTransaction($amount, $bankID, $purchaseID, $description, $returnURL, $failURL);
 
