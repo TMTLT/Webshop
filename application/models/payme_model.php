@@ -30,4 +30,16 @@
 
             return $rows;
         }
+
+        public function GetTransactionStatus($transid) {
+
+            $this->db->select('id, transid, hash, status');
+            $this->db->from('transactions');
+            $this->db->where('transid', $transid);
+
+            $query = $this->db->get();
+            $rows  = $query->result_array();
+
+            return $rows[0];
+        }
     }

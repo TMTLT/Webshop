@@ -7,6 +7,17 @@
             parent::__construct();
         }
 
+        public function AddTransaction($id, $transid){
+            
+            $toUpdate = array(
+                'transid'=> $transid
+            );
+
+            $this->db->where('orderid', $id);
+
+            return $this->db->update('orders', $toUpdate);
+        }
+        
         public function GetOrderTotal($id){
             
             $query = $this->db->query('SELECT SUM(`orderedproducts`.`price` * `orderedproducts`.`quantity`)AS total FROM `orderedproducts` WHERE orderid='.$id);
