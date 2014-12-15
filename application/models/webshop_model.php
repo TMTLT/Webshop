@@ -7,6 +7,16 @@
             parent::__construct();
         }
 
+        public function SetOrderStatus($transid, $status){
+
+            $toUpdate = array(
+                'status'=> $status
+            );
+
+            $this->db->where('transid', $transid);
+            $this->db->update('orders', $toUpdate);
+        }
+
         public function CancelTransaction($id){
             
             /* Remove transaction from transactionDB */

@@ -138,6 +138,10 @@
             if(!empty($transactionDetails)){
 
                 $status = PayMe::GetTransactionStatus($transactionDetails['transid'], $transactionDetails['hash']);
+
+                if($status['status'] == 'success'){
+                    $this->Webshop_model->SetOrderStatus($status['transid'], 1);
+                }
             }
 
             $data['status'] = $status;
