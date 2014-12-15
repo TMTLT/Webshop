@@ -12,7 +12,7 @@
             parent::__construct();
             $this->load->helper('url');
 
-            if (!$this->session->userdata('admin')) {
+            if(!$this->session->userdata('admin')) {
                 redirect('/home/index');
             }
         }

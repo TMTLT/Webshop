@@ -7,7 +7,7 @@
             parent::__construct();
         }
 
-        public function GetOrderDetails($id){
+        public function GetOrderDetails($id) {
 
             /* Get order */
             $this->db->select('orderid, userid, transid');
@@ -26,49 +26,49 @@
             $this->db->join('products', 'orderedproducts.productid = products.id', 'left outer');
             $this->db->where('orderid', $id);
 
-            $query = $this->db->get();
-            $products  = $query->result_array();
+            $query    = $this->db->get();
+            $products = $query->result_array();
 
             $relevant['products'] = $products;
 
             return $relevant;
         }
 
-        public function CreateOrder($products, $userid){
+        public function CreateOrder($products, $userid) {
 
             /* Just create a near empty record. */
             $orderData = array(
-                'userid'=>$userid
+                'userid' => $userid
             );
             /* Create orderID*/
-            $result      = $this->db->insert('orders', $orderData);
-            $orderid     = $this->db->insert_id();
+            $result  = $this->db->insert('orders', $orderData);
+            $orderid = $this->db->insert_id();
 
             /* Break in case of failed order creation*/
             if(!$result)
 
                 //Break
                 return false;
-            else{
+            else {
 
                 /* Add products to order */
-                foreach($products as $product){
+                foreach($products as $product) {
 
                     $data[] = array(
-                        'orderid'   =>$orderid,
-                        'productid' =>$product['id'],
-                        'quantity'  =>$product['qty'],
-                        'price'     =>$product['price']
+                        'orderid'   => $orderid,
+                        'productid' => $product['id'],
+                        'quantity'  => $product['qty'],
+                        'price'     => $product['price']
                     );
                 }
 
                 $batchResult = $this->db->insert_batch('orderedproducts', $data);
 
-                if($batchResult){
+                if($batchResult) {
 
                     /* Everything worked!*/
                     return $orderid;
-                }else{
+                } else {
                     /* Something failed, remove order, return false */
                     $this->db->where('userid', $userid);
                     $this->db->delete('orders');

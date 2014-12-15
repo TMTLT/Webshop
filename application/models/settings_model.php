@@ -16,7 +16,7 @@
          *
          */
         public function admin() {
-            if ($this->session->userdata('admin')) {
+            if($this->session->userdata('admin')) {
                 return true;
             } else {
                 return false;
@@ -26,9 +26,9 @@
         public function addproduct() {
             $name = uniqid();
 
-            $config['upload_path'] = './database/';
+            $config['upload_path']   = './database/';
             $config['allowed_types'] = 'jpg|png';
-            $config['file_name'] = $name;
+            $config['file_name']     = $name;
             $this->load->library('upload', $config);
             $this->upload->do_upload('image_file');
 
@@ -37,7 +37,7 @@
             $iWidth = $iHeight = 200;
 
             $sTempFileName = './database/' . $data['file_name'];
-            if (file_exists($sTempFileName)) {
+            if(file_exists($sTempFileName)) {
                 switch($data['file_type']) {
                     case 'image/jpeg':
                         $vImg = imagecreatefromjpeg($sTempFileName);
@@ -47,6 +47,7 @@
                         break;
                     default:
                         @unlink($sTempFileName);
+
                         return;
                 }
 
@@ -63,18 +64,18 @@
                                    (int)$this->input->post('h')
                 );
 
-                imagejpeg($vDstImg, $sTempFileName.'.jpeg', 100);
+                imagejpeg($vDstImg, $sTempFileName . '.jpeg', 100);
                 unlink($sTempFileName);
 
                 $this->load->database();
 
-                $data      = array(
-                    'titel'      => $this->input->post('name'),
+                $data = array(
+                    'titel'        => $this->input->post('name'),
                     'beschrijving' => $this->input->post('description'),
-                    'image'    => $data['file_name'].'.jpeg',
-                    'prijs'      => str_replace(",", ".", $this->input->post('price')),
-                    'categorie'         => $this->input->post('category'),
-                    'aantal'    => 0
+                    'image'        => $data['file_name'] . '.jpeg',
+                    'prijs'        => str_replace(",", ".", $this->input->post('price')),
+                    'categorie'    => $this->input->post('category'),
+                    'aantal'       => 0
                 );
 
                 $str = $this->db->insert_string('products', $data);

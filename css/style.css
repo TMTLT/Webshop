@@ -3492,6 +3492,7 @@ h1.page-title {
     position: relative;
     margin: 10px;
 }
+
 .fileUpload input.upload {
     cursor: pointer;
     opacity: 0;

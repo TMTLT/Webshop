@@ -35,7 +35,7 @@
             $data          = $this->data;
             $data['title'] = 'Checkout';
 
-            switch($progress){
+            switch($progress) {
                 /* Step 1 : Cart overview (also default) */
                 case 1:
                     $data['title'] = 'Checkout' . $progress;
@@ -45,9 +45,9 @@
                 /* Prompt for login if !logged in*/
                 case 2:
 
-                    if($loggedIn){
+                    if($loggedIn) {
                         redirect('/store/checkout/3');
-                    }else{
+                    } else {
                         $data['title'] = 'Checkout';
                         /* Load login prompt. If only we had partial views...
                         Waiting for Owain to make redirects*/
@@ -70,12 +70,12 @@
                     $result = $this->Webshop_model->CreateOrder($cartContent, $userid);
 
                     /* Just in case your numeric orderid suddenly is false in text. */
-                    if($result === false){
+                    if($result === false) {
                         //Break code.
                         redirect('/store/checkout/1');
-                    }else{
+                    } else {
                         $this->cart->destroy();
-                        redirect('/store/pay/'.$result); //Implement unreadable orderID (hash hex with userid?)
+                        redirect('/store/pay/' . $result); //Implement unreadable orderID (hash hex with userid?)
                     }
                     break;
                 /* Default : Cart overview */
@@ -85,7 +85,7 @@
             }
         }
 
-        public function pay($id){
+        public function pay($id) {
 
             $orderDetails = $this->Webshop_model->GetOrderDetails($id);
 
@@ -98,7 +98,7 @@
         public function addtocart() {
             $this->load->library('cart');
 
-            $id = $this->input->post('id');
+            $id  = $this->input->post('id');
             $qty = $this->input->post('qty');
 
             $flag = true;
@@ -122,12 +122,12 @@
                 $item = $this->Webshop_model->GetProduct($id);
 
                 $data = array(
-                    'id'    => $id,
-                    'qty'   => $qty,
-                    'price' => $item['prijs'],
-                    'name'  => $item['titel'],
+                    'id'          => $id,
+                    'qty'         => $qty,
+                    'price'       => $item['prijs'],
+                    'name'        => $item['titel'],
                     'description' => $item['beschrijving'],
-                    'image' => $item['image']
+                    'image'       => $item['image']
                 );
                 $this->cart->insert($data);
             }
@@ -161,7 +161,7 @@
         public function itemamount() {
             $this->load->library('cart');
 
-            $id = $this->input->post('id');
+            $id  = $this->input->post('id');
             $qty = $this->input->post('qty');
 
             foreach($this->cart->contents() as $item) {
@@ -194,6 +194,5 @@
 
             echo json_encode($this->Webshop_model->GetProduct($id));
         }
-
 
     }

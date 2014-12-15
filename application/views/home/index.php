@@ -28,13 +28,13 @@
             <ul id="mix" class="product-grid" style="margin-left: 7px">
                 <?php
                     $products = array_values($featuredproducts);
-                    $count = 0;
+                    $count    = 0;
                     foreach($products as $product) {
                         if(null != $product) {
                             $count++;
                             print('<li class="' . $product['categorie'] . '">
 									<div class="pro-img">
-										<img title=" Product" alt="Product" src="/database/'. $product['image'] .'" width="170px" height=170px />
+										<img title=" Product" alt="Product" src="/database/' . $product['image'] . '" width="170px" height=170px />
 									</div>
 									<div class="pro-hover-block">
                                         <h4 class="pro-name">' . $product['titel'] . '</h4>
@@ -44,7 +44,8 @@
                                         <div class="pro-price">&euro; ' . str_replace(".", ",", $product['prijs']) . '</div>
                                     </div></li>');
                         }
-                        if ($count == 4) break;
+                        if($count == 4)
+                            break;
                     }
                 ?>
             </ul>
@@ -60,7 +61,7 @@
                     if(null != $product) {
                         print('<li class="' . $product['categorie'] . '">
 									<div class="pro-img">
-										<img title=" Product" alt="Product" src="/database/'. $product['image'] .'" width="170px" height=170px />
+										<img title=" Product" alt="Product" src="/database/' . $product['image'] . '" width="170px" height=170px />
 									</div>
 									<div class="pro-content"><p>' . $product['titel'] . '</p></div>
 									<div class="pro-price">&euro; ' . str_replace(".", ",", $product['prijs']) . '</div>
@@ -100,7 +101,8 @@
 
                 <div class="product-img-box">
                     <p class="product-image">
-                        <img src="/images/default_img.png" title="Image" alt="Image" height="170px" width="170px" style="margin-left: 17px" />
+                        <img src="/images/default_img.png" title="Image" alt="Image" height="170px" width="170px"
+                             style="margin-left: 17px"/>
                     </p>
                 </div>
             </div>
@@ -173,7 +175,7 @@
                 $('#tabDetail > .price-box > .price').html('&euro;' + parseFloat(data['prijs']).formatMoney(2));
                 $('.product-image > img').attr("src", '/database/' + data['image']);
                 $('#qty').val(1);
-                $('#addtocartdetails').bind('click', function() {
+                $('#addtocartdetails').bind('click', function () {
                     $.ajax({
                         type: 'POST',
                         url: '<?php echo base_url(); ?>store/addtocart/',
@@ -199,7 +201,7 @@
         });
     }
 
-    $("#qty-down").click(function() {
+    $("#qty-down").click(function () {
         var value = parseInt($('#qty').val());
         if (value > 1) {
             $('#qty').val(value - 1);
@@ -208,14 +210,14 @@
         return false;
     });
 
-    $("#qty-up").click(function() {
+    $("#qty-up").click(function () {
         var value = parseInt($('#qty').val());
         $('#qty').val(value + 1);
 
         return false;
     });
 
-    $("#qty").keyup(function() {
+    $("#qty").keyup(function () {
         var value = $('#qty').val();
 
         if (value < 1) {

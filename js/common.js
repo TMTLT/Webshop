@@ -29,33 +29,33 @@ $(document).ready(function () {
         }
     });
     /*$('#mix').jcarousel({
-        scroll: 1,
-        easing: 'swing',
-        animation: 750,
-        visible: 0,
-        auto: 0
-    });
-    $('#like-pro').jcarousel({
-        scroll: 1,
-        easing: 'swing',
-        animation: 750,
-        visible: 0,
-        auto: 0
-    });
-    $('#related-pro').jcarousel({
-        scroll: 1,
-        easing: 'swing',
-        animation: 750,
-        visible: 0,
-        auto: 0
-    });
-    $('#moreView').jcarousel({
-        scroll: 1,
-        easing: 'swing',
-        animation: 750,
-        visible: 0,
-        auto: 0
-    });*/
+     scroll: 1,
+     easing: 'swing',
+     animation: 750,
+     visible: 0,
+     auto: 0
+     });
+     $('#like-pro').jcarousel({
+     scroll: 1,
+     easing: 'swing',
+     animation: 750,
+     visible: 0,
+     auto: 0
+     });
+     $('#related-pro').jcarousel({
+     scroll: 1,
+     easing: 'swing',
+     animation: 750,
+     visible: 0,
+     auto: 0
+     });
+     $('#moreView').jcarousel({
+     scroll: 1,
+     easing: 'swing',
+     animation: 750,
+     visible: 0,
+     auto: 0
+     });*/
 
 
     $('.menuBox').click(function () {

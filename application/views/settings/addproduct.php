@@ -59,10 +59,10 @@
                     <div class="button-set">
                     </div>
 
-                    <input type="hidden" id="x1" name="x1" />
-                    <input type="hidden" id="y1" name="y1" />
-                    <input type="hidden" id="x2" name="x2" />
-                    <input type="hidden" id="y2" name="y2" />
+                    <input type="hidden" id="x1" name="x1"/>
+                    <input type="hidden" id="y1" name="y1"/>
+                    <input type="hidden" id="x2" name="x2"/>
+                    <input type="hidden" id="y2" name="y2"/>
                     <input type="hidden" id="w" name="w">
                     <input type="hidden" id="h" name="h">
 
@@ -71,11 +71,15 @@
                     <li class="left">
                         <p>
                             <input id="uploadFile" placeholder="Choose File" disabled/>
-                            <div class="fileUpload">
-                                <input value='Uploaden' class="form-button" style="width: 80px; position: absolute; margin-top: -57px; margin-left: 270px; height: 37px; text-align: center"/>
-                                <input type="file" class="upload" name="image_file" id="image_file" onchange="fileSelectHandler()" style="width: 80px; position: absolute; margin-top: -57px; margin-left: 270px; height: 37px;" />
-                            </div>
-                            <img id="waiting" src="/images/loading.gif" style="display: none;"/>
+
+                        <div class="fileUpload">
+                            <input value='Uploaden' class="form-button"
+                                   style="width: 80px; position: absolute; margin-top: -57px; margin-left: 270px; height: 37px; text-align: center"/>
+                            <input type="file" class="upload" name="image_file" id="image_file"
+                                   onchange="fileSelectHandler()"
+                                   style="width: 80px; position: absolute; margin-top: -57px; margin-left: 270px; height: 37px;"/>
+                        </div>
+                        <img id="waiting" src="/images/loading.gif" style="display: none;"/>
 
                         </p>
                     </li>
@@ -83,7 +87,7 @@
                     <div class="step2" style="display: none; margin-top: 100px">
 
                         <li class="full-row">
-                            <img id="preview" />
+                            <img id="preview"/>
                         </li>
 
                     </div>
@@ -121,7 +125,8 @@
         if (bytes == 0) return 'n/a';
         var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
         return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
-    };
+    }
+    ;
 
     function updateInfo(e) {
         $('#x1').val(e.x);
@@ -130,7 +135,8 @@
         $('#y2').val(e.y2);
         $('#w').val(e.w);
         $('#h').val(e.h);
-    };
+    }
+    ;
 
     var jcrop_api, boundx, boundy;
 
@@ -146,7 +152,7 @@
         $('.error').hide();
 
         var rFilter = /^(image\/jpeg|image\/png)$/i;
-        if (! rFilter.test(oFile.type)) {
+        if (!rFilter.test(oFile.type)) {
             $('.error').html('U hebt geen p;aatje geselecteerd').show();
             return;
         }
@@ -154,7 +160,7 @@
         var oImage = document.getElementById('preview');
 
         var oReader = new FileReader();
-        oReader.onload = function(e) {
+        oReader.onload = function (e) {
             oImage.src = e.target.result;
             oImage.onload = function () {
                 var sResultFileSize = bytesToSize(oFile.size);
@@ -169,18 +175,18 @@
                     $('#preview').height(oImage.naturalHeight);
                 }
 
-                setTimeout(function(){
+                setTimeout(function () {
                     $('#preview').Jcrop({
                         minSize: [70, 70],
-                        setSelect: [ 0, 0, 70, 70 ],
-                        aspectRatio : 1,
+                        setSelect: [0, 0, 70, 70],
+                        aspectRatio: 1,
                         boxWidth: 745,
                         boxHeight: 500,
                         bgFade: true,
                         bgOpacity: .6,
                         onChange: updateInfo,
                         onSelect: updateInfo
-                    }, function(){
+                    }, function () {
 
                         var bounds = this.getBounds();
                         boundx = bounds[0];
@@ -193,17 +199,17 @@
                     $('.fileUpload').show(300);
                     $('#uploadFile').show(300);
                     $('#waiting').hide(300);
-                },1500);
+                }, 1500);
             };
         };
 
         oReader.readAsDataURL(oFile);
     }
 
-    function progressHandlingFunction(e){
+    function progressHandlingFunction(e) {
         /*if(e.lengthComputable){
-            $('progress').attr({value:e.loaded,max:e.total});
-        }*/
+         $('progress').attr({value:e.loaded,max:e.total});
+         }*/
         console.log(e.loaded);
     }
 
@@ -241,10 +247,10 @@
 
             $.ajax({
                 type: 'POST',
-                xhr: function() {
+                xhr: function () {
                     var myXhr = $.ajaxSettings.xhr();
                     if (myXhr.upload) {
-                        myXhr.upload.addEventListener('progress',progressHandlingFunction, false);
+                        myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
                     }
                     return myXhr;
                 },

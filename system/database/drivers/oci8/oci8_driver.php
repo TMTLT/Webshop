@@ -204,6 +204,40 @@
         }
 
         /**
+         * Generate a statement ID
+         *
+         * @access  private
+         *
+         * @param   string  an SQL query
+         *
+         * @return  none
+         */
+        private function _set_stmt_id($sql) {
+            if(!is_resource($this->stmt_id)) {
+                $this->stmt_id = oci_parse($this->conn_id, $this->_prep_query($sql));
+            }
+        }
+
+        // --------------------------------------------------------------------
+
+        /**
+         * Prep the query
+         *
+         * If needed, each database adapter can prep the query string
+         *
+         * @access  private called by execute()
+         *
+         * @param   string  an SQL query
+         *
+         * @return  string
+         */
+        private function _prep_query($sql) {
+            return $sql;
+        }
+
+        // --------------------------------------------------------------------
+
+        /**
          * Bind parameters
          *
          * @access  private
@@ -421,40 +455,6 @@
             oci_set_prefetch($this->stmt_id, 1000);
 
             return @oci_execute($this->stmt_id, $this->_commit);
-        }
-
-        // --------------------------------------------------------------------
-
-        /**
-         * Generate a statement ID
-         *
-         * @access  private
-         *
-         * @param   string  an SQL query
-         *
-         * @return  none
-         */
-        private function _set_stmt_id($sql) {
-            if(!is_resource($this->stmt_id)) {
-                $this->stmt_id = oci_parse($this->conn_id, $this->_prep_query($sql));
-            }
-        }
-
-        // --------------------------------------------------------------------
-
-        /**
-         * Prep the query
-         *
-         * If needed, each database adapter can prep the query string
-         *
-         * @access  private called by execute()
-         *
-         * @param   string  an SQL query
-         *
-         * @return  string
-         */
-        private function _prep_query($sql) {
-            return $sql;
         }
 
         // --------------------------------------------------------------------
