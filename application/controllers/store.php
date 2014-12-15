@@ -45,6 +45,12 @@
 
                 /* Prompt for login if !logged in*/
                 case 2:
+                    /* Libs : */
+                    $this->load->library('cart');
+                    $cartContent = $this->cart->contents();
+
+                    if(empty($cartContent))
+                        redirect('/store', 'refresh');//Very not cool fix but it works
 
                     if(!$loggedIn){
                         redirect('/account/login', 'refresh');
@@ -57,15 +63,18 @@
                     break;
                 /* Step 3 : Choosing payment options */
                 case 3:
-                    if(!$loggedIn)
-                        redirect('/account/login', 'refresh');
-
-                    $data['title'] = 'Checkout' . $progress;
-
                     /* Libs : */
                     $this->load->library('cart');
                     $cartContent = $this->cart->contents();
 
+                    if(empty($cartContent))
+                        redirect('/store', 'refresh');//Very not cool fix but it works
+
+                    if(!$loggedIn)
+                        redirect('/account/login', 'refresh');
+
+                    $data['title'] = 'Checkout' . $progress;
+                    
                     $userid = 24;
 
                     $result = $this->Webshop_model->CreateOrder($cartContent, $userid);
