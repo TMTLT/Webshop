@@ -93,14 +93,59 @@
         }
 
         public function cancel($id){
+            
+            $data          = $this->data;
+            $data['title'] = 'Checkout';
+
+            $this->load->model('Payme_model');
+            $transID = $this->input->get('transid', false);
 
             /* Cancel order */
+            $transactionDetails = $this->Payme_model->GetTransactionStatus($transID);
+
+            if(!empty($transactionDetails)){
+
+                $status = PayMe::GetTransactionStatus($transactionDetails['transid'], $transactionDetails['hash']);
+
+                if($status['status'] == 'fail'){
+                    $this->Webshop_model->CancelTransaction($status['transid']);
+                    $status = 'Cancelled payment';
+                }
+                else{
+                    $status = 'Payment did not fail';
+                }
+            }else{
+
+                $status = 'Couldn\'t find payment';
+            }
+
+            $data['status']['status'] = $status;
+            $this->load->template('store/status', $data);
         }
 
         public function status($id){
-            //PayMe::GetTransactionStatus($id, $sha1);
 
+            $data          = $this->data;
+            $data['title'] = 'Checkout';
+            
             /* View payment status */
+            $this->load->model('Payme_model');
+            $transID = $this->input->get('transid', false);
+
+            /* Cancel order */
+            $transactionDetails = $this->Payme_model->GetTransactionStatus($transID);
+
+            if(!empty($transactionDetails)){
+
+                $status = PayMe::GetTransactionStatus($transactionDetails['transid'], $transactionDetails['hash']);
+
+                if($status['status'] == 'success'){
+                    $this->Webshop_model->SetOrderStatus($status['transid'], 1);
+                }
+            }
+
+            $data['status'] = $status;
+            $this->load->template('store/status', $data);
         }
 
         public function pay($id) {
@@ -116,14 +161,16 @@
                 $bankID      = $this->input->post('bank');
                 $purchaseID  = $id;
                 $description = 'Uw order bij Mos OrderNo '.$id;
-                $returnURL   = 'tmtl-06.ict-lab.nl/store/status/'.$id;
-                $failURL     = 'tmtl-06.ict-lab.nl/store/cancel/'.$id;
+                $returnURL   = 'http://tmtl-06.ict-lab.nl/store/status/'.$id;
+                $failURL     = 'http://tmtl-06.ict-lab.nl/store/cancel/'.$id;
 
                 $data = PayMe::StartTransaction($amount, $bankID, $purchaseID, $description, $returnURL, $failURL);
 
                 $this->Payme_model->SaveTransaction($data['transid'], $data['sha1']);
-
-                redirect($data['fwdurl']);
+                if($this->Webshop_model->AddTransaction($id, $data['transid']))
+                    redirect($data['fwdurl']);
+                else
+                    exit('Something went seriously wrong');
             }else{
                 /* Display orderdetails */
                 $orderDetails = $this->Webshop_model->GetOrderDetails($id);

@@ -7,6 +7,42 @@
             parent::__construct();
         }
 
+        public function SetOrderStatus($transid, $status){
+
+            $toUpdate = array(
+                'status'=> $status
+            );
+
+            $this->db->where('transid', $transid);
+            $this->db->update('orders', $toUpdate);
+        }
+
+        public function CancelTransaction($id){
+            
+            /* Remove transaction from transactionDB */
+            $this->db->where('transid', $id);
+            $this->db->delete('transactions');
+
+            /* Reset transaction id from orders*/
+            $toUpdate = array(
+                'transid'=> null
+            );
+
+            $this->db->where('transid', $id);
+            $this->db->update('orders', $toUpdate);
+        }
+
+        public function AddTransaction($id, $transid){
+            
+            $toUpdate = array(
+                'transid'=> $transid
+            );
+
+            $this->db->where('orderid', $id);
+
+            return $this->db->update('orders', $toUpdate);
+        }
+        
         public function GetOrderTotal($id){
 
             $query = $this->db->query('SELECT SUM(`orderedproducts`.`price` * `orderedproducts`.`quantity`)AS total FROM `orderedproducts` WHERE orderid='.$id);
