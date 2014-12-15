@@ -1,6 +1,7 @@
 <!--Content Block-->
     <section class="content-wrapper">
         <div class="content-container container">
+            <form method="post">
             <div class="col-1-layout" style="padding-bottom:20px;">
                     <table style="width:100%;">
                     <?php
@@ -26,7 +27,7 @@
                             <ul>
                                 <li>
                                     <label>Bank<em>*</em></label>
-                                    <select>
+                                    <select name="bank">
                                     <?php 
                                     foreach($payme['banklist'] as $bankid=>$bankname)
                                         print('<option value="'.$bankid.'">'.$bankname.'</option>');
@@ -44,11 +45,12 @@
                     </div>
                     <ul class="checkout-types">
                         <li>
-                            <button class="colors-btn" title="Proceed to Checkout">Proceed to Checkout</button>
+                            <button class="colors-btn" title="Proceed to Checkout" type="submit">Proceed to Checkout</button>
                         </li>
                     </ul>
                 </div>     
             </div>
+            </form>
             <div class="clearfix"></div>
         </div>
     </section>
