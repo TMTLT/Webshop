@@ -95,7 +95,7 @@
             if('all' != $category) {
 
                 $this->db->select('id, titel, image, beschrijving, prijs, categorie, aantal');
-                $this->db->from('categories');
+                $this->db->from('products');
 
                 $this->db->where('titel', urldecode($category));
 
