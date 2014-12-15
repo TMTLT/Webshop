@@ -93,6 +93,9 @@
         }
 
         public function cancel($id){
+            
+            $data          = $this->data;
+            $data['title'] = 'Checkout';
 
             $this->load->model('Payme_model');
             $transID = $this->input->get('transid', false);
@@ -103,15 +106,21 @@
             if(!empty($transactionDetails)){
 
                 $status = PayMe::GetTransactionStatus($transactionDetails['transid'], $transactionDetails['hash']);
-                print_r($status);
-                if($status['status'] == 'fail')
+
+                if($status['status'] == 'fail'){
                     $this->Webshop_model->CancelTransaction($status['transid']);
-                else
-                    print('Transaction not failed');
+                    $status = 'Cancelled payment';
+                }
+                else{
+                    $status = 'Payment did not fail';
+                }
             }else{
 
-                print('Transaction not found');
+                $status = 'Couldn\'t find payment';
             }
+
+            $data['status']['status'] = $status;
+            $this->load->template('store/status', $data);
         }
 
         public function status($id){
