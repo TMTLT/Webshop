@@ -8,9 +8,9 @@
         }
 
         public function GetOrderTotal($id){
-            
+
             $query = $this->db->query('SELECT SUM(`orderedproducts`.`price` * `orderedproducts`.`quantity`)AS total FROM `orderedproducts` WHERE orderid='.$id);
-            
+
             $result = $query->result_array();
 
             return $result[0]['total'];
@@ -129,6 +129,16 @@
             return $rows;
         }
 
+        public function GetSaleProducts() {
+            $this->db->select('id, productid,  prijs');
+            $this->db->from('sale');
+
+            $query = $this->db->get();
+            $rows  = $query->result_array();
+
+            return $rows;
+        }
+
         public function GetNewestProducts() {
 
             $this->db->select('id, titel, image, beschrijving, prijs, categorie, aantal');
@@ -154,9 +164,10 @@
         }
 
         public function GetProduct($id) {
-            $this->db->select('id, titel, image, beschrijving, prijs, aantal');
+            $this->db->select('`products`.`id`, `products`.`titel`, `products`.`image`, `products`.`beschrijving`, IFNULL(`sale`.`prijs`, `products`.`prijs`) AS prijs, `products`.`categorie`, `products`.`aantal`', false);
             $this->db->from('products');
-            $this->db->where('id', $id);
+            $this->db->join('sale', 'products.id = sale.productid', 'left');
+            $this->db->where('products.id', $id);
 
             $query = $this->db->get();
             $rows  = $query->row_array();

@@ -65,6 +65,8 @@
 									</div>
 									<div class="pro-content"><p>' . $product['titel'] . '</p></div>
 									<div class="pro-price">&euro; ' . str_replace(".", ",", $product['prijs']) . '</div>
+									<div class="pro-line ' . $product['id'] . '" style="width: 43px; height: 47px; margin-top: -95px; margin-left: 95px; border-bottom: 2px solid red; -webkit-transform: translateY(20px) translateX(5px) rotate(-15deg); position: absolute; display: none"></div>
+									<div class="pro-price ' . $product['id'] . ' second" style="margin-top: -25px; visibility: hidden">&euro;</div>
 									<div class="pro-btn-block">
 										<a class="add-cart left" title="Add to Cart" onclick="addToCart(' . $product['id'] . ');return false;">Toevoegen aan winkelmand</a>
 										<a class="add-cart right quickCart inline" href="#quick-view-container" onclick="quickView(' . $product['id'] . ');return false;" title="Details">Details</a>
