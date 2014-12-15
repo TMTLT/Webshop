@@ -115,9 +115,24 @@
         }
 
         public function status($id){
-            //PayMe::GetTransactionStatus($id, $sha1);
 
+            $data          = $this->data;
+            $data['title'] = 'Checkout';
+            
             /* View payment status */
+            $this->load->model('Payme_model');
+            $transID = $this->input->get('transid', false);
+
+            /* Cancel order */
+            $transactionDetails = $this->Payme_model->GetTransactionStatus($transID);
+
+            if(!empty($transactionDetails)){
+
+                $status = PayMe::GetTransactionStatus($transactionDetails['transid'], $transactionDetails['hash']);
+            }
+
+            $data['status'] = $status;
+            $this->load->template('store/status', $data);
         }
 
         public function pay($id) {
