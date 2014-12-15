@@ -30,10 +30,10 @@
         /* Checkout's default progress is 1, cart overview. Set to prevent PHP warnings.*/
         public function checkOut($progress = 1) {
 
-            $loggedIn = true; //Waiting for account model
-
             $data          = $this->data;
             $data['title'] = 'Checkout';
+
+            $loggedIn = $data['loggedin']; //Waiting for account model
 
             switch($progress){
                 /* Step 1 : Cart overview (also default) */
@@ -44,9 +44,8 @@
 
                 /* Prompt for login if !logged in*/
                 case 2:
-                    
-                    if($loggedIn){
-                        redirect('/store/checkout/3');
+                    if(!$loggedIn){
+                        redirect('/account/login', 'refresh');
                     }else{
                         $data['title'] = 'Checkout';
                         /* Load login prompt. If only we had partial views...
@@ -57,7 +56,7 @@
                 /* Step 3 : Choosing payment options */
                 case 3:
                     if(!$loggedIn)
-                        redirect('/store/checkout/2');
+                        redirect('/account/login', 'refresh');
 
                     $data['title'] = 'Checkout' . $progress;
 
@@ -87,9 +86,14 @@
 
         public function pay($id){
 
+            $data          = $this->data;
+            $data['title'] = 'Payment';
+
             $orderDetails = $this->Webshop_model->GetOrderDetails($id);
 
-            print_r($orderDetails);
+            $data['orderDetails'] = $orderDetails;
+
+            $this->load->template('store/payment', $data);
         }
 
         /**
