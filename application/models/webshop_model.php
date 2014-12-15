@@ -21,7 +21,7 @@
             $relevant = $rows[0];
 
             /* Get products related to order*/
-            $this->db->select('orderid, productid, quantity, products.titel, products.beschrijving');
+            $this->db->select('orderid, productid, quantity, price, products.titel, products.beschrijving');
             $this->db->from('orderedproducts');
             $this->db->join('products', 'orderedproducts.productid = products.id', 'left outer');
             $this->db->where('orderid', $id);
