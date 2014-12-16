@@ -171,7 +171,6 @@
                                     print('<li><a href="/store/category/' . $category->titel . '">' . $category->titel . '</a></li>');
                             ?>
                         </ul>
-                    <li class=""><a href="/about/blog" title="Blog">Blog</a></li>
                     <li class=""><a href="/about/faq" title="Faq">FAQ</a></li>
                     <li class=""><a href="/about" title="About us">Over ons</a></li>
                     <li class=""><a href="/contact" title="Contact">Neem contact op</a></li>
@@ -186,29 +185,8 @@
 
                 <div id="menuInnner" style="display:none;">
                     <ul class="accordion">
-                        <li class="active"><a href="/home" title="Home">Home</a></li>
-                        <li class="parent">
-                            <a href="/store" title="Winkel">Winkel</a>
-                            <ul>
-                                <li><a href="/category.html">Woman Collection</a></li>
-                                <li><a href="/category.html">Men Collection</a></li>
-                                <li><a href="/category.html">Accessories</a></li>
-                                <li>
-                                    <a href="/category.html">Mobile</a>
-                                    <ul>
-                                        <li><a href="/category.html">Second level</a></li>
-                                        <li><a href="/category.html">Second level</a></li>
-                                        <li><a href="/category.html">Second level</a></li>
-                                        <li><a href="/category.html">Second level</a></li>
-                                        <li><a href="/category.html">Second level</a></li>
-                                        <li><a href="/category.html">Second level</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="/category.html">Shoes</a></li>
-                                <li><a href="/category.html">Others</a></li>
-                            </ul>
-                        </li>
-                        <li class=""><a href="/about/blog" title="Blog">Blog</a></li>
+                        <li class=""><a href="/home" title="Home">Home</a></li>
+                        <li class=""><a href="/store" title="Winkel">Winkel</a></li>
                         <li class=""><a href="/about/faq" title="Faq">FAQ</a></li>
                         <li class=""><a href="/about" title="About us">Over ons</a></li>
                         <li class=""><a href="/contact" title="Contact">Neem contact op</a></li>
