@@ -154,17 +154,12 @@
 
                         updatecart();
                     </script>
-
-                    <div class="search-block">
-                        <input type="text" value="Search"/>
-                        <input type="submit" value="Search" title="Search"/>
-                    </div>
                 </section>
             </div>
-            <h1 class="logo"><a href="/home" title="Logo">
+            <!--<h1 class="logo"><a href="/home" title="Logo">
                     <img title="Logo" alt="Logo" src="/images/logo.png"/>
                 </a>
-            </h1>
+            </h1>-->
             <nav id="smoothmenu1" class="ddsmoothmenu mainMenu">
                 <ul id="nav">
                     <li class=""><a href="/home" title="Home">Home</a></li>
