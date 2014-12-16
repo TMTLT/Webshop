@@ -30,7 +30,6 @@
             </div>
         </div>
         <div class="col-main">
-            <div class="category-banner"><img src="/images/sunglass.jpg" title="Banner" alt="Banner"/></div>
             <div class="pager-container">
                 <div class="pager">
                     <div class="show-items">
